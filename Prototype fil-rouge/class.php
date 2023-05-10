@@ -1,6 +1,6 @@
 <?php
-
-class project
+include "connect.php";
+class Project
 {
     public $name;
     public $description;
