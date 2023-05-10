@@ -32,7 +32,14 @@ class project
     {
         $sql = "SELECT name FROM `project`";
         $names = $conn->query($sql);
-        $resulte = $names->fetch(PDO::FETCH_ASSOC);
+        $resulte = $names->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($resulte as $name) {
+            echo "<pre>";
+            echo $name['name'];
+            echo "</pre>";
+        }
     }
 }
+$Project = new Project('fil-rouge', 'ilias anouar fil-rouge');
+$Project->showProjectList($conn);
 ?>
