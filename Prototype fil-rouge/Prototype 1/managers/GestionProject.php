@@ -1,9 +1,20 @@
 <?php
-include 'Project.php';
+// include './Entety/Project.php';
+// include '../Entety/Project.php';
+if (file_exists('./Entety/Project.php')) {
+    // Include the file in the './Entety/' directory
+    include './Entety/Project.php';
+} elseif (file_exists('../Entety/Project.php')) {
+    // Include the file in the '../Entety/' directory
+    include '../Entety/Project.php';
+} else {
+    // Neither file exists, so handle the error here
+    echo "Error: Project.php not found in either directory.";
+}
+
 class GestionProjects
 {
     private $Connection = Null;
-
     private function getConnection()
     {
         if (is_null($this->Connection)) {
@@ -16,7 +27,6 @@ class GestionProjects
         }
         return $this->Connection;
     }
-
     public function Ajouter($project)
     {
         $Name = $project->getName();
@@ -25,13 +35,11 @@ class GestionProjects
         $sql = "INSERT INTO `projects`(`name`, `description`) VALUES ('$Name','$Description')";
         mysqli_query($this->getConnection(), $sql);
     }
-
     public function RechercherTous()
     {
         $sql = 'SELECT Id, name, description FROM projects';
         $query = mysqli_query($this->getConnection(), $sql);
         $projects_data = mysqli_fetch_all($query, MYSQLI_ASSOC);
-
         $projects = array();
         foreach ($projects_data as $project_data) {
             $project = new Project();
@@ -42,7 +50,6 @@ class GestionProjects
         }
         return $projects;
     }
-
     public function RechercherParId($id)
     {
         $sql = "SELECT * FROM projects WHERE Id= $id";
@@ -55,16 +62,13 @@ class GestionProjects
         $project->setDescription($project_data['description']);
         return $project;
     }
-
     public function Supprimer($id)
     {
         $sql = "DELETE FROM projects WHERE Id= '$id'";
         mysqli_query($this->getConnection(), $sql);
     }
-
     public function Modifier($id, $name, $description)
     {
-        // Requête SQL
         $sql = "UPDATE projects SET 
         name='$name', description='$description'
         WHERE Id= $id";

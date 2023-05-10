@@ -1,23 +1,23 @@
 <?php
-include "./managers/GestionProject.php";
-$GestionProjects = new GestionProjects();
-$projects = $GestionProjects->RechercherTous();
+include "./managers/gestionProject.php";
+$GestionProjet = new GestionProjet();
+$projects = $GestionProjet->ToutProjet();
 ?>
-
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./UI/Style/style.css">
-    <title>Gestion des employés</title>
+    <title>Projet manager</title>
 </head>
 
 <body>
     <div>
-        <a href="./UI/Ajouter.php">Ajouter un project</a>
+        <h1>Projets</h1>
+        <a href="./UI/add.php">Add project</a>
         <table>
             <tr>
                 <th>Name</th>
@@ -29,17 +29,19 @@ $projects = $GestionProjects->RechercherTous();
                 ?>
                 <tr>
                     <td>
-                        <?= $project->getName() ?>
+                        <?= $project->GetName() ?>
                     </td>
                     <td>
-                        <?= $project->getDescription() ?>
+                        <?= $project->GetDescription() ?>
                     </td>
                     <td>
-                        <a href="./UI/editer.php?id=<?php echo $project->getId() ?>">Éditer</a>
-                        <a href="./UI/supprimer.php?id=<?php echo $project->getId() ?>">Supprime</a>
+                        <a href="edite.php?id=<?= $project->GetId() ?>">Edite</a>
+                        <a href="delete.php?id=<?= $project->GetId() ?>">Delete</a>
                     </td>
                 </tr>
-            <?php } ?>
+                <?php
+            }
+            ?>
         </table>
     </div>
 </body>

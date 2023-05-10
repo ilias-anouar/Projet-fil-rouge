@@ -1,6 +1,6 @@
 <?php
 
-include "GestionProject.php";
+include "../managers/GestionProject.php";
 $GestionProjects = new GestionProjects();
 
 if (isset($_GET['id'])) {
@@ -12,7 +12,7 @@ if (isset($_POST['modifier'])) {
     $Name = $_POST['Name'];
     $Description = $_POST['Description'];
     $GestionProjects->Modifier($id, $Name, $Description);
-    header('Location: index.php');
+    header('Location: ../index.php');
 }
 ?>
 <!DOCTYPE html>
@@ -22,7 +22,7 @@ if (isset($_POST['modifier'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Style/style.css">
     <title>Modifier : </title>
 </head>
 
@@ -42,7 +42,7 @@ if (isset($_POST['modifier'])) {
         </div>
         <div>
             <input name="modifier" type="submit" value="Modifier">
-            <a href="index.php">Annuler</a>
+            <a href="../index.php">Annuler</a>
         </div>
     </form>
 </body>

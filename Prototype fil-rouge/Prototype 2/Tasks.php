@@ -22,9 +22,7 @@ if (isset($_GET['id'])) {
 
 <body>
     <div>
-        <h1>les tache de project :
-            <?= $project->getName() ?>
-        </h1>
+
         <a href="AjouterTask.php?id=<?php echo $Id ?>">Ajouter un tache</a>
         <a href="index.php">Projects</a>
         <table>
