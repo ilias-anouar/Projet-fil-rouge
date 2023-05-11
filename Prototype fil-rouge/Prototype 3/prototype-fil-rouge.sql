@@ -51,8 +51,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE
-    `project` (
-        `Id_Project` int(11) NOT NULL,
+    `projects` (
+        `Id` int(11) NOT NULL,
         `name` varchar(50) NOT NULL,
         `description` varchar(300) NOT NULL
     ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
@@ -64,8 +64,8 @@ CREATE TABLE
 --
 
 INSERT INTO
-    `project` (
-        `Id_Project`,
+    `projects` (
+        `Id`,
         `name`,
         `description`
     )
@@ -96,7 +96,7 @@ VALUES (
 --
 
 CREATE TABLE
-    `task` (
+    `tasks` (
         `Id_Task` int(11) NOT NULL,
         `name` varchar(50) NOT NULL,
         `description` varchar(100) DEFAULT NULL,
@@ -115,7 +115,7 @@ CREATE TABLE
 
 --
 
-ALTER TABLE `project` ADD PRIMARY KEY (`Id_Project`);
+ALTER TABLE `projects` ADD PRIMARY KEY (`Id`);
 
 --
 
@@ -123,7 +123,7 @@ ALTER TABLE `project` ADD PRIMARY KEY (`Id_Project`);
 
 --
 
-ALTER TABLE `task`
+ALTER TABLE `tasks`
 ADD PRIMARY KEY (`Id_Task`),
 ADD
     KEY `Id_Project` (`Id_Project`);
@@ -141,7 +141,7 @@ ADD
 --
 
 ALTER TABLE
-    `project` MODIFY `Id_Project` int(11) NOT NULL AUTO_INCREMENT,
+    `projects` MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,
     AUTO_INCREMENT = 5;
 
 --
@@ -151,7 +151,7 @@ ALTER TABLE
 --
 
 ALTER TABLE
-    `task` MODIFY `Id_Task` int(11) NOT NULL AUTO_INCREMENT;
+    `tasks` MODIFY `Id_Task` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 
@@ -165,9 +165,9 @@ ALTER TABLE
 
 --
 
-ALTER TABLE `task`
+ALTER TABLE `tasks`
 ADD
-    CONSTRAINT `task_ibfk_1` FOREIGN KEY (`Id_Project`) REFERENCES `project` (`Id_Project`) ON DELETE CASCADE;
+    CONSTRAINT `task_ibfk_1` FOREIGN KEY (`Id_Project`) REFERENCES `projects` (`Id`) ON DELETE CASCADE;
 
 COMMIT;
 
