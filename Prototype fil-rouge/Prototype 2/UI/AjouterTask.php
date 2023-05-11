@@ -1,6 +1,7 @@
 <?php
 // include "GestionTask.php";
 include "../Managers/GestionTask.php";
+include "../Managers/GestionProject.php";
 
 // Trouver tous les employés depuis la base de données 
 $GestionTasks = new GestionTasks();
@@ -29,27 +30,30 @@ if (!empty($_POST)) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <?php
+    require_once(__ROOT__ . '/UI/Style/Bootstrap.php');
+    ?>
     <title>Gestion des tache</title>
 </head>
 
 <body>
-
-    <h1>Ajouter un tache</h1>
-
-    <form method="post" action="">
-        <div>
-            <label for="Nom">Name</label>
-            <input type="text" required="required" id="Name" name="Name" placeholder="Name">
-        </div>
-        <div>
-            <label for="Prenom">Description</label>
-            <input type="text" required="required" id="Description" name="Description" placeholder="Description">
-        </div>
-        <div>
-            <button type="submit">Ajouter</button>
-            <a href="../index.php">Annuler</a>
-        </div>
-    </form>
+    <div class="container text-center p-5">
+        <h1 class="mb-3">Ajouter un tache</h1>
+        <form method="post" action="">
+            <div class="input-group mb-3" >
+                <label class="input-group-text" for="Nom">Name</label>
+                <input type="text" required="required" class="form-control" id="Name" name="Name" placeholder="Name">
+            </div>
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="Prenom">Description</label>
+                <input type="text" required="required" class="form-control" id="Description" name="Description" placeholder="Description">
+            </div>
+            <div>
+                <button class="btn btn-outline-success" type="submit">Ajouter</button>
+                <a class="btn btn-danger" href="Tasks.php">Annuler</a>
+            </div>
+        </form>
+    </div>
 </body>
 
 </html>
