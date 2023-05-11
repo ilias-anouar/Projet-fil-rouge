@@ -1,5 +1,18 @@
 <?php
-include 'Project.php';
+define('__ROOT__', dirname(dirname(__FILE__)));
+require_once(__ROOT__ . '/Entity/Project.php');
+
+// include 'Project.php';
+// if (file_exists('./Entity/Project.php')) {
+//     // Include the file in the './Entety/' directory
+//     include './Entity/Project.php';
+// } elseif (file_exists('../Entity/Project.php')) {
+//     // Include the file in the '../Entety/' directory
+//     include '../Entity/Project.php';
+// } else {
+//     // Neither file exists, so handle the error here
+//     echo "Error: Project.php not found in either directory.";
+// }
 class GestionProjects
 {
     private $Connection = Null;

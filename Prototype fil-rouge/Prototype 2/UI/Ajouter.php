@@ -1,6 +1,8 @@
 <?php
+// define('__ROOT__', dirname(dirname(__FILE__)));
 
-include "GestionProject.php";
+// include "GestionProject.php";
+include "../Managers/GestionProject.php";
 // Trouver tous les employés depuis la base de données 
 $GestionProjects = new GestionProjects();
 $projects = $GestionProjects->RechercherTous();
@@ -11,7 +13,7 @@ if (!empty($_POST)) {
     $project->setDescription($_POST['Description']);
     $GestionProjects->Ajouter($project);
     // Redirection vers la page index.php
-    header("Location: index.php");
+    header("Location: ../index.php");
 }
 ?>
 
@@ -22,7 +24,7 @@ if (!empty($_POST)) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Style/style.css">
     <title>Gestion des employés</title>
 
 </head>
@@ -42,7 +44,8 @@ if (!empty($_POST)) {
         </div>
         <div>
             <button type="submit">Ajouter</button>
-            <a href="index.php">Annuler</a>
+            
+            <a href="../index.php">Annuler</a>
         </div>
     </form>
 </body>

@@ -1,5 +1,7 @@
 <?php
-include "GestionTask.php";
+// include "GestionTask.php";
+include "../Managers/GestionTask.php";
+
 // Trouver tous les employés depuis la base de données 
 $GestionTasks = new GestionTasks();
 // $tasks = $GestionTasks->RechercherTous($Id);
@@ -45,7 +47,7 @@ if (!empty($_POST)) {
         </div>
         <div>
             <button type="submit">Ajouter</button>
-            <a href="index.php">Annuler</a>
+            <a href="../index.php">Annuler</a>
         </div>
     </form>
 </body>

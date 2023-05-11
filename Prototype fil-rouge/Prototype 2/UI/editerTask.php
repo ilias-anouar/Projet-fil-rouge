@@ -1,6 +1,7 @@
 <?php
 
-include "GestionProject.php";
+// include "GestionProject.php";
+include "../Managers/GestionTask.php";
 $GestionProjects = new GestionProjects();
 
 if (isset($_GET['id'])) {
@@ -42,7 +43,7 @@ if (isset($_POST['modifier'])) {
         </div>
         <div>
             <input name="modifier" type="submit" value="Modifier">
-            <a href="index.php">Annuler</a>
+            <a href="../index.php">Annuler</a>
         </div>
     </form>
 </body>

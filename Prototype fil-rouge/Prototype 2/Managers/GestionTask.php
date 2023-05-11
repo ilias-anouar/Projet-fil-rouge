@@ -1,5 +1,15 @@
 <?php
-include "Task.php";
+// include "Task.php";
+if (file_exists('./Entity/Task.php')) {
+    // Include the file in the './Entety/' directory
+    include './Entity/Task.php';
+} elseif (file_exists('../Entity/Task.php')) {
+    // Include the file in the '../Entety/' directory
+    include '../Entity/Task.php';
+} else {
+    // Neither file exists, so handle the error here
+    echo "Error: Task.php not found in either directory.";
+}
 class GestionTasks
 {
     private $Connection = Null;

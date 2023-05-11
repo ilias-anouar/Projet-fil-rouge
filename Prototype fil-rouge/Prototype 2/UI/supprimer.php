@@ -6,6 +6,6 @@ if (isset($_GET['id'])) {
     $GestionProjects = new GestionProjects();
     $id = $_GET['id'];
     $GestionProjects->Supprimer($id);
-    header('Location: index.php');
+    header('Location: ../index.php');
 }
 ?>

@@ -1,7 +1,10 @@
 <?php
 
 // $Id = $_GET['Id'];
-include "GestionTask.php";
+// include "GestionTask.php";
+include "../Managers/GestionTask.php";
+
+// include "";
 $GestionTasks = new GestionTasks();
 if (isset($_GET['id'])) {
     $Id = $_GET['id'];
@@ -16,7 +19,7 @@ if (isset($_GET['id'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Style/style.css">
     <title>Gestion des tashes</title>
 </head>
 
@@ -24,7 +27,7 @@ if (isset($_GET['id'])) {
     <div>
 
         <a href="AjouterTask.php?id=<?php echo $Id ?>">Ajouter un tache</a>
-        <a href="index.php">Projects</a>
+        <a href="../index.php">Projects</a>
         <table>
             <tr>
                 <th>Name</th>

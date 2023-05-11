@@ -1,5 +1,6 @@
 <?php
-include "GestionProject.php";
+// include "GestionProject.php";
+include "./managers/gestionProject.php";
 // Trouver tous les employés depuis la base de données 
 $GestionProjects = new GestionProjects();
 $projects = $GestionProjects->RechercherTous();
@@ -18,7 +19,7 @@ $projects = $GestionProjects->RechercherTous();
 
 <body>
     <div>
-        <a href="Ajouter.php">Ajouter un project</a>
+        <a href="./UI/Ajouter.php">Ajouter un project</a>
         <table>
             <tr>
                 <th>Name</th>
@@ -30,14 +31,14 @@ $projects = $GestionProjects->RechercherTous();
                 ?>
                 <tr>
                     <td>
-                        <a href="Tasks.php?id=<?php echo $project->getId()?>"><?= $project->getName()?></a>
+                        <a href="./UI/Tasks.php?id=<?php echo $project->getId()?>"><?= $project->getName()?></a>
                     </td>
                     <td>
                         <?= $project->getDescription() ?>
                     </td>
                     <td>
-                        <a href="editer.php?id=<?php echo $project->getId() ?>">Éditer</a>
-                        <a href="supprimer.php?id=<?php echo $project->getId() ?>">Supprime</a>
+                        <a href="./UI/editer.php?id=<?php echo $project->getId() ?>">Éditer</a>
+                        <a href="./UI/supprimer.php?id=<?php echo $project->getId() ?>">Supprime</a>
                     </td>
                 </tr>
             <?php } ?>
