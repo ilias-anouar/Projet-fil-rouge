@@ -15,52 +15,61 @@
 
 <body class="text-center p-5 m-5">
     <h1 class="mb-5">Gestion des taches</h1>
-    <section>
+    <section class="mb-5">
         <div class="d-flex mb-3 justify-content-end">
             <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#add_modal">
                 Add task
             </button>
         </div>
         <div class="row">
-            <div class="btn-group">
+            <div class="btn-group col dropdown-center">
                 <button class="btn btn-primary dropdown-toggle" type="button" id="defaultDropdown"
                     data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
                     Default dropdown
                 </button>
-                <ul class="dropdown-menu" aria-labelledby="defaultDropdown">
+                <ul class="dropdown-menu w-100 fs-5" aria-labelledby="defaultDropdown">
                     <li><a class="dropdown-item" href="#">Menu item</a></li>
                     <li><a class="dropdown-item" href="#">Menu item</a></li>
                     <li><a class="dropdown-item" href="#">Menu item</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="#">Separated link</a></li>
                 </ul>
             </div>
-            <form class="col" action="" method="post">
-                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                    <option selected>Open this select menu</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select>
-            </form>
+
             <form class="col" action="" method="post">
                 <div class="input-group input-group-lg">
-                    <!-- <span class="input-group-text" id="inputGroup-sizing-lg">Search</span> -->
                     <button class="btn btn-outline-success" type="button" id="button-addon1">Search</button>
                     <input type="text" class="form-control" aria-label="Sizing example input"
-                        aria-describedby="inputGroup-sizing-lg">
+                        aria-describedby="inputGroup-sizing-lg" placeholder="Task name">
                 </div>
             </form>
         </div>
+    </section>
+    <section>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <td>Name</td>
+                    <td>Description</td>
+                    <td>Action</td>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
     </section>
     <!-- Modal -->
     <div class="modal fade" id="add_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog  modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add Task</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    ...
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
