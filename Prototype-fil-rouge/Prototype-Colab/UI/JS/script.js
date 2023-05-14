@@ -16,9 +16,9 @@
 //   });
 // });
 
-$(document).ready(function () {
-  console.log("document loaded");
-});
+// $(document).ready(function () {
+//   console.log("document loaded");
+// });
 
 $(window).on("load", function () {
   console.log("window loaded");
@@ -47,8 +47,7 @@ $(window).on("load", function () {
 
 $(document).on("keyup", "#search", function () {
   let value = $(this).val();
-  // console.log(value);
-  $("#result").html("");
+  console.log(value);
   $.ajax({
     url: "./UI/Process_Search.php",
     type: "POST",

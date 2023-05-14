@@ -1,7 +1,7 @@
 <?php
-// include "./managers/gestionProject.php";
-// $GestionProjects = new GestionProjects();
-// $projects = $GestionProjects->RechercherTous();
+include "./managers/gestionProject.php";
+$GestionProjects = new GestionProjects();
+$projects = $GestionProjects->RechercherTous();
 ?>
 <!DOCTYPE html>
 <html lang="en">
