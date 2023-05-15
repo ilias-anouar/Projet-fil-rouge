@@ -9,7 +9,7 @@ class GestionProjects
         if (is_null($this->Connection)) {
             $this->Connection = mysqli_connect('localhost', 'root', '', 'gestionprojects');
             // Vérifier l'ouverture de la connexion avec la base de données
-            if (!$this->Connection) { 
+            if (!$this->Connection) {
                 $message = 'Erreur de connexion: ' . mysqli_connect_error();
                 throw new Exception($message);
             }
@@ -29,7 +29,7 @@ class GestionProjects
 
         $StartIndex = $endIndex - 6;
 
-        $sql = ("SELECT * FROM `projects` LIMIT 8 OFFSET $StartIndex");
+        $sql = ("SELECT * FROM `projects` LIMIT 6 OFFSET $StartIndex");
 
         $page = 'SELECT * FROM projects';
 
@@ -38,10 +38,10 @@ class GestionProjects
 
         $pagesNum = 0;
 
-        if (($Projects_lentgh % 8) == 0) {
-            $pagesNum = $Projects_lentgh / 8;
+        if (($Projects_lentgh % 6) == 0) {
+            $pagesNum = $Projects_lentgh / 6;
         } else {
-            $pagesNum = ceil($Projects_lentgh / 8);
+            $pagesNum = ceil($Projects_lentgh / 6);
         }
 
         $projects = mysqli_query($this->getConnection(), $sql);

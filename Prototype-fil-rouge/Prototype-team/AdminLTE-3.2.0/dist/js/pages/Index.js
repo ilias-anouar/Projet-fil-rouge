@@ -51,3 +51,11 @@ $(document).on("keyup", "#search", function () {
     },
   });
 });
+
+$(document).on("click", "#theone", function () {
+  // event.preventDefault();
+  // $("#reservation-modal").modal("show");
+  var page_num = $(this).data("page_num");
+  console.log(page_num);
+  console.log("the one");
+});
