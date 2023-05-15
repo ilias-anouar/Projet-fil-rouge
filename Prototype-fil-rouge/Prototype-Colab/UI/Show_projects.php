@@ -38,7 +38,7 @@ if (empty($results)) {
         // );
         $response = array(
             "card" =>
-            '<div class="card card-outline card-success">
+            '<div class="col card card-outline card-success">
         <div class="card-header">
             <h3 class="card-title">' . $result->getName() . '</h3>
             <div class="card-tools">

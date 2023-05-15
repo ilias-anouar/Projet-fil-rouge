@@ -103,7 +103,7 @@ $projects = $GestionProjects->RechercherTous();
             </div>
             <div class="content">
                 <div class="container-fluid">
-                    <div class="row" id="result">
+                    <div style="gap: 1em;flex-wrap: wrap;" class="row" id="result">
                     </div>
                     <!-- <div id="result"></div> -->
                 </div>
