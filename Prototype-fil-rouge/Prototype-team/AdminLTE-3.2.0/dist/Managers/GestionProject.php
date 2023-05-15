@@ -1,22 +1,10 @@
 <?php
-define('__ROOT__', dirname(dirname(__FILE__)));
+
 require_once(__ROOT__ . '/Entity/Project.php');
 
-// include 'Project.php';
-// if (file_exists('./Entity/Project.php')) {
-//     // Include the file in the './Entety/' directory
-//     include './Entity/Project.php';
-// } elseif (file_exists('../Entity/Project.php')) {
-//     // Include the file in the '../Entety/' directory
-//     include '../Entity/Project.php';
-// } else {
-//     // Neither file exists, so handle the error here
-//     echo "Error: Project.php not found in either directory.";
-// }
 class GestionProjects
 {
     private $Connection = Null;
-
     private function getConnection()
     {
         if (is_null($this->Connection)) {
@@ -28,6 +16,38 @@ class GestionProjects
             }
         }
         return $this->Connection;
+    }
+
+    public function Pagination($pageId)
+    {
+        $pageId;
+        if (isset($pageId)) {
+            $pageId = $_GET['pageId'];
+        } else {
+            $pageId = 1;
+        }
+
+        $endIndex = $pageId * 6;
+
+        $StartIndex = $endIndex - 6;
+
+        $sql = ("SELECT * FROM `projects` LIMIT 8 OFFSET $StartIndex");
+
+        $page = 'SELECT * FROM projects';
+
+        // $books_lentgh = $conn->query($page)->rowCount();
+        $Projects_lentgh = mysqli_query($this->getConnection(), $page);
+
+        $pagesNum = 0;
+
+        if (($Projects_lentgh % 8) == 0) {
+            $pagesNum = $Projects_lentgh / 8;
+        } else {
+            $pagesNum = ceil($Projects_lentgh / 8);
+        }
+        
+        $projects = mysqli_query($this->getConnection(), $sql);
+        $projects = mysqli_fetch_all($projects, MYSQLI_ASSOC);
     }
 
     public function Ajouter($project)
