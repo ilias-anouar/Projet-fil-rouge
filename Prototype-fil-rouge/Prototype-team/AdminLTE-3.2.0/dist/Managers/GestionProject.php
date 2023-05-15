@@ -1,7 +1,6 @@
 <?php
 
 require_once(__ROOT__ . '/Entity/Project.php');
-
 class GestionProjects
 {
     private $Connection = Null;
@@ -10,14 +9,13 @@ class GestionProjects
         if (is_null($this->Connection)) {
             $this->Connection = mysqli_connect('localhost', 'root', '', 'gestionprojects');
             // Vérifier l'ouverture de la connexion avec la base de données
-            if (!$this->Connection) {
+            if (!$this->Connection) { 
                 $message = 'Erreur de connexion: ' . mysqli_connect_error();
                 throw new Exception($message);
             }
         }
         return $this->Connection;
     }
-
     public function Pagination($pageId)
     {
         $pageId;
@@ -45,7 +43,7 @@ class GestionProjects
         } else {
             $pagesNum = ceil($Projects_lentgh / 8);
         }
-        
+
         $projects = mysqli_query($this->getConnection(), $sql);
         $projects = mysqli_fetch_all($projects, MYSQLI_ASSOC);
     }
@@ -117,7 +115,6 @@ class GestionProjects
         }
         return $projects;
     }
-
     private function searchProjectsByName($name)
     {
         $sql = "SELECT * FROM projects WHERE name LIKE ?";

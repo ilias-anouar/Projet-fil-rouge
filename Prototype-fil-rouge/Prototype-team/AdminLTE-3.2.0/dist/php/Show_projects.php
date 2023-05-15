@@ -14,7 +14,7 @@ if (empty($results)) {
         $response = array(
             "card" =>
             '<tr>
-        <td>'.$result->getId().'</td>
+        <td>' . $result->getId() . '</td>
         <td>
             <a>' . $result->getName() . '</a>
             <br>
