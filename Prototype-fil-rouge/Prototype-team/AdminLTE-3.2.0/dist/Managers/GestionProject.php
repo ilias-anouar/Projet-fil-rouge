@@ -18,34 +18,25 @@ class GestionProjects
     }
     public function Pagination($pageId)
     {
-        $pageId;
-        if (isset($pageId)) {
-            $pageId = $_GET['pageId'];
-        } else {
-            $pageId = 1;
-        }
-
         $endIndex = $pageId * 6;
-
         $StartIndex = $endIndex - 6;
-
         $sql = ("SELECT * FROM `projects` LIMIT 6 OFFSET $StartIndex");
+        // return $sql;
+        $projects = $this->RechercherTous($sql);
+        return $projects;
+    }
 
-        $page = 'SELECT * FROM projects';
-
-        // $books_lentgh = $conn->query($page)->rowCount();
-        $Projects_lentgh = mysqli_query($this->getConnection(), $page);
-
+    public function Page_num()
+    {
         $pagesNum = 0;
-
+        $page = 'SELECT * FROM projects';
+        $Projects_lentgh = mysqli_query($this->getConnection(), $page)->num_rows;
         if (($Projects_lentgh % 6) == 0) {
             $pagesNum = $Projects_lentgh / 6;
         } else {
             $pagesNum = ceil($Projects_lentgh / 6);
         }
-
-        $projects = mysqli_query($this->getConnection(), $sql);
-        $projects = mysqli_fetch_all($projects, MYSQLI_ASSOC);
+        return $pagesNum;
     }
 
     public function Ajouter($project)
@@ -57,9 +48,9 @@ class GestionProjects
         mysqli_query($this->getConnection(), $sql);
     }
 
-    public function RechercherTous()
+    public function RechercherTous($sql)
     {
-        $sql = 'SELECT Id, name, description FROM projects';
+        // $sql = 'SELECT Id, name, description FROM projects';
         $query = mysqli_query($this->getConnection(), $sql);
         $projects_data = mysqli_fetch_all($query, MYSQLI_ASSOC);
         $projects = array();

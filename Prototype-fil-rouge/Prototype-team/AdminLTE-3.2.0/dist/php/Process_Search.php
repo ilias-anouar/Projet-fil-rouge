@@ -18,8 +18,9 @@
 //     }
 //     echo json_encode($total);
 // }
-
-include "../Managers/GestionProject.php";
+define('__ROOT__', dirname(dirname(__FILE__)));
+require_once(__ROOT__ . '/Managers/GestionProject.php');
+// include "../Managers/GestionProject.php";
 
 $project = new GestionProjects();
 $name = $_POST['value'];
@@ -31,24 +32,34 @@ if (empty($results)) {
 } else {
     $total = array();
     foreach ($results as $result) {
-        // $response = array(
-        //     "card" =>
-        //     '<h5 class="card-title text-black">Id : ' . $result->getId() . '</h5>'
-        //     . '<p class="card-text text-black">name : ' . $result->getName() . '</p>'
-        //     . '<p class="card-text text-black">description : ' . $result->getDescription() . '</p>',
-        // );
         $response = array(
             "card" =>
-            '<div class="col card card-outline card-success">
-        <div class="card-header">
-            <h3 class="card-title">' . $result->getName() . '</h3>
-            <div class="card-tools">
-                <span class="badge badge-primary">' . $result->getId() . '</span>
-            </div>
-        </div>
-        <div class="card-body">' . $result->getDescription() . '</div>
-        <div class="card-footer">' . $result->getName() . '</div>
-    </div>',
+            '<tr>
+                    <td>' . $result->getId() . '</td>
+                    <td>
+                        <a>' . $result->getName() . '</a>
+                        <br>
+                        <small>Created 01.01.2019</small>
+                    </td>
+                    <td>' . $result->getDescription() . '</td>
+                    <td class="project-state">
+                        <span class="badge badge-success">Success</span>
+                    </td>
+                    <td class="project-actions">
+                        <a class="btn btn-primary btn-sm" href="#">
+                            <i class="fas fa-folder"></i>
+                            View
+                        </a>
+                        <a class="btn btn-info btn-sm" href="#">
+                            <i class="fas fa-pencil-alt"></i>
+                            Edit
+                        </a>
+                        <a class="btn btn-danger btn-sm" href="#">
+                            <i class="fas fa-trash"></i>
+                            Delete
+                        </a>
+                    </td>
+                </tr>',
         );
         array_push($total, $response);
     }
