@@ -1,7 +1,6 @@
 <?php
-define('__ROOT__', dirname(dirname(__FILE__)));
-require_once(__ROOT__ . '/Managers/GestionProject.php');
-// require_once('.././Managers/GestionProject.php');
+define('__ROOT__', dirname(dirname(dirname(__FILE__))));
+require_once( __ROOT__."/Managers/GestionProject.php");
 
 $project = new GestionProjects();
 if (isset($_GET['pageId'])) {
@@ -9,7 +8,6 @@ if (isset($_GET['pageId'])) {
 } else {
     $currentPage = 1;
 }
-// $currentPage = 1;
 
 // Retrieve the total number of pages
 $pages = $project->Page_num();

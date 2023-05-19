@@ -31,6 +31,5 @@
 <script src="Views/Assets/vendor/AdminLTE-3.2.0/dist/js/adminlte.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="Views/Assets/vendor/AdminLTE-3.2.0/dist/js/demo.js"></script>
-<script src="Views/Assets/js/Index.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="Views/Assets/vendor/AdminLTE-3.2.0/dist/js/pages/dashboard.js"></script>

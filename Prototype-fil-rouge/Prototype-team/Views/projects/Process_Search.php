@@ -1,26 +1,6 @@
 <?php
-// include "../Managers/GestionProject.php";
-// $project = new GestionProjects();
-// $name = $_POST['value'];
-// $results = $project->RechercherParNom($name);
-// if (!$results) {
-//     echo '<p>Item not found.</p>';
-// } else {
-//     $total = array();
-//     foreach ($results as $result) {
-//         $response = array(
-//             "details" =>
-//             '<h5 class="card-title text-black">Id : ' . $results['Id'] . '</h5>'
-//             . '<p class="card-text text-black">name : ' . $results['name'] . '</p>'
-//             . '<p class="card-text text-black">description : ' . $results['description'] . '</p>',
-//         );
-//         array_push($total, $response);
-//     }
-//     echo json_encode($total);
-// }
-define('__ROOT__', dirname(dirname(__FILE__)));
+define('__ROOT__', dirname(dirname(dirname(__FILE__))));
 require_once(__ROOT__ . '/Managers/GestionProject.php');
-// include "../Managers/GestionProject.php";
 
 $project = new GestionProjects();
 $name = $_POST['value'];
