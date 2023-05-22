@@ -1,20 +1,22 @@
 $(window).on("load", function () {
   console.log("window loaded");
   $.ajax({
-    url: "Show_projects.php",
-    dataType: "json",
+    url: "index.php",
+    type: "POST",
+    data: { Query: "" },
+    // dataType: "json",
     success: function (response) {
       // if (response.length === 0) {
-      //   $("#result").html("<p>Item not found.</p>");
+      $("#result").html(response);
       // } else {
       //   let detailsHtml = "";
       //   for (let i = 0; i < response.length; i++) {
       //     detailsHtml += response[i].card;
       //   }
       //   $("#result").html(detailsHtml);
-      //   $("#paginate").html(response[0].pagination); // Assuming pagination link is at index 0
+        // $("#paginate").html(response[0].pagination); // Assuming pagination link is at index 0
       // }
-      console.log(response);
+      // console.log(response);
     },
     error: function (xhr, status, error) {
       console.log("Error:", error);
@@ -66,7 +68,7 @@ $(document).on("keyup", "#search", function () {
     // dataType: "json",
     success: function (response) {
       // if (response.length === 0) {
-      $("#test").html(response);
+      $("#result").html(response);
       // } else {
       //   let detailsHtml = "";
       //   for (let i = 0; i < response.length; i++) {
@@ -76,7 +78,7 @@ $(document).on("keyup", "#search", function () {
       //   $("#paginate").html(response[0].pagination); // Assuming pagination link is at index 0
       // }
       // console.log(response);
-      console.log(response);
+      // console.log(response);
     },
     error: function (xhr, status, error) {
       console.log("Error:", error);

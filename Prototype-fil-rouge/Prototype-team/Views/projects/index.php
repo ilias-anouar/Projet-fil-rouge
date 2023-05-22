@@ -47,7 +47,6 @@ if ($Is_Get == true) {
     ?>
     <!DOCTYPE html>
     <html lang="en">
-
     <?php
     include_once(__ROOT__ . "/Views/Layout/head.php");
     ?>
@@ -110,6 +109,7 @@ if ($Is_Get == true) {
                                     </div>
                                 </div>
                             </div>
+                            <div id="result"></div>
                             <?php
 } elseif ($Is_Get == false) {
     ?>
@@ -133,7 +133,7 @@ if ($Is_Get == true) {
                                         </th>
                                     </tr>
                                 </thead>
-                                <tbody id="result">
+                                <tbody>
                                     <?php
                                     foreach ($results as $result) {
                                         // echo "<pre>";
