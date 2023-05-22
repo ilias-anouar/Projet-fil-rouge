@@ -1,37 +1,45 @@
 <?php
+// Controller 
+
+/**
+ *  isGet = true;
+ * 
+ *
+ *  var query = "";
+ *  if(Post[Query]){
+ *      query = Post[Query];
+ *      isGet = false
+ * }
+ *   
+ *  
+ *  
+ *  var gestionProjet = new GestionProjet();
+ *  var liste = gestionProjet.find(Query)
+ */
+$Is_Get = true;
+$Query = "";
+if (isset($_POST['Query'])) {
+    $Query = $_POST['Query'];
+    $Is_Get = false;
+    echo $Query;
+}
+// View
+
+// 
+// Afficher la liste des projets 
+//
+
+// if (isGet == ture)
 include "../Layout/root.php";
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Projects</title>
-    <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="../Assets/vendor/AdminLTE-3.2.0/plugins/fontawesome-free/css/all.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- Tempusdominus Bootstrap 4 -->
-    <link rel="stylesheet"
-        href="../Assets/vendor/AdminLTE-3.2.0/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
-    <!-- iCheck -->
-    <link rel="stylesheet" href="../Assets/vendor/AdminLTE-3.2.0/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-    <!-- JQVMap -->
-    <link rel="stylesheet" href="../Assets/vendor/AdminLTE-3.2.0/plugins/jqvmap/jqvmap.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="../Assets/vendor/AdminLTE-3.2.0/dist/css/adminlte.min.css">
-    <!-- overlayScrollbars -->
-    <link rel="stylesheet"
-        href="../Assets/vendor/AdminLTE-3.2.0/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-    <!-- Daterange picker -->
-    <link rel="stylesheet" href="../Assets/vendor/AdminLTE-3.2.0/plugins/daterangepicker/daterangepicker.css">
-    <!-- summernote -->
-    <link rel="stylesheet" href="../Assets/vendor/AdminLTE-3.2.0/plugins/summernote/summernote-bs4.min.css">
-</head>
+<?php
+include_once(__ROOT__ . "/Layout/head.php");
+?>
+
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
@@ -69,6 +77,11 @@ include "../Layout/root.php";
                     </div>
                 </div><!-- /.container-fluid -->
             </section>
+
+
+
+
+            <!-- else ( isGet == false) -->
             <section class="content">
                 <!-- Default box -->
                 <div class="card">
@@ -83,7 +96,7 @@ include "../Layout/root.php";
                     <div class="card-body p-2">
                         <div class="row p-3">
                             <div class="col-sm-12 col-md-6">
-                                <a class="btn btn-primary" href="pages/examples/project-add.html">Add Project</a>
+                                <a class="btn btn-primary" href="Ajouter.php">Add Project</a>
                             </div>
                             <div class="col-sm-12 col-md-6">
                                 <div id="search_project" class="dataTables_filter"><input type="search" id="search"
@@ -130,6 +143,7 @@ include "../Layout/root.php";
                 </div>
                 <!-- /.card -->
             </section>
+
         </div>
         <!-- /.content-wrapper -->
 
@@ -140,45 +154,14 @@ include "../Layout/root.php";
         </aside>
         <!-- /.control-sidebar -->
     </div>
+    <?php
+    include_once(__ROOT__ . '/Layout/footer.php');
+    ?>
     <!-- ./wrapper -->
     <!-- links script -->
-    <!-- jQuery -->
-    <script src="../Assets/vendor/AdminLTE-3.2.0/plugins/jquery/jquery.min.js"></script>
-    <!-- jQuery UI 1.11.4 -->
-    <script src="../Assets/vendor/AdminLTE-3.2.0/plugins/jquery-ui/jquery-ui.min.js"></script>
-    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-    <script>
-    $.widget.bridge('uibutton', $.ui.button)
-    </script>
-    <!-- Bootstrap 4 -->
-    <script src="../Assets/vendor/AdminLTE-3.2.0/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- ChartJS -->
-    <script src="../Assets/vendor/AdminLTE-3.2.0/plugins/chart.js/Chart.min.js"></script>
-    <!-- Sparkline -->
-    <script src="../Assets/vendor/AdminLTE-3.2.0/plugins/sparklines/sparkline.js"></script>
-    <!-- JQVMap -->
-    <script src="../Assets/vendor/AdminLTE-3.2.0/plugins/jqvmap/jquery.vmap.min.js"></script>
-    <script src="../Assets/vendor/AdminLTE-3.2.0/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
-    <!-- jQuery Knob Chart -->
-    <script src="../Assets/vendor/AdminLTE-3.2.0/plugins/jquery-knob/jquery.knob.min.js"></script>
-    <!-- daterangepicker -->
-    <script src="../Assets/vendor/AdminLTE-3.2.0/plugins/moment/moment.min.js"></script>
-    <script src="../Assets/vendor/AdminLTE-3.2.0/plugins/daterangepicker/daterangepicker.js"></script>
-    <!-- Tempusdominus Bootstrap 4 -->
-    <script
-        src="../Assets/vendor/AdminLTE-3.2.0/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-    <!-- Summernote -->
-    <script src="../Assets/vendor/AdminLTE-3.2.0/plugins/summernote/summernote-bs4.min.js"></script>
-    <!-- overlayScrollbars -->
-    <script
-        src="../Assets/vendor/AdminLTE-3.2.0/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="../Assets/vendor/AdminLTE-3.2.0/dist/js/adminlte.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="../Assets/vendor/AdminLTE-3.2.0/dist/js/demo.js"></script>
-    <script src="../Assets/js/Index.js"></script>
-    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="../Assets/vendor/AdminLTE-3.2.0/dist/js/pages/dashboard.js"></script>
+    <?php
+    include_once(__ROOT__ . '/Layout/links.php');
+    ?>
 </body>
 
 </html>

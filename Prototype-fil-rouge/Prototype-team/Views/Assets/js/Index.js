@@ -60,22 +60,22 @@ $(document).on("keyup", "#search", function () {
   let value = $(this).val();
   console.log(value);
   $.ajax({
-    url: "Process_Search.php",
+    url: "index.php",
     type: "POST",
-    data: { value: value },
+    data: { Query: value },
     dataType: "json",
-    success: function (response, status) {
-      if (response.length === 0) {
-        $("#result").html("<p>Item not found.</p>");
-      } else {
-        let detailsHtml = "";
-        for (let i = 0; i < response.length; i++) {
-          detailsHtml += response[i].card;
-        }
-        $("#result").html(detailsHtml);
-        $("#paginate").html(response[0].pagination); // Assuming pagination link is at index 0
-      }
-      console.log(response);
+    success: function (status) {
+      // if (response.length === 0) {
+      //   $("#result").html("<p>Item not found.</p>");
+      // } else {
+      //   let detailsHtml = "";
+      //   for (let i = 0; i < response.length; i++) {
+      //     detailsHtml += response[i].card;
+      //   }
+      //   $("#result").html(detailsHtml);
+      //   $("#paginate").html(response[0].pagination); // Assuming pagination link is at index 0
+      // }
+      // console.log(response);
       console.log(status);
     },
     error: function (xhr, status, error) {
