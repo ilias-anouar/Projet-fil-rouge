@@ -25,39 +25,12 @@ class GestionProjects
         $projects = $this->RechercherTous($sql);
         return $projects;
     }
-    public function Pagination_search($pageId, $name)
-    {
-        $endIndex = $pageId * 6;
-        $StartIndex = $endIndex - 6;
-        $sql = ("SELECT * FROM `projects` LIMIT 6 OFFSET $StartIndex");
-        // return $sql;
-        $projects = $this->RechercherTous($sql);
-        return $projects;
-    }
 
     public function Page_num()
     {
         $pagesNum = 0;
         $page = 'SELECT * FROM projects';
         $Projects_lentgh = mysqli_query($this->getConnection(), $page)->num_rows;
-        if (($Projects_lentgh % 6) == 0) {
-            $pagesNum = $Projects_lentgh / 6;
-        } else {
-            $pagesNum = ceil($Projects_lentgh / 6);
-        }
-        return $pagesNum;
-    }
-
-    public function Page_num_search($name)
-    {
-        $pagesNum = 0;
-        $page = "SELECT * FROM projects WHERE name LIKE ?";
-        $stmt = $this->getConnection()->prepare($page);
-        $search_name = "%$name%";
-        $stmt->bind_param("s", $search_name);
-        $stmt->execute();
-        $Projects_lentgh = $stmt->get_result()->num_rows;
-        // $Projects_lentgh = mysqli_fetch_all($query, MYSQLI_ASSOC);
         if (($Projects_lentgh % 6) == 0) {
             $pagesNum = $Projects_lentgh / 6;
         } else {
