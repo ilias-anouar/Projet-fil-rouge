@@ -1,7 +1,8 @@
 <?php
-
+define('__ROOT__', dirname(dirname(dirname(__FILE__))));
+include_once(__ROOT__ . '/Managers/GestionProject.php');
 // include "GestionProject.php";
-include "../Managers/GestionProject.php";
+// include "../Managers/GestionProject.php";
 
 $GestionProjects = new GestionProjects();
 
@@ -20,16 +21,9 @@ if (isset($_POST['modifier'])) {
 <!DOCTYPE html>
 <html lang="fr">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <?php
-    require_once(__ROOT__ . '/UI/Style/Bootstrap.php');
-    ?>
-    <title>Modifier : </title>
-</head>
+<?php
+include_once(__ROOT__ . "/Views/Layout/head.php");
+?>
 
 <body>
     <div class="container text-center">
@@ -49,7 +43,7 @@ if (isset($_POST['modifier'])) {
             </div>
             <div>
                 <input class="btn btn-primary" name="modifier" type="submit" value="Modifier">
-                <a class="btn btn-danger" href="../index.php">Annuler</a>
+                <a class="btn btn-danger" href="index.php">Annuler</a>
             </div>
         </form>
     </div>

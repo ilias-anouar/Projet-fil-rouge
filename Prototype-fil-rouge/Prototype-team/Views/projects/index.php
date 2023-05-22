@@ -187,11 +187,12 @@ if ($Is_Get == true) {
                                                         <i class="fas fa-folder"></i>
                                                         View
                                                     </a>
-                                                    <a class="btn btn-info btn-sm" href="#">
+                                                    <a class="btn btn-info btn-sm" href="editer.php?id=<?= $result->getId() ?>">
                                                         <i class="fas fa-pencil-alt"></i>
                                                         Edit
                                                     </a>
-                                                    <a class="btn btn-danger btn-sm" href="supprimer.php?id=<?= $result->getId() ?>">
+                                                    <a class="btn btn-danger btn-sm"
+                                                        href="supprimer.php?id=<?= $result->getId() ?>">
                                                         <i class="fas fa-trash"></i>
                                                         Delete
                                                     </a>
