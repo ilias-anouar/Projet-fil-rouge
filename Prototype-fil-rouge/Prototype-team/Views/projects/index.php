@@ -17,6 +17,11 @@ include "../Layout/root.php";
  *  var gestionProjet = new GestionProjet();
  *  var liste = gestionProjet.find(Query)
  */
+if (isset($_GET['pageId'])) {
+    $currentPage = $_GET['pageId'];
+} else {
+    $currentPage = 1;
+}
 require_once(__ROOT__ . '/Managers/GestionProject.php');
 $gestionProjet = new GestionProjects();
 $Is_Get = true;
@@ -25,7 +30,12 @@ if (isset($_POST['Query'])) {
     $Query = $_POST['Query'];
     $Is_Get = false;
     // echo $Query;
-    $results = $gestionProjet->RechercherParNom($Query);
+    // $paginationLinks = $gestionProjet->Page_num_search($Query);
+    // $results = $gestionProjet->Pagination_search($currentPage, $Query);
+    $results = $gestionProjet->rechercherParNom($Query);
+    // echo "<pre>";
+    // var_dump($paginationLinks);
+    // echo "</pre>";
 } else {
     if (isset($_GET['pageId'])) {
         $currentPage = $_GET['pageId'];
