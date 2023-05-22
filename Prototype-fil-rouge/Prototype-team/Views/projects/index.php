@@ -30,23 +30,29 @@ if (isset($_POST['Query'])) {
     $Query = $_POST['Query'];
     $Is_Get = false;
     // echo $Query;
-    // $paginationLinks = $gestionProjet->Page_num_search($Query);
-    // $results = $gestionProjet->Pagination_search($currentPage, $Query);
     $results = $gestionProjet->rechercherParNom($Query);
-    // echo "<pre>";
-    // var_dump($paginationLinks);
-    // echo "</pre>";
-} else {
-    if (isset($_GET['pageId'])) {
-        $currentPage = $_GET['pageId'];
+    if ((count($results) % 6) == 0) {
+        $pagesNum = count($results) / 6;
     } else {
-        $currentPage = 1;
+        $pagesNum = ceil(count($results) / 6);
     }
-    // Retrieve the total number of pages
-    $pages = $gestionProjet->Page_num();
-    // Get results for the current page
-    $results = $gestionProjet->Pagination($currentPage);
-}
+    echo $pagesNum;
+    $pages = $gestionProjet->pages($results, $pagesNum, 6);
+    echo "<pre>";
+    var_dump($pages);
+    echo "</pre>";
+} 
+// else {
+//     if (isset($_GET['pageId'])) {
+//         $currentPage = $_GET['pageId'];
+//     } else {
+//         $currentPage = 1;
+//     }
+//     // Retrieve the total number of pages
+//     $pages = $gestionProjet->Page_num();
+//     // Get results for the current page
+//     $results = $gestionProjet->Pagination($currentPage);
+// }
 // View
 
 // 
@@ -119,7 +125,7 @@ if ($Is_Get == true) {
                                     </div>
                                 </div>
                             </div>
-                            <div id="result"></div>
+                            <div id="result" class="p-3"></div>
                             <?php
 } elseif ($Is_Get == false) {
     ?>
@@ -158,8 +164,6 @@ if ($Is_Get == true) {
                                                 <a>
                                                     <?= $result->getName() ?>
                                                 </a>
-                                                <br>
-                                                <small>Created 01.01.2019</small>
                                             </td>
                                             <td>
                                                 <?= $result->getDescription() ?>

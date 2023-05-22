@@ -26,6 +26,15 @@ class GestionProjects
         return $projects;
     }
 
+    public function pages($items, $pagesNum, $itemsPerPage)
+    {
+        $pages = array();
+        for ($i = 0; $i < $pagesNum; $i++) {
+            array_push($pages, array_slice($items, $i * $itemsPerPage, ($i + 1) * $itemsPerPage));
+        }
+        return $pages;
+    }
+
     public function Page_num()
     {
         $pagesNum = 0;
