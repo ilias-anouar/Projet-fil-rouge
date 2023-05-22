@@ -24,7 +24,7 @@ $Query = "";
 if (isset($_POST['Query'])) {
     $Query = $_POST['Query'];
     $Is_Get = false;
-    echo $Query;
+    // echo $Query;
     $results = $gestionProjet->RechercherParNom($Query);
 } else {
     if (isset($_GET['pageId'])) {
