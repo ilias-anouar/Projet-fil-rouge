@@ -36,12 +36,12 @@ if (isset($_POST['Query'])) {
     } else {
         $pagesNum = ceil(count($results) / 6);
     }
-    echo $pagesNum;
+    // echo $pagesNum;
     $pages = $gestionProjet->pages($results, $pagesNum, 6);
-    echo "<pre>";
-    var_dump($pages);
-    echo "</pre>";
-} 
+    // echo "<pre>";
+    // var_dump($pages);
+    // echo "</pre>";
+}
 // else {
 //     if (isset($_GET['pageId'])) {
 //         $currentPage = $_GET['pageId'];
@@ -151,56 +151,81 @@ if ($Is_Get == true) {
                                 </thead>
                                 <tbody>
                                     <?php
-                                    foreach ($results as $result) {
-                                        // echo "<pre>";
-                                        // var_dump($result);
-                                        // echo "</pre>";
+                                    if (empty($pages)) {
                                         ?>
-                                        <tr>
-                                            <td>
-                                                <?= $result->getId() ?>
-                                            </td>
-                                            <td>
-                                                <a>
-                                                    <?= $result->getName() ?>
-                                                </a>
-                                            </td>
-                                            <td>
-                                                <?= $result->getDescription() ?>
-                                            </td>
-                                            <td class="project-state">
-                                                <span class="badge badge-success">Success</span>
-                                            </td>
-                                            <td class="project-actions">
-                                                <a class="btn btn-primary btn-sm" href="#">
-                                                    <i class="fas fa-folder"></i>
-                                                    View
-                                                </a>
-                                                <a class="btn btn-info btn-sm" href="#">
-                                                    <i class="fas fa-pencil-alt"></i>
-                                                    Edit
-                                                </a>
-                                                <a class="btn btn-danger btn-sm" href="#">
-                                                    <i class="fas fa-trash"></i>
-                                                    Delete
-                                                </a>
-                                            </td>
-                                        </tr>
+                                        <div class="alert alert-warning alert-dismissible">
+                                            <button type="button" class="close" data-dismiss="alert"
+                                                aria-hidden="true">×</button>
+                                            <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>
+                                            No Projects Found!
+                                        </div>
                                         <?php
+                                    } else {
+                                        $projects = $pages[$currentPage - 1];
+                                        foreach ($projects as $result) {
+                                            // echo "<pre>";
+                                            // var_dump($result);
+                                            // echo "</pre>";
+                                            ?>
+                                            <tr>
+                                                <td>
+                                                    <?= $result->getId() ?>
+                                                </td>
+                                                <td>
+                                                    <a>
+                                                        <?= $result->getName() ?>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <?= $result->getDescription() ?>
+                                                </td>
+                                                <td class="project-state">
+                                                    <span class="badge badge-success">Success</span>
+                                                </td>
+                                                <td class="project-actions">
+                                                    <a class="btn btn-primary btn-sm" href="#">
+                                                        <i class="fas fa-folder"></i>
+                                                        View
+                                                    </a>
+                                                    <a class="btn btn-info btn-sm" href="#">
+                                                        <i class="fas fa-pencil-alt"></i>
+                                                        Edit
+                                                    </a>
+                                                    <a class="btn btn-danger btn-sm" href="#">
+                                                        <i class="fas fa-trash"></i>
+                                                        Delete
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <?php
+                                        }
                                     }
                                     ?>
                                 </tbody>
                             </table>
+                            <div class="mt-3 d-flex justify-content-center align-items-center">
+                                <div class="dataTables_paginate paging_simple_numbers" id="paginate">
+                                    <ul class="pagination">
+
+                                        <?php
+                                        if (isset($pagesNum)) {
+                                            for ($i = 0; $i < $pagesNum; $i++) {
+                                                ?>
+                                                <li class="page-item active"><a class="page-link" href="#">
+                                                        <?= $i + 1 ?>
+                                                    </a></li>
+                                                <?php
+                                            }
+                                        }
+                                        ?>
+                                </div>
+                            </div>
                             <?php
 }
 ?>
                         <?php
                         if ($Is_Get == true) {
                             ?>
-                            <div class="mt-3 d-flex justify-content-center align-items-center">
-                                <div class="dataTables_paginate paging_simple_numbers" id="paginate">
-                                </div>
-                            </div>
                         </div>
                         <!-- /.card-body -->
                     </div>
