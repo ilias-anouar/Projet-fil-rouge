@@ -191,7 +191,7 @@ if ($Is_Get == true) {
                                                         <i class="fas fa-pencil-alt"></i>
                                                         Edit
                                                     </a>
-                                                    <a class="btn btn-danger btn-sm" href="#">
+                                                    <a class="btn btn-danger btn-sm" href="supprimer.php?id=<?= $result->getId() ?>">
                                                         <i class="fas fa-trash"></i>
                                                         Delete
                                                     </a>
@@ -206,12 +206,11 @@ if ($Is_Get == true) {
                             <div class="mt-3 d-flex justify-content-center align-items-center">
                                 <div class="dataTables_paginate paging_simple_numbers" id="paginate">
                                     <ul class="pagination">
-
                                         <?php
                                         if (isset($pagesNum)) {
                                             for ($i = 0; $i < $pagesNum; $i++) {
                                                 ?>
-                                                <li class="page-item active"><a class="page-link" href="#">
+                                                <li class="page-item "><a class="page-link" href="#">
                                                         <?= $i + 1 ?>
                                                     </a></li>
                                                 <?php
