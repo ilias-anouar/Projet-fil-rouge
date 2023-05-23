@@ -1,16 +1,7 @@
 <?php
-// include "Task.php";
-// if (file_exists('./Entity/Task.php')) {
-//     // Include the file in the './Entety/' directory
-//     include './Entity/Task.php';
-// } elseif (file_exists('../Entity/Task.php')) {
-//     // Include the file in the '../Entety/' directory
-//     include '../Entity/Task.php';
-// } else {
-//     // Neither file exists, so handle the error here
-//     echo "Error: Task.php not found in either directory.";
-// }
 require_once(__ROOT__ . '/Entity/Task.php');
+require_once(__ROOT__ . '/Entity/Project.php');
+
 class GestionTasks
 {
     private $Connection = Null;
@@ -38,13 +29,25 @@ class GestionTasks
         mysqli_query($this->getConnection(), $sql);
     }
 
-    public function RechercherTous($Id)
+    public function pages($items, $pagesNum, $itemsPerPage)
     {
-        $sql = "SELECT Id, name, description FROM tasks WHERE Id_Project = '$Id'";
-        $query = mysqli_query($this->getConnection(), $sql);
-        $tasks_data = mysqli_fetch_all($query, MYSQLI_ASSOC);
-
+        $pages = array();
+        for ($i = 0; $i < $pagesNum; $i++) {
+            array_push($pages, array_slice($items, $i * $itemsPerPage, ($i + 1) * $itemsPerPage));
+        }
+        return $pages;
+    }
+    public function RechercherTous($id)
+    {
+        $tasks = "SELECT Id, name, description FROM tasks WHERE Id_Project = '$id'";
+        $projects = "SELECT * FROM projects";
+        $tasks = mysqli_query($this->getConnection(), $tasks);
+        $projects = mysqli_query($this->getConnection(), $projects);
+        $tasks_data = mysqli_fetch_all($tasks, MYSQLI_ASSOC);
+        $projects_data = mysqli_fetch_all($projects, MYSQLI_ASSOC);
         $tasks = array();
+        $projects = array();
+        $result = array();
         foreach ($tasks_data as $task_data) {
             $task = new Task();
             $task->setId($task_data['Id']);
@@ -52,7 +55,15 @@ class GestionTasks
             $task->setDescription($task_data['description']);
             array_push($tasks, $task);
         }
-        return $tasks;
+        foreach ($projects_data as $project_data) {
+            $project = new Project();
+            $project->setId($project_data['Id']);
+            $project->setName($project_data['name']);
+            $project->setDescription($project_data['description']);
+            array_push($projects, $project);
+        }
+        $result = [$projects, $tasks];
+        return $result;
     }
 
     public function RechercherParId($id)
