@@ -1,15 +1,16 @@
 <?php
 // include "Task.php";
-if (file_exists('./Entity/Task.php')) {
-    // Include the file in the './Entety/' directory
-    include './Entity/Task.php';
-} elseif (file_exists('../Entity/Task.php')) {
-    // Include the file in the '../Entety/' directory
-    include '../Entity/Task.php';
-} else {
-    // Neither file exists, so handle the error here
-    echo "Error: Task.php not found in either directory.";
-}
+// if (file_exists('./Entity/Task.php')) {
+//     // Include the file in the './Entety/' directory
+//     include './Entity/Task.php';
+// } elseif (file_exists('../Entity/Task.php')) {
+//     // Include the file in the '../Entety/' directory
+//     include '../Entity/Task.php';
+// } else {
+//     // Neither file exists, so handle the error here
+//     echo "Error: Task.php not found in either directory.";
+// }
+require_once(__ROOT__ . '/Entity/Task.php');
 class GestionTasks
 {
     private $Connection = Null;

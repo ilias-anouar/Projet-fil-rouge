@@ -169,7 +169,7 @@ if ($Is_Get == true) {
                                                     <span class="badge badge-success">Success</span>
                                                 </td>
                                                 <td class="project-actions">
-                                                    <a class="btn btn-primary btn-sm" href="#">
+                                                    <a class="btn btn-primary btn-sm" href="../tasks/index.php?id=<?= $result->getId() ?>">
                                                         <i class="fas fa-folder"></i>
                                                         View
                                                     </a>
