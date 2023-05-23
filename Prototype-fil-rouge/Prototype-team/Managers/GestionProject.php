@@ -16,11 +16,15 @@ class GestionProjects
         }
         return $this->Connection;
     }
-    public function Pagination($pageId)
+    public function Pagination($pageId,$name)
     {
         $endIndex = $pageId * 6;
         $StartIndex = $endIndex - 6;
-        $sql = ("SELECT * FROM `projects` LIMIT 6 OFFSET $StartIndex");
+        $sql = ("SELECT *
+FROM projects
+WHERE name ILIKE '%' || $name || '%'
+LIMIT 6 OFFSET $StartIndex;
+");
         // return $sql;
         $projects = $this->RechercherTous($sql);
         return $projects;

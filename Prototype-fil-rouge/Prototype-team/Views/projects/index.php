@@ -17,42 +17,31 @@ include "../Layout/root.php";
  *  var gestionProjet = new GestionProjet();
  *  var liste = gestionProjet.find(Query)
  */
-if (isset($_GET['pageId'])) {
-    $currentPage = $_GET['pageId'];
-} else {
-    $currentPage = 1;
-}
 require_once(__ROOT__ . '/Managers/GestionProject.php');
+
 $gestionProjet = new GestionProjects();
 $Is_Get = true;
 $Query = "";
+
+if (isset($_POST['pageId'])) {
+    $currentPage = $_POST['pageId'];
+} else {
+    $currentPage = 1;
+}
+
 if (isset($_POST['Query'])) {
     $Query = $_POST['Query'];
     $Is_Get = false;
-    // echo $Query;
+
     $results = $gestionProjet->rechercherParNom($Query);
-    if ((count($results) % 6) == 0) {
-        $pagesNum = count($results) / 6;
-    } else {
-        $pagesNum = ceil(count($results) / 6);
-    }
-    // echo $pagesNum;
-    $pages = $gestionProjet->pages($results, $pagesNum, 6);
-    // echo "<pre>";
-    // var_dump($pages);
-    // echo "</pre>";
+
+    $itemsPerPage = 6;
+    $totalItems = count($results);
+    $pagesNum = ceil($totalItems / $itemsPerPage);
+
+    $pages = $gestionProjet->pages($results, $pagesNum, $itemsPerPage);
+    // $projects = $pages[$currentPage - 1];
 }
-// else {
-//     if (isset($_GET['pageId'])) {
-//         $currentPage = $_GET['pageId'];
-//     } else {
-//         $currentPage = 1;
-//     }
-//     // Retrieve the total number of pages
-//     $pages = $gestionProjet->Page_num();
-//     // Get results for the current page
-//     $results = $gestionProjet->Pagination($currentPage);
-// }
 // View
 
 // 
@@ -163,9 +152,6 @@ if ($Is_Get == true) {
                                     } else {
                                         $projects = $pages[$currentPage - 1];
                                         foreach ($projects as $result) {
-                                            // echo "<pre>";
-                                            // var_dump($result);
-                                            // echo "</pre>";
                                             ?>
                                             <tr>
                                                 <td>
@@ -210,14 +196,27 @@ if ($Is_Get == true) {
                                         <?php
                                         if (isset($pagesNum)) {
                                             for ($i = 0; $i < $pagesNum; $i++) {
-                                                ?>
-                                                <li class="page-item "><a class="page-link" href="#">
-                                                        <?= $i + 1 ?>
-                                                    </a></li>
-                                                <?php
+                                                if ($currentPage == $i + 1) {
+                                                    ?>
+                                                    <li class="page-item active">
+                                                        <a class="page-link" data-page="<?= $i + 1 ?>" href="#">
+                                                            <?= $i + 1 ?>
+                                                        </a>
+                                                    </li>
+                                                    <?php
+                                                } else {
+                                                    ?>
+                                                    <li class="page-item ">
+                                                        <a class="page-link" data-page="<?= $i + 1 ?>" href="#">
+                                                            <?= $i + 1 ?>
+                                                        </a>
+                                                    </li>
+                                                    <?php
+                                                }
                                             }
                                         }
                                         ?>
+                                    </ul>
                                 </div>
                             </div>
                             <?php

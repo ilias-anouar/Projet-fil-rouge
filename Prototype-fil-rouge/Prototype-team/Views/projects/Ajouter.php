@@ -64,20 +64,20 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
             </section>
 
             <section class="content">
-                <div class="row">
-                    <div class="col">
-                        <div class="card card-primary">
-                            <div class="card-header">
-                                <h3 class="card-title">General</h3>
-                                <div class="card-tools">
-                                    <button type="button" class="btn btn-tool" data-card-widget="collapse"
-                                        title="Collapse">
-                                        <i class="fas fa-minus"></i>
-                                    </button>
+                <form method="post">
+                    <div class="row">
+                        <div class="col">
+                            <div class="card card-primary">
+                                <div class="card-header">
+                                    <h3 class="card-title">Add project</h3>
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse"
+                                            title="Collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="card-body">
-                                <form method="post">
+                                <div class="card-body">
                                     <div class="form-group">
                                         <label for="inputName">Project Name</label>
                                         <input name="Name" type="text" id="inputName" class="form-control">
@@ -87,19 +87,19 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                                         <textarea name="Description" id="inputDescription" class="form-control"
                                             rows="4"></textarea>
                                     </div>
-                                </form>
+                                </div>
+
                             </div>
 
                         </div>
-
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <a href="index.php" class="btn btn-secondary">Cancel</a>
-                        <input type="submit" value="Create new Project" class="btn btn-success float-right">
+                    <div class="row">
+                        <div class="col-12">
+                            <a href="index.php" class="btn btn-secondary">Cancel</a>
+                            <input type="submit" value="Create new Project" class="btn btn-success float-right">
+                        </div>
                     </div>
-                </div>
+                </form>
             </section>
         </div>
     </div>
