@@ -66,6 +66,44 @@ class GestionTasks
         return $result;
     }
 
+    public function rechercherParNom($name, $id)
+    {
+        $result = array();
+        $projects = "SELECT * FROM projects";
+        $projects = mysqli_query($this->getConnection(), $projects);
+        $projects_data = mysqli_fetch_all($projects, MYSQLI_ASSOC);
+        $Tasks_data = $this->searchTasksByName($name, $id);
+        $Tasks = array();
+        foreach ($Tasks_data as $Task_data) {
+            $Task = new Task();
+            $Task->setId($Task_data['Id']);
+            $Task->setName($Task_data['name']);
+            $Task->setDescription($Task_data['description']);
+            array_push($Tasks, $Task);
+        }
+        foreach ($projects_data as $project_data) {
+            $project = new Project();
+            $project->setId($project_data['Id']);
+            $project->setName($project_data['name']);
+            $project->setDescription($project_data['description']);
+            array_push($projects, $project);
+        }
+        $result = [$projects, $Tasks];
+        return $result;
+    }
+    private function searchTasksByName($name, $id)
+    {
+        $sql = "SELECT * FROM projects WHERE name LIKE ? AND `Id_Project` = ?";
+        $stmt = $this->getConnection()->prepare($sql);
+        $search_name = "%$name%";
+        $Id_Project = $id;
+        $stmt->bind_param("si", $search_name, $Id_Project); // Use "si" for a string and integer parameter
+        $stmt->execute();
+        $query = $stmt->get_result();
+        return mysqli_fetch_all($query, MYSQLI_ASSOC);
+    }
+
+
     public function RechercherParId($id)
     {
         $sql = "SELECT * FROM tasks WHERE Id= '$id'";

@@ -1,6 +1,48 @@
 <h1>
     <?php var_dump($IsAjaxRequest) ?>
 </h1>
+<div class="col-md-12 col-md-6">
+    <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <!-- Add icons to the links using the .nav-icon class
+                                                   with font-awesome or any other icon font library -->
+            <li class="nav-item">
+                <a href="#" class="nav-link active">
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>
+                        Projects
+                        <i class="right fas fa-angle-left"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <?php
+                    foreach ($projects as $result) {
+                        ?>
+                        <li class="nav-item">
+                            <a href="index.php?id=<?= $result->getId() ?>" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>
+                                    <?= $result->getName() ?>
+                                </p>
+                            </a>
+                        </li>
+                        <?php
+                    }
+                    ?>
+                    <li class="nav-item">
+                        <hr class="p-0 m-0">
+                    </li>
+                    <li class="nav-item">
+                        <a href="../Project/index.php" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p class="">All Projects</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</div>
 <table class="table table-striped projects">
     <thead>
         <tr>
@@ -8,7 +50,7 @@
                 #
             </th>
             <th style="width: 20%">
-                Project Name
+                Task Name
             </th>
             <th class="text-center" style="width: 50%">
                 Description
@@ -28,12 +70,12 @@
             <div class="alert alert-warning alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                 <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>
-                No Projects Found!
+                No Tasks Found!
             </div>
             <?php
         } else {
-            $projects = $pages[$currentPage - 1];
-            foreach ($projects as $result) {
+            $Services = $pages[$currentPage - 1];
+            foreach ($Services as $result) {
                 ?>
                 <tr>
                     <td>
@@ -51,10 +93,6 @@
                         <span class="badge badge-success">Success</span>
                     </td>
                     <td class="project-actions">
-                        <a class="btn btn-primary btn-sm" href="../../Controller/Task/index.php?id=<?= $result->getId() ?>">
-                            <i class="fas fa-folder"></i>
-                            View
-                        </a>
                         <a class="btn btn-info btn-sm" href="editer.php?id=<?= $result->getId() ?>">
                             <i class="fas fa-pencil-alt"></i>
                             Edit
