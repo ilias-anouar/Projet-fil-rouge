@@ -44,7 +44,7 @@ include "Views/Layout/head.php";
                 <!-- Default box -->
                 <div class="row w-100 p-5">
                     <div class="col w-100">
-                        <a href="Views/projects/">
+                        <a href="Controller/project/">
                             <div class="info-box">
                                 <span class="info-box-icon bg-success"><i class="far fa-flag"></i></span>
 
