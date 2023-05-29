@@ -5,7 +5,7 @@ if (isset($_POST['Login'])) {
     $password = $_POST['password'];
     // $user = new User();
     // $user->login($email, $password);
-}else if(isset($_POST['Register'])){
+} else if (isset($_POST['Register'])) {
     $name = $_POST['name'];
     $email = $_POST['email'];
     $password = $_POST['password'];
