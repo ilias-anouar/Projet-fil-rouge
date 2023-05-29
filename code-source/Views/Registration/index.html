@@ -3,20 +3,19 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>CodePen - Login/ Register Form</title>
+    <title>Login/ Register Form</title>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css'>
-    <link rel="stylesheet" href="./style.css">
-
+    <link rel="stylesheet" href="/Projet-fil-rouge/code-source/Views/Assets/css/Registration.css">
 </head>
 
 <body>
     <!-- partial:index.partial.html -->
     <section id="form">
         <div id="toggle-forms">
-            <button class="waves-effect waves-light active" id="login">Login</button>
+            <button class="waves-effect waves-light" id="login">Login</button>
             <button class="waves-effect waves-light" id="register">Register</button>
         </div>
-        <form class="col s12">
+        <form method="post" class="col s12">
             <div class="row center-align">
                 <h4 class="white-text">login</h4>
             </div>
@@ -33,7 +32,7 @@
                 </div>
             </div>
             <div class="row center-align">
-                <button class="btn waves-effect waves-light">
+                <button type="submit" name="Login" class="btn waves-effect waves-light">
                     Login
                 </button>
             </div>
@@ -48,9 +47,21 @@
                 <li></li>
             </ul>
         </form>
-        <form class="col s12">
+        <form method="post" class="col s12">
             <div class="row center-align">
                 <h4 class="white-text">register</h4>
+            </div>
+            <div class="row">
+                <div class="input-field">
+                    <input id="First_name" type="text" class="validate">
+                    <label for="First_name">First name</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field">
+                    <input id="last_name" type="text" class="validate">
+                    <label for="last_name">Last name</label>
+                </div>
             </div>
             <div class="row">
                 <div class="input-field">
@@ -66,12 +77,12 @@
             </div>
             <div class="row">
                 <div class="input-field">
-                    <input id="password" type="password" class="validate">
-                    <label for="password">Re-Password</label>
+                    <input id="Re_password" type="password" class="validate">
+                    <label for="Re_password">Re-Password</label>
                 </div>
             </div>
             <div class="row center-align">
-                <button class="btn waves-effect waves-light">
+                <button type="submit" name="Register" class="btn waves-effect waves-light">
                     Register
                 </button>
             </div>
@@ -89,8 +100,7 @@
     <!-- partial -->
     <script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js'></script>
-    <script src="./script.js"></script>
-
+    <script src="/Projet-fil-rouge/code-source/Views/Assets/script/Registration.js"></script>
 </body>
 
 </html>
