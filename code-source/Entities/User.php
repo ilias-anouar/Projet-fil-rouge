@@ -19,7 +19,9 @@ class User extends Base
     {
         $this->password = $password;
     }
+
     // getting methods:
+    
     public function getName()
     {
         return $this->name;
