@@ -6,7 +6,8 @@ if (isset($_POST['Login'])) {
     // $user = new User();
     // $user->login($email, $password);
 } else if (isset($_POST['Register'])) {
-    $name = $_POST['name'];
+    $First_name = $_POST['First_name'];
+    $last_name = $_POST['last_name'];
     $email = $_POST['email'];
     $password = $_POST['password'];
     // $user = new User();
