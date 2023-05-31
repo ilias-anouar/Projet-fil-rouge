@@ -3,18 +3,21 @@ TweenMax.to(".title-1", 2, {
   opacity: 1,
   ease: Expo.easeInOut,
 });
+
 TweenMax.to(".title-2", 2, {
   delay: 0.2,
   x: -80,
   opacity: 1,
   ease: Expo.easeInOut,
 });
+
 TweenMax.from(".runner", 2, {
   delay: 1.6,
   x: -80,
   opacity: 0,
   ease: Expo.easeInOut,
 });
+
 TweenMax.from(".box-1", 4, {
   delay: 1,
   rotation: 200,
@@ -32,6 +35,7 @@ TweenMax.from(".box-2", 4, {
   x: -180,
   ease: Expo.easeInOut,
 });
+
 TweenMax.from(".box-3", 4, {
   delay: 1,
   rotation: 180,
@@ -40,12 +44,14 @@ TweenMax.from(".box-3", 4, {
   x: -180,
   ease: Expo.easeInOut,
 });
+
 TweenMax.from(".pattern", 2, {
   delay: 0.8,
   opacity: 0,
   width: 0,
   ease: Expo.easeInOut,
 });
+
 TweenMax.from(".logo", 2, {
   delay: 1.6,
   y: 20,
@@ -71,6 +77,7 @@ TweenMax.from(".content", 2, {
   y: 20,
   ease: Expo.easeInOut,
 });
+
 TweenMax.from(".content button", 2, {
   delay: 2.6,
   opacity: 0,

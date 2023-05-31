@@ -35,19 +35,30 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                                <li class="breadcrumb-item active">Projects</li>
+                                <li class="breadcrumb-item active">Dashboard</li>
                             </ol>
                         </div>
                     </div>
                 </div><!-- /.container-fluid -->
             </section>
-            <!-- /.content-wrapper -->
+            <!-- content -->
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="result">
+                        <?php
+                        include_once(__ROOT__ . "/Views/Client/form.php");
+                        ?>
+                    </div>
+                </div>
+            </section>
+            <!--/.content -->
             <!-- Control Sidebar -->
             <aside class="control-sidebar control-sidebar-dark">
                 <!-- Control sidebar content goes here -->
             </aside>
             <!-- /.control-sidebar -->
         </div>
+        <!-- /.content-wrapper -->
         <?php
         include_once(__ROOT__ . "/Views/Layout/footer.php");
         ?>
