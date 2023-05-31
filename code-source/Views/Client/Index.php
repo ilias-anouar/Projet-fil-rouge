@@ -2,10 +2,9 @@
 <html lang="en">
 
 <?php
-include "../Layout/root.php";
+// include "../Layout/root.php";
 include_once(__ROOT__ . "/Views/Layout/head.php");
 ?>
-
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
         <!-- Preloader -->
@@ -67,6 +66,7 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
         <?php
         include_once(__ROOT__ . "/Views/Layout/links.php");
         ?>
+        <script src="/Projet-fil-rouge/code-source/Views/Assets/script/client.js"></script>
 </body>
 
 </html>

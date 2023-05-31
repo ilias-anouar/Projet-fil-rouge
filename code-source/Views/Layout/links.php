@@ -1,5 +1,4 @@
 <!-- jQuery -->
-
 <script src="/Projet-fil-rouge/code-source/Views/Assets/vendors/AdminLTE-3.2.0/plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
 <script
@@ -39,8 +38,5 @@
     src="/Projet-fil-rouge/code-source/Views/Assets/vendors/AdminLTE-3.2.0/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
 <script src="/Projet-fil-rouge/code-source/Views/Assets/vendors/AdminLTE-3.2.0/dist/js/adminlte.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="/Projet-fil-rouge/code-source/Views/Assets/vendors/AdminLTE-3.2.0/dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="/Projet-fil-rouge/code-source/Views/Assets/vendors/AdminLTE-3.2.0/dist/js/pages/dashboard.js"></script>
-<script src="/Projet-fil-rouge/code-source/Views/Assets/js/Index.js"></script>
+<!-- <script src="/Projet-fil-rouge/code-source/Views/Assets/vendors/AdminLTE-3.2.0/dist/js/pages/dashboard.js"></script> -->

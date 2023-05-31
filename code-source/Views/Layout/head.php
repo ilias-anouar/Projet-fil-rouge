@@ -10,7 +10,8 @@
     <link rel="icon" type="image/png" sizes="16x16"
         href="/Projet-fil-rouge/code-source/Views/Assets/images/favcon_io/favicon-16x16.png">
     <link rel="icon" type="image/x-icon" href="/Projet-fil-rouge/code-source/Views/Assets/images/favcon_io/favicon.ico">
-    <link rel="manifest" href="/Projet-fil-rouge/code-source/Views/Assets/images/favcon_io/site.webmanifest">
+    <link rel="manifest"
+        href="http://localhost/Projet-fil-rouge/code-source/Views/Assets/images/favicon_io/site.webmanifest">
 
     <link rel="icon" type="image/png" sizes="32x32"
         href="/Projet-fil-rouge/code-source/Views/Assets/images/favcon_io/favicon-32x32.png">
@@ -44,7 +45,4 @@
     <!-- summernote -->
     <link rel="stylesheet"
         href="/Projet-fil-rouge/code-source/Views/Assets/vendors/AdminLTE-3.2.0/plugins/summernote/summernote-bs4.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-
 </head>
