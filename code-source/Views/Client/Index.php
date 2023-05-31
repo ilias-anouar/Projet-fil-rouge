@@ -5,6 +5,12 @@
 // include "../Layout/root.php";
 include_once(__ROOT__ . "/Views/Layout/head.php");
 ?>
+<style>
+    <?php
+    include_once(__ROOT__ . "/Views/Assets/css/Client.css");
+    ?>
+</style>
+
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
         <!-- Preloader -->
@@ -45,8 +51,93 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                 <div class="container-fluid">
                     <div class="result">
                         <?php
-                        include_once(__ROOT__ . "/Views/Client/form.php");
+                        // include_once(__ROOT__ . "/Views/Client/Cards.php");
+                        // include_once(__ROOT__ . "/Views/Client/form.php");
                         ?>
+                        <div class="card ">
+                            <div class="card-header">
+                                <h3 class="card-title">Weigth Chart</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart">
+                                    <div class="chartjs-size-monitor">
+                                        <div class="chartjs-size-monitor-expand">
+                                            <div class=""></div>
+                                        </div>
+                                        <div class="chartjs-size-monitor-shrink">
+                                            <div class=""></div>
+                                        </div>
+                                    </div>
+                                    <canvas id="lineChart"
+                                        style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%; display: block; width: 654px;"
+                                        width="735" height="281" class="chartjs-render-monitor"></canvas>
+                                </div>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <div class="card text-center">
+                            <div class="card-header">
+                                <h3 class="card-title">
+                                    <i class="far fa-chart-bar"></i>
+                                    jQuery Knob
+                                </h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="card-body" style="display: block;">
+                                <div class="row">
+                                    <div class="col-6 col-md-3 text-center">
+                                        <div style="display:inline;width:90px;height:90px;"><canvas width="101"
+                                                height="101" style="width: 90px; height: 90px;"></canvas><input
+                                                type="text" class="knob" value="0" data-width="90" data-height="90"
+                                                data-fgcolor="#3c8dbc"
+                                                style="width: 49px; height: 30px; position: absolute; vertical-align: middle; margin-top: 30px; margin-left: -69px; border: 0px; background: none; font: bold 18px Arial; text-align: center; color: rgb(60, 141, 188); padding: 0px; appearance: none;">
+                                        </div>
+                                        <div class="knob-label">New Visitors</div>
+                                    </div>
+                                    <div class="col-6 col-md-3 text-center">
+                                        <div style="display:inline;width:90px;height:90px;"><canvas width="101"
+                                                height="101" style="width: 90px; height: 90px;"></canvas><input
+                                                type="text" class="knob" value="0" data-width="90" data-height="90"
+                                                data-fgcolor="#3c8dbc"
+                                                style="width: 49px; height: 30px; position: absolute; vertical-align: middle; margin-top: 30px; margin-left: -69px; border: 0px; background: none; font: bold 18px Arial; text-align: center; color: rgb(60, 141, 188); padding: 0px; appearance: none;">
+                                        </div>
+                                        <div class="knob-label">New Visitors</div>
+                                    </div>
+                                    <div class="col-6 col-md-3 text-center">
+                                        <div style="display:inline;width:90px;height:90px;"><canvas width="101"
+                                                height="101" style="width: 90px; height: 90px;"></canvas><input
+                                                type="text" class="knob" value="0" data-width="90" data-height="90"
+                                                data-fgcolor="#3c8dbc"
+                                                style="width: 49px; height: 30px; position: absolute; vertical-align: middle; margin-top: 30px; margin-left: -69px; border: 0px; background: none; font: bold 18px Arial; text-align: center; color: rgb(60, 141, 188); padding: 0px; appearance: none;">
+                                        </div>
+                                        <div class="knob-label">New Visitors</div>
+                                    </div>
+                                    <div class="col-6 col-md-3 text-center">
+                                        <div style="display:inline;width:90px;height:90px;"><canvas width="101"
+                                                height="101" style="width: 90px; height: 90px;"></canvas><input
+                                                type="text" class="knob" value="0" data-width="90" data-height="90"
+                                                data-fgcolor="#3c8dbc"
+                                                style="width: 49px; height: 30px; position: absolute; vertical-align: middle; margin-top: 30px; margin-left: -69px; border: 0px; background: none; font: bold 18px Arial; text-align: center; color: rgb(60, 141, 188); padding: 0px; appearance: none;">
+                                        </div>
+                                        <div class="knob-label">New Visitors</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </section>
@@ -67,6 +158,151 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
         include_once(__ROOT__ . "/Views/Layout/links.php");
         ?>
         <script src="/Projet-fil-rouge/code-source/Views/Assets/script/client.js"></script>
+        <script>
+            $(function () {
+                /* ChartJS
+                 * -------
+                 * Here we will create a few charts using ChartJS
+                 */
+                var areaChartData = {
+                    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                    datasets: [
+                        {
+                            label: 'Weight',
+                            backgroundColor: 'rgba(60,141,188,0.9)',
+                            borderColor: 'rgba(60,141,188,0.8)',
+                            pointColor: '#3b8bba',
+                            pointStrokeColor: 'rgba(60,141,188,1)',
+                            pointHighlightFill: '#fff',
+                            pointHighlightStroke: 'rgba(60,141,188,1)',
+                            data: [120, 110, 100, 95]
+                        },
+                        {
+                            label: 'Ideal weigth',
+                            backgroundColor: 'Green',
+                            borderColor: 'Green',
+                            pointColor: 'Green',
+                            pointStrokeColor: 'Green',
+                            pointHighlightFill: 'Green',
+                            pointHighlightStroke: 'Green',
+                            data: [65, 65, 65, 65, 65, 65]
+                        },
+                    ]
+                }
+
+                var areaChartOptions = {
+                    maintainAspectRatio: false,
+                    responsive: true,
+                    legend: {
+                        display: true
+                    },
+                    scales: {
+                        xAxes: [{
+                            gridLines: {
+                                display: true,
+                            }
+                        }],
+                        yAxes: [{
+                            gridLines: {
+                                display: true,
+                            }
+                        }]
+                    }
+                }
+
+                //-------------
+                //- LINE CHART -
+                //--------------
+                var lineChartCanvas = $('#lineChart').get(0).getContext('2d')
+                var lineChartOptions = $.extend(true, {}, areaChartOptions)
+                var lineChartData = $.extend(true, {}, areaChartData)
+                lineChartData.datasets[0].fill = false;
+                lineChartData.datasets[1].fill = false;
+                lineChartOptions.datasetFill = false
+                var lineChart = new Chart(lineChartCanvas, {
+                    type: 'line',
+                    data: lineChartData,
+                    options: lineChartOptions
+                })
+            })
+        </script>
+        <script>
+            $(function () {
+                /* jQueryKnob */
+
+                $('.knob').knob({
+                    change: function (value) {
+                        console.log("change : " + value);
+                    },
+                    release: function (value) {
+                        console.log("release : " + value);
+                    },
+                    cancel: function () {
+                        console.log("cancel : " + this.value);
+                    },
+                    draw: function () {
+
+                        // "tron" case
+                        if (this.$.data('skin') == 'tron') {
+
+                            var a = this.angle(this.cv)  // Angle
+                                ,
+                                sa = this.startAngle          // Previous start angle
+                                ,
+                                sat = this.startAngle         // Start angle
+                                ,
+                                ea                            // Previous end angle
+                                ,
+                                eat = sat + a                 // End angle
+                                ,
+                                r = true
+
+                            this.g.lineWidth = this.lineWidth
+
+                            this.o.cursor
+                                && (sat = eat - 0.3)
+                                && (eat = eat + 0.3)
+
+                            if (this.o.displayPrevious) {
+                                ea = this.startAngle + this.angle(this.value)
+                                this.o.cursor
+                                    && (sa = ea - 0.3)
+                                    && (ea = ea + 0.3)
+                                this.g.beginPath()
+                                this.g.strokeStyle = this.previousColor
+                                this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sa, ea, false)
+                                this.g.stroke()
+                            }
+
+                            this.g.beginPath()
+                            this.g.strokeStyle = r ? this.o.fgColor : this.fgColor
+                            this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sat, eat, false)
+                            this.g.stroke()
+
+                            this.g.lineWidth = 2
+                            this.g.beginPath()
+                            this.g.strokeStyle = this.o.fgColor
+                            this.g.arc(this.xy, this.xy, this.radius - this.lineWidth + 1 + this.lineWidth * 2 / 3, 0, 2 * Math.PI, false)
+                            this.g.stroke()
+
+                            return false
+                        }
+                    }
+                })
+                /* END JQUERY KNOB */
+
+                //INITIALIZE SPARKLINE CHARTS
+                var sparkline1 = new Sparkline($('#sparkline-1')[0], { width: 240, height: 70, lineColor: '#92c1dc', endColor: '#92c1dc' })
+                var sparkline2 = new Sparkline($('#sparkline-2')[0], { width: 240, height: 70, lineColor: '#f56954', endColor: '#f56954' })
+                var sparkline3 = new Sparkline($('#sparkline-3')[0], { width: 240, height: 70, lineColor: '#3af221', endColor: '#3af221' })
+
+                sparkline1.draw([1000, 1200, 920, 927, 931, 1027, 819, 930, 1021])
+                sparkline2.draw([515, 519, 520, 522, 652, 810, 370, 627, 319, 630, 921])
+                sparkline3.draw([15, 19, 20, 22, 33, 27, 31, 27, 19, 30, 21])
+
+            })
+
+        </script>
 </body>
 
 </html>
