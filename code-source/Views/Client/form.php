@@ -37,6 +37,18 @@
                     <option value="Female">Female</option>
                 </select>
             </div>
+            <div class="form-group">
+                <label for="cactivity">Activity:</label>
+                <select id="cactivity" name="cactivity" class="form-control form-control-lg">
+                    <option value="1">Basal Metabolic Rate (BMR)</option>
+                    <option value="1.2">Sedentary: little or no exercise</option>
+                    <option value="1.375">Light: exercise 1-3 times/week</option>
+                    <option value="1.465" selected="">Moderate: exercise 4-5 times/week</option>
+                    <option value="1.55">Active: daily exercise or intense exercise 3-4 times/week</option>
+                    <option value="1.725">Very Active: intense exercise 6-7 times/week</option>
+                    <option value="1.9">Extra Active: very intense exercise daily, or physical job</option>
+                </select>
+            </div>
         </div>
         <!-- /.card-body -->
         <div class="card-footer text-white">

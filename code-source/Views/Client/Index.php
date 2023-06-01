@@ -7,7 +7,7 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
 ?>
 <style>
     <?php
-    include_once(__ROOT__ . "/Views/Assets/css/Client.css");
+    include_once(__ROOT__ . "/Views/Assets/css/Admin.css");
     ?>
 </style>
 
@@ -128,15 +128,14 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                                     <div class="col-6 col-md-3 text-center">
                                         <div style="display:inline;width:90px;height:90px;"><canvas width="101"
                                                 height="101" style="width: 90px; height: 90px;"></canvas><input
-                                                type="text" class="knob" value="0" data-width="90" data-height="90"
-                                                data-fgcolor="#3c8dbc"
+                                                type="text" class="knob" value="89" data-width="90" data-height="90"
+                                                data-fgcolor="green" disabled
                                                 style="width: 49px; height: 30px; position: absolute; vertical-align: middle; margin-top: 30px; margin-left: -69px; border: 0px; background: none; font: bold 18px Arial; text-align: center; color: rgb(60, 141, 188); padding: 0px; appearance: none;">
                                         </div>
                                         <div class="knob-label">New Visitors</div>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -159,87 +158,22 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
         ?>
         <script src="/Projet-fil-rouge/code-source/Views/Assets/script/client.js"></script>
         <script>
-            $(function () {
-                /* ChartJS
-                 * -------
-                 * Here we will create a few charts using ChartJS
-                 */
-                var areaChartData = {
-                    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-                    datasets: [
-                        {
-                            label: 'Weight',
-                            backgroundColor: 'rgba(60,141,188,0.9)',
-                            borderColor: 'rgba(60,141,188,0.8)',
-                            pointColor: '#3b8bba',
-                            pointStrokeColor: 'rgba(60,141,188,1)',
-                            pointHighlightFill: '#fff',
-                            pointHighlightStroke: 'rgba(60,141,188,1)',
-                            data: [120, 110, 100, 95]
-                        },
-                        {
-                            label: 'Ideal weigth',
-                            backgroundColor: 'Green',
-                            borderColor: 'Green',
-                            pointColor: 'Green',
-                            pointStrokeColor: 'Green',
-                            pointHighlightFill: 'Green',
-                            pointHighlightStroke: 'Green',
-                            data: [65, 65, 65, 65, 65, 65]
-                        },
-                    ]
-                }
 
-                var areaChartOptions = {
-                    maintainAspectRatio: false,
-                    responsive: true,
-                    legend: {
-                        display: true
-                    },
-                    scales: {
-                        xAxes: [{
-                            gridLines: {
-                                display: true,
-                            }
-                        }],
-                        yAxes: [{
-                            gridLines: {
-                                display: true,
-                            }
-                        }]
-                    }
-                }
-
-                //-------------
-                //- LINE CHART -
-                //--------------
-                var lineChartCanvas = $('#lineChart').get(0).getContext('2d')
-                var lineChartOptions = $.extend(true, {}, areaChartOptions)
-                var lineChartData = $.extend(true, {}, areaChartData)
-                lineChartData.datasets[0].fill = false;
-                lineChartData.datasets[1].fill = false;
-                lineChartOptions.datasetFill = false
-                var lineChart = new Chart(lineChartCanvas, {
-                    type: 'line',
-                    data: lineChartData,
-                    options: lineChartOptions
-                })
-            })
         </script>
         <script>
             $(function () {
                 /* jQueryKnob */
 
                 $('.knob').knob({
-                    change: function (value) {
-                        console.log("change : " + value);
-                    },
-                    release: function (value) {
-                        console.log("release : " + value);
-                    },
-                    cancel: function () {
-                        console.log("cancel : " + this.value);
-                    },
+                    // change: function (value) {
+                    //     console.log("change : " + value);
+                    // },
+                    // release: function (value) {
+                    //     console.log("release : " + value);
+                    // },
+                    // cancel: function () {
+                    //     console.log("cancel : " + this.value);
+                    // },
                     draw: function () {
 
                         // "tron" case
@@ -292,14 +226,13 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                 /* END JQUERY KNOB */
 
                 //INITIALIZE SPARKLINE CHARTS
-                var sparkline1 = new Sparkline($('#sparkline-1')[0], { width: 240, height: 70, lineColor: '#92c1dc', endColor: '#92c1dc' })
-                var sparkline2 = new Sparkline($('#sparkline-2')[0], { width: 240, height: 70, lineColor: '#f56954', endColor: '#f56954' })
-                var sparkline3 = new Sparkline($('#sparkline-3')[0], { width: 240, height: 70, lineColor: '#3af221', endColor: '#3af221' })
+                // var sparkline1 = new Sparkline($('#sparkline-1')[0], { width: 240, height: 70, lineColor: '#92c1dc', endColor: '#92c1dc' })
+                // var sparkline2 = new Sparkline($('#sparkline-2')[0], { width: 240, height: 70, lineColor: '#f56954', endColor: '#f56954' })
+                // var sparkline3 = new Sparkline($('#sparkline-3')[0], { width: 240, height: 70, lineColor: '#3af221', endColor: '#3af221' })
 
-                sparkline1.draw([1000, 1200, 920, 927, 931, 1027, 819, 930, 1021])
-                sparkline2.draw([515, 519, 520, 522, 652, 810, 370, 627, 319, 630, 921])
-                sparkline3.draw([15, 19, 20, 22, 33, 27, 31, 27, 19, 30, 21])
-
+                // sparkline1.draw([1000, 1200, 920, 927, 931, 1027, 819, 930, 1021])
+                // sparkline2.draw([515, 519, 520, 522, 652, 810, 370, 627, 319, 630, 921])
+                // sparkline3.draw([15, 19, 20, 22, 33, 27, 31, 27, 19, 30, 21])
             })
 
         </script>
