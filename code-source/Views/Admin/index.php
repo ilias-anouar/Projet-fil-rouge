@@ -61,7 +61,7 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                                     <div class="icon">
                                         <i class="fas fa-list"></i>
                                     </div>
-                                    <a href="Plans.php" class="small-box-footer">More info <i
+                                    <a href="Plans/index.php" class="small-box-footer">More info <i
                                             class="fas fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>

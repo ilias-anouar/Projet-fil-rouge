@@ -54,7 +54,7 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                         // include_once(__ROOT__ . "/Views/Client/Cards.php");
                         // include_once(__ROOT__ . "/Views/Client/form.php");
                         ?>
-                        <div class="card ">
+                        <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">Weigth Chart</h3>
                                 <div class="card-tools">
