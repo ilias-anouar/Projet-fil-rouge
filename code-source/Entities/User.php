@@ -2,14 +2,19 @@
 include "Base.php";
 class User extends Base
 {
-    private $name;
+    private $first_name;
+    private $last_name;
     private $email;
     private $password;
 
     // setting methods:
-    public function setName($name)
+    public function setFirst_name($first_name)
     {
-        $this->name = $name;
+        $this->first_name = $first_name;
+    }
+    public function setLast_name($last_name)
+    {
+        $this->last_name = $last_name;
     }
     public function setEmail($email)
     {
@@ -21,10 +26,14 @@ class User extends Base
     }
 
     // getting methods:
-    
-    public function getName()
+
+    public function getFirst_name()
     {
-        return $this->name;
+        return $this->first_name;
+    }
+    public function getLast_name()
+    {
+        return $this->last_name;
     }
     public function getEmail()
     {
