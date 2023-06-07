@@ -1,14 +1,3 @@
-<h2 class="text-center">Availiable plans</h2>
-<div class="row p-3">
-    <div class="col-sm-12 col-md-6">
-        <a class="btn  bg-orange" href="add.php">Add Plan</a>
-    </div>
-    <div class="col-sm-12 col-md-6">
-        <div id="search" class="dataTables_filter"><input type="search" id="search_plan" class="form-control"
-                placeholder="Plan name" aria-controls="search_plan">
-        </div>
-    </div>
-</div>
 <?php
 if (empty($pages)) {
     ?>
@@ -36,7 +25,7 @@ if (empty($pages)) {
                         </p>
                     </div>
                     <a href="#" class="text-info">more</a>
-                    <a href="#" class="text-danger">delet</a>
+                    <a href="delete.php?id=<?= $Plan->Get_Id() ?>" class="text-danger">delet</a>
                     <a href="#">edite</a>
                 </div>
             </div>
@@ -68,12 +57,13 @@ if (isset($pagesNum)) {
                                 <?= $i + 1 ?>
                             </a>
                         </li>
-
-                    </ul>
-                </div>
-            </div>
-            <?php
+                        <?php
                     }
                 }
+                ?>
+            </ul>
+        </div>
+    </div>
+    <?php
 }
 ?>

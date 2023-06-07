@@ -51,6 +51,18 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
             <!-- content -->
             <section class="content">
                 <div class="container-fluid">
+                    <h2 class="text-center">Availiable plans</h2>
+                    <div class="row p-3">
+                        <div class="col-sm-12 col-md-6">
+                            <a class="btn  bg-orange" href="add.php">Add Plan</a>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <div id="search" class="dataTables_filter"><input type="search" id="search_plan"
+                                     class="form-control" placeholder="Plan name"
+                                    aria-controls="search_plan">
+                            </div>
+                        </div>
+                    </div>
                     <div class="result">
                         <?php
                         include_once(__ROOT__ . "/Views/Admin/Plans/cards.php");

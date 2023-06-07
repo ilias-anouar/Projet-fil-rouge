@@ -13,8 +13,11 @@ $(document).on("click", ".page-link", function (e) {
       pageId: pageId,
     },
     success: function (response) {
+      // console.log(response);
       // Handle the response
-      $("#result").html(response);
+      // let div = $(".result");
+      // console.log(div);
+      $(".result").html(response);
     },
     error: function (xhr, status, error) {
       console.log("Error:", error);
@@ -28,12 +31,13 @@ $(document).on("keyup", "#search_plan", function () {
   _Query = value;
   console.log(_Query);
   $.ajax({
-    url: "index.php",
+    url: "/Projet-fil-rouge/code-source/Controllers/Admin/Plans/index.php",
     type: "POST",
     data: { Query: value },
-    success: function (response) {
-      console.log(response);
-      $("#result").html(response);
+    success: function (response, status) {
+      // console.log(response);
+      console.log(status);
+      $(".result").html(response);
     },
     error: function (xhr, status, error) {
       console.log("Error:", error);

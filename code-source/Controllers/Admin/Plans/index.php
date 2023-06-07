@@ -26,10 +26,13 @@ $results = $PlanManager->rechercherParNom($Query);
 
 $itemsPerPage = 6;
 $totalItems = count($results);
-$pagesNum = ceil($totalItems / $itemsPerPage);
+if ($totalItems % 6 == 0) {
+    $pagesNum = $totalItems / $itemsPerPage;
+} else {
+    $pagesNum = ceil($totalItems / $itemsPerPage);
+}
 
 $pages = $PlanManager->pages($results, $pagesNum, $itemsPerPage);
-
 // View
 if ($IsAjaxRequest) {
     include_once(__ROOT__ . "/Views/Admin/Plans/cards.php");

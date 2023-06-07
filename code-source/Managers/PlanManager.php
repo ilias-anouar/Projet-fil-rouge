@@ -79,5 +79,28 @@ class PlanManager
         $stmt->close();
 
     }
+
+    // delete plan
+    public function deletePlan($id)
+    {
+        $sql = "DELETE FROM `plans` WHERE Id_Plans = ?";
+        $stmt = $this->getConnection()->prepare($sql);
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $stmt->close();
+    }
+    // edit plan
+    public function editPlan($plan)
+    {
+        $sql = "UPDATE `plans` SET `Plan_name` = ?, `Description` = ? WHERE Id = ?";
+        $name = $plan->getName();
+        $Description = $plan->getDescription();
+        $id = $plan->getId();
+        $stmt = $this->getConnection()->prepare($sql);
+        $stmt->bind_param("ssi", $name, $Description, $id);
+        $stmt->execute();
+        $stmt->close();
+    }
+
 }
 ?>
