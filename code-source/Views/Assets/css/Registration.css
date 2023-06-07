@@ -113,7 +113,7 @@ input {
     width: 50px;
     top: 100%;
     left: 10px;
-    background-color: rgba(255, 166, 0, 0.5);
+    background-color: rgba(0, 123, 255, 0.5);
     z-index: -1;
     overflow: hidden;
     -webkit-animation: move 10s linear infinite;
