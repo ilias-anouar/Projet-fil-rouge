@@ -52,9 +52,42 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
             <section class="content">
                 <div class="container-fluid">
                     <div class="result">
-                        <?php
-                        include_once(__ROOT__ . "/Views/Admin/Plans/cards.php");
-                        ?>
+                        <form method="post">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h3 class="card-title">Add Plan</h3>
+                                            <div class="card-tools">
+                                                <button type="button" class="btn btn-tool" data-card-widget="collapse"
+                                                    title="Collapse">
+                                                    <i class="fas fa-minus"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="form-group">
+                                                <label for="inputName">Plan Name</label>
+                                                <input name="Name" type="text" id="inputName" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputDescription">Plan Description</label>
+                                                <textarea name="Description" id="inputDescription" class="form-control"
+                                                    rows="4"></textarea>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <a href="index.php" class="btn btn-secondary">Cancel</a>
+                                    <input type="submit" value="Create new Plan" class="btn btn-success float-right">
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </section>

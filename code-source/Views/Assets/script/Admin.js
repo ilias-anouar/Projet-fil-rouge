@@ -31,8 +31,8 @@ $(document).on("keyup", "#search_plan", function () {
     url: "index.php",
     type: "POST",
     data: { Query: value },
-      success: function (response) {
-        console.log(response);
+    success: function (response) {
+      console.log(response);
       $("#result").html(response);
     },
     error: function (xhr, status, error) {

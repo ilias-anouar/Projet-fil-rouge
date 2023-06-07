@@ -4,7 +4,7 @@
         <a class="btn  bg-orange" href="add.php">Add Plan</a>
     </div>
     <div class="col-sm-12 col-md-6">
-        <div id="search_plan" class="dataTables_filter"><input type="search" id="search" class="form-control"
+        <div id="search" class="dataTables_filter"><input type="search" id="search_plan" class="form-control"
                 placeholder="Plan name" aria-controls="search_plan">
         </div>
     </div>
@@ -17,19 +17,23 @@ if (empty($pages)) {
         <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>
         No Plans Found!
     </div>
+    <?php
+} else {
+    ?>
     <div class="row">
         <?php
-} else {
-    $Plans = $pages[$currentPage - 1];
-    foreach ($Plans as $Plan) {
-        ?>
-
+        $Plans = $pages[$currentPage - 1];
+        foreach ($Plans as $Plan) {
+            ?>
             <div class="col-md-6 col-lg-4 column">
                 <div class="card style gr-1">
                     <div class="txt">
-                        <h1>BRANDING AND </br>
-                            CORPORATE DESIGN</h1>
-                        <p>Visual communication and problem-solving</p>
+                        <h1>
+                            <?= $Plan->getName() ?>
+                        </h1>
+                        <p>
+                            <?= $Plan->getDescription() ?>
+                        </p>
                     </div>
                     <a href="#" class="text-info">more</a>
                     <a href="#" class="text-danger">delet</a>
@@ -37,7 +41,7 @@ if (empty($pages)) {
                 </div>
             </div>
             <?php
-    }
+        }
 }
 ?>
 </div>

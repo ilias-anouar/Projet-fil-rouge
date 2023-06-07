@@ -29,7 +29,7 @@ class PlanManager
 
     public function rechercherParNom($name)
     {
-        $plans_data = $this->searchProjectsByName($name);
+        $plans_data = $this->searchPlansByName($name);
         $plans = array();
         foreach ($plans_data as $plan_data) {
             $plan = new Plan();
@@ -40,7 +40,7 @@ class PlanManager
         }
         return $plans;
     }
-    private function searchProjectsByName($name)
+    private function searchPlansByName($name)
     {
         $sql = "SELECT * FROM `plans` WHERE Plan_name LIKE ?";
         $stmt = $this->getConnection()->prepare($sql);
@@ -67,5 +67,17 @@ class PlanManager
         return $projects;
     }
 
+    // add plan
+    public function addPlan($plan)
+    {
+        $sql = "INSERT INTO `plans` (`Plan_name`, `Description`) VALUES (?, ?)";
+        $name = $plan->getName();
+        $Description = $plan->getDescription();
+        $stmt = $this->getConnection()->prepare($sql);
+        $stmt->bind_param("ss", $name, $Description);
+        $stmt->execute();
+        $stmt->close();
+
+    }
 }
 ?>
