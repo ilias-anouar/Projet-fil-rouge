@@ -51,7 +51,7 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                 <div class="container-fluid">
                     <div class="result">
                         <?php
-                        // include_once(__ROOT__ . "/Views/Admin/Plans/cards.php");
+                        include_once(__ROOT__ . "/Views/Admin/Plans/cards.php");
                         ?>
                     </div>
                 </div>

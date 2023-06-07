@@ -1,3 +1,9 @@
-<script>
+<!-- <script>
     alert("log in Error")
-</script>
+</script> -->
+<?php
+session_start();
+echo "<pre>";
+var_dump(session_status() == 2);
+echo "</pre>";
+?>

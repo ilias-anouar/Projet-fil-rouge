@@ -48,8 +48,9 @@ class UserManager
         $Email = $user->getEmail();
         $Password = $user->getPassword();
         // Perform password verification
-        if ($this->verifyPassword($Email, $Password)) {
-            return true;
+        $resulte = $this->verifyPassword($Email, $Password);
+        if ($resulte) {
+            return $resulte;
         } else {
             return false;
         }
@@ -60,16 +61,16 @@ class UserManager
         $sql = "SELECT * FROM `users` WHERE `E_mail` = '$email'";
         $result = mysqli_query($this->getConnection(), $sql);
         $user = mysqli_fetch_assoc($result);
-        echo "<pre>";
-        var_dump($user);
-        echo "</pre>";
+        // echo "<pre>";
+        // var_dump($user);
+        // echo "</pre>";
         // Perform password verification using password_verify()
         $verify = password_verify($password, $user['Password']);
         var_dump($verify);
         if ($verify) {
-            return true;
+            return $user;
         } else {
-            echo "wrong pass";
+            // echo "wrong pass";
             return false;
         }
     }
@@ -77,10 +78,10 @@ class UserManager
 
     public function calculateIdealWeight($height, $gender)
     {
-        if ($gender === 'male') {
+        if ($gender === 'Male') {
             // Calculate ideal weight for males using the Devine formula
             $idealWeight = 50 + 2.3 * (($height / 2.54) - 60);
-        } elseif ($gender === 'female') {
+        } elseif ($gender === 'Female') {
             // Calculate ideal weight for females using the Devine formula
             $idealWeight = 45.5 + 2.3 * (($height / 2.54) - 60);
         } else {
@@ -93,13 +94,13 @@ class UserManager
 
     public function calculateBodyFat($waist, $neck, $height, $gender, $weight)
     {
-        if ($gender === 'male') {
+        if ($gender === 'Male') {
             // Calculate body fat for males using the U.S. Navy method
             $factor1 = 86.010;
             $factor2 = 70.041;
             $factor3 = 36.76;
             $factor4 = 30.30;
-        } elseif ($gender === 'female') {
+        } elseif ($gender === 'Female') {
             // Calculate body fat for females using the U.S. Navy method
             $factor1 = 163.205;
             $factor2 = 97.684;
@@ -123,11 +124,11 @@ class UserManager
 
     public function calculateBMR($weight, $height, $age, $gender)
     {
-        if ($gender === 'male') {
-            // Calculate BMR for male using Harris-Benedict equation
+        if ($gender === 'Male') {
+            // Calculate BMR for Male using Harris-Benedict equation
             $bmr = 88.362 + (13.397 * $weight) + (4.799 * $height) - (5.677 * $age);
-        } elseif ($gender === 'female') {
-            // Calculate BMR for female using Harris-Benedict equation
+        } elseif ($gender === 'Female') {
+            // Calculate BMR for Female using Harris-Benedict equation
             $bmr = 447.593 + (9.247 * $weight) + (3.098 * $height) - (4.330 * $age);
         } else {
             // Invalid gender provided

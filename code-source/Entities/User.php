@@ -6,6 +6,7 @@ class User extends Base
     private $last_name;
     private $email;
     private $password;
+    private $role;
 
     // setting methods:
     public function setFirst_name($first_name)
@@ -23,6 +24,10 @@ class User extends Base
     public function setPassword($password)
     {
         $this->password = $password;
+    }
+    public function setRole($role)
+    {
+        $this->role = $role;
     }
 
     // getting methods:
@@ -42,6 +47,10 @@ class User extends Base
     public function getPassword()
     {
         return $this->password;
+    }
+    public function getRole()
+    {
+        return $this->role;
     }
 }
 
