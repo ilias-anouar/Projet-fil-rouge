@@ -16,19 +16,6 @@ class GestionProjects
         }
         return $this->Connection;
     }
-    public function Pagination($pageId,$name)
-    {
-        $endIndex = $pageId * 6;
-        $StartIndex = $endIndex - 6;
-        $sql = ("SELECT *
-FROM projects
-WHERE name ILIKE '%' || $name || '%'
-LIMIT 6 OFFSET $StartIndex;
-");
-        // return $sql;
-        $projects = $this->RechercherTous($sql);
-        return $projects;
-    }
 
     public function pages($items, $pagesNum, $itemsPerPage)
     {
@@ -89,22 +76,6 @@ LIMIT 6 OFFSET $StartIndex;
         $project->setDescription($project_data['description']);
         return $project;
     }
-    // public function RechercherParNom($name)
-    // {
-    //     $sql = "SELECT * FROM projects WHERE name LIKE '%$name%'";
-    //     $query = mysqli_query($this->getConnection(), $sql);
-    //     // return $query;
-    //     $projects_data = mysqli_fetch_all($query, MYSQLI_ASSOC);
-    //     $projects = array();
-    //     foreach ($projects_data as $project_data) {
-    //         $project = new Project();
-    //         $project->setId($project_data['Id']);
-    //         $project->setName($project_data['name']);
-    //         $project->setDescription($project_data['description']);
-    //         array_push($projects, $project);
-    //     }
-    //     return $projects;
-    // }
 
     public function rechercherParNom($name)
     {
