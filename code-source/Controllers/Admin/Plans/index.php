@@ -33,6 +33,9 @@ if ($totalItems % 6 == 0) {
 }
 
 $pages = $PlanManager->pages($results, $pagesNum, $itemsPerPage);
+// echo "<pre>";
+// var_dump($pages);
+// echo "</pre>";
 // View
 if ($IsAjaxRequest) {
     include_once(__ROOT__ . "/Views/Admin/Plans/cards.php");

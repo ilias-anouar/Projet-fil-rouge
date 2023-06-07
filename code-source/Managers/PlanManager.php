@@ -21,8 +21,13 @@ class PlanManager
     public function pages($items, $pagesNum, $itemsPerPage)
     {
         $pages = array();
+        $totalItems = count($items);
         for ($i = 0; $i < $pagesNum; $i++) {
-            array_push($pages, array_slice($items, $i * $itemsPerPage, ($i + 1) * $itemsPerPage));
+            if (($i + 1) * $itemsPerPage <= $totalItems) {
+                array_push($pages, array_slice($items, $i * $itemsPerPage, $itemsPerPage));
+            } else {
+                array_push($pages, array_slice($items, $i * $itemsPerPage));
+            }
         }
         return $pages;
     }

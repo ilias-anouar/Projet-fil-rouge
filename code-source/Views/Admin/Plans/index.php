@@ -58,8 +58,7 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                         </div>
                         <div class="col-sm-12 col-md-6">
                             <div id="search" class="dataTables_filter"><input type="search" id="search_plan"
-                                     class="form-control" placeholder="Plan name"
-                                    aria-controls="search_plan">
+                                    class="form-control" placeholder="Plan name" aria-controls="search_plan">
                             </div>
                         </div>
                     </div>
