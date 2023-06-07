@@ -1,7 +1,6 @@
 var _Query = "";
 // Handle pagination link click event
 $(document).on("click", ".page-link", function (e) {
-  // alert("pagination loaded");
   e.preventDefault();
   let pageId = $(this).data("page");
   console.log(pageId);
