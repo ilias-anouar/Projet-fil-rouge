@@ -4,18 +4,14 @@
     <title>IA FITNESS</title>
 
     <link rel="apple-touch-icon" sizes="180x180"
-        href="/Projet-fil-rouge/code-source/Views/Assets/images/favcon_io/apple-touch-icon.png">
+        href="/Projet-fil-rouge/code-source/Views/Assets/images/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32"
-        href="/Projet-fil-rouge/code-source/Views/Assets/images/favcon_io/favicon-32x32.png">
+        href="/Projet-fil-rouge/code-source/Views/Assets/images/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16"
-        href="/Projet-fil-rouge/code-source/Views/Assets/images/favcon_io/favicon-16x16.png">
-    <link rel="icon" type="image/x-icon" href="/Projet-fil-rouge/code-source/Views/Assets/images/favcon_io/favicon.ico">
+        href="/Projet-fil-rouge/code-source/Views/Assets/images/favicon_io/favicon-16x16.png">
+    <link rel="icon" type="image/x-icon" href="/Projet-fil-rouge/code-source/Views/Assets/images/favicon_io/favicon.ico">
     <link rel="manifest"
         href="http://localhost/Projet-fil-rouge/code-source/Views/Assets/images/favicon_io/site.webmanifest">
-
-    <link rel="icon" type="image/png" sizes="32x32"
-        href="/Projet-fil-rouge/code-source/Views/Assets/images/favcon_io/favicon-32x32.png">
-    <!-- <link rel="manifest" href="/Projet-fil-rouge/code-source/Views/Assets/images/favcon_io/site.webmanifest"> -->
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">

@@ -56,103 +56,62 @@ class UserManager
             return false;
         }
     }
-
     private function verifyPassword($email, $password)
     {
         $sql = "SELECT * FROM `users` WHERE `E_mail` = '$email'";
         $result = mysqli_query($this->getConnection(), $sql);
         $user = mysqli_fetch_assoc($result);
-        // echo "<pre>";
-        // var_dump($user);
-        // echo "</pre>";
         // Perform password verification using password_verify()
         $verify = password_verify($password, $user['Password']);
         var_dump($verify);
         if ($verify) {
             return $user;
         } else {
-            // echo "wrong pass";
             return false;
         }
     }
 
-
-    public function calculateIdealWeight($height, $gender)
+    public function pages($items, $pagesNum, $itemsPerPage)
     {
-        if ($gender === 'Male') {
-            // Calculate ideal weight for males using the Devine formula
-            $idealWeight = 50 + 2.3 * (($height / 2.54) - 60);
-        } elseif ($gender === 'Female') {
-            // Calculate ideal weight for females using the Devine formula
-            $idealWeight = 45.5 + 2.3 * (($height / 2.54) - 60);
-        } else {
-            // Invalid gender provided
-            return null;
+        $pages = array();
+        $totalItems = count($items);
+        for ($i = 0; $i < $pagesNum; $i++) {
+            if (($i + 1) * $itemsPerPage <= $totalItems) {
+                array_push($pages, array_slice($items, $i * $itemsPerPage, $itemsPerPage));
+            } else {
+                array_push($pages, array_slice($items, $i * $itemsPerPage));
+            }
         }
-
-        return $idealWeight;
+        return $pages;
     }
 
-    public function calculateBodyFat($waist, $neck, $height, $gender, $weight)
+    public function rechercherParNom($name)
     {
-        if ($gender === 'Male') {
-            // Calculate body fat for males using the U.S. Navy method
-            $factor1 = 86.010;
-            $factor2 = 70.041;
-            $factor3 = 36.76;
-            $factor4 = 30.30;
-        } elseif ($gender === 'Female') {
-            // Calculate body fat for females using the U.S. Navy method
-            $factor1 = 163.205;
-            $factor2 = 97.684;
-            $factor3 = 78.387;
-            $factor4 = 34.89;
-        } else {
-            // Invalid gender provided
-            return null;
+        $users_data = $this->searchPlansByName($name);
+        // echo "<pre>";
+        // var_dump($users_data);
+        // echo "</pre>";
+        $users = array();
+        foreach ($users_data as $user_data) {
+            $user = new User();
+            $user->Set_Id($user_data['Id_User']);
+            $user->setFirst_name($user_data['First_name']);
+            $user->setLast_name($user_data['Last_name']);
+            array_push($users, $user);
         }
-
-        // Calculate body fat percentage
-        $waistInInches = $waist * 0.393701;
-        $neckInInches = $neck * 0.393701;
-        $heightInInches = $height * 0.393701;
-
-        $leanBodyMass = $factor1 - ($factor2 * log10($heightInInches + $factor3)) + ($factor4 * log10($waistInInches - $neckInInches));
-        $bodyFatPercentage = ($weight - $leanBodyMass) / $weight * 100;
-
-        return $bodyFatPercentage;
+        return $users;
     }
-
-    public function calculateBMR($weight, $height, $age, $gender)
+    private function searchPlansByName($name)
     {
-        if ($gender === 'Male') {
-            // Calculate BMR for Male using Harris-Benedict equation
-            $bmr = 88.362 + (13.397 * $weight) + (4.799 * $height) - (5.677 * $age);
-        } elseif ($gender === 'Female') {
-            // Calculate BMR for Female using Harris-Benedict equation
-            $bmr = 447.593 + (9.247 * $weight) + (3.098 * $height) - (4.330 * $age);
-        } else {
-            // Invalid gender provided
-            return null;
-        }
+        $sql = "SELECT * FROM users LEFT JOIN inscription ON users.Id_User = inscription.Id_User LEFT JOIN plans ON inscription.Id_Plans = plans.Id_Plans WHERE First_name LIKE ? and role !=1";
 
-        return $bmr;
+        $stmt = $this->getConnection()->prepare($sql);
+        $search_name = "%$name%";
+        $stmt->bind_param("s", $search_name);
+        $stmt->execute();
+        $query = $stmt->get_result();
+        return mysqli_fetch_all($query, MYSQLI_ASSOC);
     }
-
-    public function calculateBMI($weight, $height)
-    {
-        // Convert height to meters
-        $heightInMeters = $height / 100;
-
-        // Calculate BMI
-        $bmi = $weight / ($heightInMeters * $heightInMeters);
-
-        // Round the BMI to two decimal places
-        $bmi = round($bmi, 2);
-
-        return $bmi;
-    }
-
 }
 
 ?>
