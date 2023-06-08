@@ -62,7 +62,10 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                                 <!-- Profile Image -->
                                 <div class="card card-danger card-outline">
                                     <div class="card-body box-profile">
-                                        <h3 class="profile-username text-center">Nina Mcintire</h3>
+                                        <h3 class="profile-username text-center">
+                                            <?= $_SESSION['user']['First_name'] ?>
+                                            <?= $_SESSION['user']['Last_name'] ?>
+                                        </h3>
 
                                         <!-- <p class="text-muted text-center"></p> -->
 
@@ -203,8 +206,8 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                                                             <button type="submit" class="btn bg-orange">Update</button>
                                                         </div>
                                                         <div class="col">
-                                                            <button type="submit" class="btn btn-danger">Log
-                                                                out</button>
+                                                            <a href="Logout.php" class="btn btn-danger">Log
+                                                                out</a>
                                                         </div>
                                                     </div>
                                                 </form>

@@ -35,7 +35,7 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Welcome "name"</h1>
+                            <h1>Welcome <?= $_SESSION['user']['First_name'] ?></h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -55,7 +55,9 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                                 <!-- small box -->
                                 <div class="small-box bg-maroon">
                                     <div class="inner">
-                                        <h3>3</h3>
+                                        <h3>
+                                            <?php echo $plansNumber ?>
+                                        </h3>
                                         <p>Available plans</p>
                                     </div>
                                     <div class="icon">
@@ -85,7 +87,9 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                                 <!-- small box -->
                                 <div class="small-box bg-orange">
                                     <div class="inner">
-                                        <h3>44</h3>
+                                        <h3>
+                                            <?php echo $usersNumber ?>
+                                        </h3>
                                         <p>User Registrations</p>
                                     </div>
                                     <div class="icon">

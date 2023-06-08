@@ -1,7 +1,7 @@
 <?php
 class Base
 {
-    private $id;   
+    private $id;
     // the setting methods
     public function Set_Id($id)
     {
@@ -13,6 +13,6 @@ class Base
     {
         return $this->id;
     }
-  
+
 }
 ?>

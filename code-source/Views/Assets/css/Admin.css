@@ -86,13 +86,12 @@
     text-transform: uppercase;
 }
 
-.style a:after {
+/* .style a:after {
     content: "";
     display: inline-block;
     height: 0.5em;
     width: 0;
-    /* margin-right: -100%; */
     margin-left: 10px;
     border-top: 1px solid white;
     transition: 0.5s;
-}
+} */

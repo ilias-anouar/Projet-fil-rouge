@@ -35,7 +35,9 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Welcome "name"</h1>
+                            <h1>Welcome
+                                <?= $_SESSION['user']['First_name'] ?>
+                            </h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -51,92 +53,9 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                 <div class="container-fluid">
                     <div class="result">
                         <?php
-                        // include_once(__ROOT__ . "/Views/Client/Cards.php");
+                        include_once(__ROOT__ . "/Views/Client/Cards.php");
                         // include_once(__ROOT__ . "/Views/Client/form.php");
                         ?>
-                        <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">Weigth Chart</h3>
-                                <div class="card-tools">
-                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                        <i class="fas fa-minus"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <div class="chart">
-                                    <div class="chartjs-size-monitor">
-                                        <div class="chartjs-size-monitor-expand">
-                                            <div class=""></div>
-                                        </div>
-                                        <div class="chartjs-size-monitor-shrink">
-                                            <div class=""></div>
-                                        </div>
-                                    </div>
-                                    <canvas id="lineChart"
-                                        style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%; display: block; width: 654px;"
-                                        width="735" height="281" class="chartjs-render-monitor"></canvas>
-                                </div>
-                            </div>
-                            <!-- /.card-body -->
-                        </div>
-                        <div class="card text-center">
-                            <div class="card-header">
-                                <h3 class="card-title">
-                                    <i class="far fa-chart-bar"></i>
-                                    jQuery Knob
-                                </h3>
-                                <div class="card-tools">
-                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                        <i class="fas fa-minus"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-tool" data-card-widget="remove">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div class="card-body" style="display: block;">
-                                <div class="row">
-                                    <div class="col-6 col-md-3 text-center">
-                                        <div style="display:inline;width:90px;height:90px;"><canvas width="101"
-                                                height="101" style="width: 90px; height: 90px;"></canvas><input
-                                                type="text" class="knob" value="0" data-width="90" data-height="90"
-                                                data-fgcolor="#3c8dbc"
-                                                style="width: 49px; height: 30px; position: absolute; vertical-align: middle; margin-top: 30px; margin-left: -69px; border: 0px; background: none; font: bold 18px Arial; text-align: center; color: rgb(60, 141, 188); padding: 0px; appearance: none;">
-                                        </div>
-                                        <div class="knob-label">New Visitors</div>
-                                    </div>
-                                    <div class="col-6 col-md-3 text-center">
-                                        <div style="display:inline;width:90px;height:90px;"><canvas width="101"
-                                                height="101" style="width: 90px; height: 90px;"></canvas><input
-                                                type="text" class="knob" value="0" data-width="90" data-height="90"
-                                                data-fgcolor="#3c8dbc"
-                                                style="width: 49px; height: 30px; position: absolute; vertical-align: middle; margin-top: 30px; margin-left: -69px; border: 0px; background: none; font: bold 18px Arial; text-align: center; color: rgb(60, 141, 188); padding: 0px; appearance: none;">
-                                        </div>
-                                        <div class="knob-label">New Visitors</div>
-                                    </div>
-                                    <div class="col-6 col-md-3 text-center">
-                                        <div style="display:inline;width:90px;height:90px;"><canvas width="101"
-                                                height="101" style="width: 90px; height: 90px;"></canvas><input
-                                                type="text" class="knob" value="0" data-width="90" data-height="90"
-                                                data-fgcolor="#3c8dbc"
-                                                style="width: 49px; height: 30px; position: absolute; vertical-align: middle; margin-top: 30px; margin-left: -69px; border: 0px; background: none; font: bold 18px Arial; text-align: center; color: rgb(60, 141, 188); padding: 0px; appearance: none;">
-                                        </div>
-                                        <div class="knob-label">New Visitors</div>
-                                    </div>
-                                    <div class="col-6 col-md-3 text-center">
-                                        <div style="display:inline;width:90px;height:90px;"><canvas width="101"
-                                                height="101" style="width: 90px; height: 90px;"></canvas><input
-                                                type="text" class="knob" value="89" data-width="90" data-height="90"
-                                                data-fgcolor="green" disabled
-                                                style="width: 49px; height: 30px; position: absolute; vertical-align: middle; margin-top: 30px; margin-left: -69px; border: 0px; background: none; font: bold 18px Arial; text-align: center; color: rgb(60, 141, 188); padding: 0px; appearance: none;">
-                                        </div>
-                                        <div class="knob-label">New Visitors</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </section>
@@ -163,7 +82,6 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
         <script>
             $(function () {
                 /* jQueryKnob */
-
                 $('.knob').knob({
                     // change: function (value) {
                     //     console.log("change : " + value);

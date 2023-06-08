@@ -24,9 +24,11 @@ if (empty($pages)) {
                             <?= $Plan->getDescription() ?>
                         </p>
                     </div>
-                    <a href="#" class="text-info">more</a>
-                    <a href="delete.php?id=<?= $Plan->Get_Id() ?>" class="text-danger">delet</a>
-                    <a href="#">edite</a>
+                    <div class="d-flex justify-content-evenly">
+                        <a href="#" class="btn btn-outline-info">more</a>
+                        <a href="delete.php?id=<?= $Plan->Get_Id() ?>" class="btn btn-outline-danger">delete</a>
+                        <a href="update.php?id=<?= $Plan->Get_Id() ?>" class="btn btn-outline-dark">edite</a>
+                    </div>
                 </div>
             </div>
             <?php

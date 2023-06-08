@@ -56,22 +56,6 @@ class PlanManager
         return mysqli_fetch_all($query, MYSQLI_ASSOC);
     }
 
-    public function RechercherTous($sql)
-    {
-        // $sql = 'SELECT Id, name, description FROM projects';
-        $query = mysqli_query($this->getConnection(), $sql);
-        $projects_data = mysqli_fetch_all($query, MYSQLI_ASSOC);
-        $projects = array();
-        foreach ($projects_data as $project_data) {
-            $project = new Project();
-            $project->setId($project_data['Id']);
-            $project->setName($project_data['name']);
-            $project->setDescription($project_data['description']);
-            array_push($projects, $project);
-        }
-        return $projects;
-    }
-
     // add plan
     public function addPlan($plan)
     {
@@ -97,14 +81,30 @@ class PlanManager
     // edit plan
     public function editPlan($plan)
     {
-        $sql = "UPDATE `plans` SET `Plan_name` = ?, `Description` = ? WHERE Id = ?";
+        $sql = "UPDATE `plans` SET `Plan_name` = ?, `Description` = ? WHERE Id_Plans = ?";
         $name = $plan->getName();
         $Description = $plan->getDescription();
-        $id = $plan->getId();
+        $id = $plan->Get_Id();
         $stmt = $this->getConnection()->prepare($sql);
         $stmt->bind_param("ssi", $name, $Description, $id);
         $stmt->execute();
         $stmt->close();
+    }
+
+    // get plan by id
+    public function getPlanById($id)
+    {
+        $sql = "SELECT * FROM `plans` WHERE Id_Plans = ?";
+        $stmt = $this->getConnection()->prepare($sql);
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $data = mysqli_fetch_assoc($result);
+        $plan = new Plan();
+        $plan->set_Id($data['Id_Plans']);
+        $plan->setName($data['Plan_name']);
+        $plan->setDescription($data['Description']);
+        return $plan;
     }
 
 }

@@ -18,6 +18,7 @@ class UserManager
         return $this->Connection;
     }
 
+
     public function Registration($user)
     {
         $First_Name = $user->getFirst_Name();
