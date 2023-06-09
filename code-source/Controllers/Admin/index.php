@@ -9,6 +9,8 @@ $manager = new Manager;
 $usersNumber = $manager->getUsersNumber();
 // plans number
 $plansNumber = $manager->getPlansNumber();
+// members number
+$Members = $manager->getMembersNumber();
 
 include_once(__ROOT__ . "/Views/Admin/index.php")
     ?>

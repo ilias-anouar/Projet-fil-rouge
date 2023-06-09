@@ -26,7 +26,7 @@ if (empty($pages)) {
                         <?= $user['First_name'] ?>
                         <?= $user['Last_name'] ?>
                     </p>
-                    <a href="#">View all chapters <i class="fas fa-chevron-right"></i></a>
+                    <a href="#">View all information <i class="fas fa-chevron-right"></i></a>
                 </div>
                 <div class="user-info">
                     <div class="progress-container">
@@ -44,7 +44,7 @@ if (empty($pages)) {
                     <?php
                     if ($user['Plan_name'] != null) {
                         ?>
-                        <a href="progress.php?id=<?php $user['Id_User'] ?>" class="button">Progress</a>
+                        <a href="progress.php?id=<?php echo $user['Id_User'] ?>" class="button">Progress</a>
                         <?php
                     } else {
                         ?>

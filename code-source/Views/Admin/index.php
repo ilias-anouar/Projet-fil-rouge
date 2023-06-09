@@ -35,7 +35,9 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Welcome <?= $_SESSION['user']['First_name'] ?></h1>
+                            <h1>Welcome
+                                <?= $_SESSION['user']['First_name'] ?>
+                            </h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -68,20 +70,19 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                                 </div>
                             </div>
                             <!-- ./col -->
-                            <!-- <div class="col-lg-4 col-6">
+                            <div class="col-lg-6 col-6">
                                 <div class="small-box bg-success">
                                     <div class="inner">
-                                        <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-                                        <p>Bounce Rate</p>
+                                        <h3><?php echo $Members ?></h3>
+                                        <p>Members</p>
                                     </div>
                                     <div class="icon">
                                         <i class="ion ion-stats-bars"></i>
                                     </div>
-                                    <a href="#" class="small-box-footer">More info <i
+                                    <a href="Users/" class="small-box-footer">More info <i
                                             class="fas fa-arrow-circle-right"></i></a>
                                 </div>
-                            </div> -->
+                            </div>
                             <!-- ./col -->
                             <div class="col-lg-6 col-6">
                                 <!-- small box -->
@@ -100,7 +101,7 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                                 </div>
                             </div>
                             <!-- ./col -->
-                            <!-- <div class="col-lg-3 col-6">
+                            <div class="col-lg-6 col-6">
                                 <div class="small-box bg-danger">
                                     <div class="inner">
                                         <h3>65</h3>
@@ -113,7 +114,7 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                                     <a href="#" class="small-box-footer">More info <i
                                             class="fas fa-arrow-circle-right"></i></a>
                                 </div>
-                            </div> -->
+                            </div>
                             <!-- ./col -->
                         </div>
                     </div>

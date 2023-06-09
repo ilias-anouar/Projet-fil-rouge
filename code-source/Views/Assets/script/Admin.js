@@ -3,7 +3,7 @@ var _Query = "";
 $(document).on("click", ".page-link", function (e) {
   e.preventDefault();
   let pageId = $(this).data("page");
-  console.log(pageId);
+  // console.log(pageId);
   $.ajax({
     url: "index.php",
     type: "POST",
@@ -24,7 +24,7 @@ $(document).on("click", ".page-link", function (e) {
 $(document).on("keyup", "#search_plan", function () {
   let value = $(this).val();
   _Query = value;
-  console.log(_Query);
+  // console.log(_Query);
   $.ajax({
     url: "/Projet-fil-rouge/code-source/Controllers/Admin/Plans/index.php",
     type: "POST",
@@ -42,7 +42,7 @@ $(document).on("keyup", "#search_plan", function () {
 $(document).on("keyup", "#search_User", function () {
   let value = $(this).val();
   _Query = value;
-  console.log(_Query);
+  // console.log(_Query);
   $.ajax({
     url: "index.php",
     type: "POST",

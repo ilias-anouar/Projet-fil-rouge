@@ -43,6 +43,18 @@ class Manager
         $row = mysqli_fetch_assoc($result);
         return $row['nbUsers'];
     }
+
+    public function getMembersNumber()
+    {
+        $sql = "SELECT COUNT(*) as nbMember FROM `inscription`";
+        $result = mysqli_query($this->getConnection(), $sql);
+        if (!$result) {
+            $message = 'Erreur de requête: ' . mysqli_error($this->getConnection());
+            throw new Exception($message);
+        }
+        $row = mysqli_fetch_assoc($result);
+        return $row['nbMember'];
+    }
 }
 
 
