@@ -37,7 +37,6 @@ $pages = $userManager->pages($results, $pagesNum, $itemsPerPage);
 
 if ($IsAjaxRequest) {
     include_once(__ROOT__ . "/Views/Admin/Users/Card.php");
-
 } else {
     include_once(__ROOT__ . "/Views/Admin/Users/index.php");
 

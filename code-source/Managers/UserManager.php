@@ -91,15 +91,16 @@ class UserManager
         // echo "<pre>";
         // var_dump($users_data);
         // echo "</pre>";
-        $users = array();
-        foreach ($users_data as $user_data) {
-            $user = new User();
-            $user->Set_Id($user_data['Id_User']);
-            $user->setFirst_name($user_data['First_name']);
-            $user->setLast_name($user_data['Last_name']);
-            array_push($users, $user);
-        }
-        return $users;
+        // $users = array();
+        // foreach ($users_data as $user_data) {
+        //     $user = new User();
+        //     $user->Set_Id($user_data['Id_User']);
+        //     $user->setFirst_name($user_data['First_name']);
+        //     $user->setLast_name($user_data['Last_name']);
+        //     $user->setEmail($user_data['E_mail']);
+        //     array_push($users, $user);
+        // }
+        return $users_data;
     }
     private function searchPlansByName($name)
     {

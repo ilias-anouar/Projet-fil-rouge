@@ -1,4 +1,5 @@
 <?php
+var_dump($IsAjaxRequest);
 if (empty($pages)) {
     ?>
     <div class="alert alert-warning alert-dismissible">
@@ -17,18 +18,26 @@ if (empty($pages)) {
             <div class="user">
                 <div class="user-preview">
                     <h6>User</h6>
-                    <h2>
-                        <?= $user->getFirst_Name() ?>
-                        <?= $user->getLast_Name() ?>
-                    </h2>
+                    <p>
+                        <?= $user['First_name'] ?>
+                        <?= $user['Last_name'] ?>
+                    </p>
                     <a href="#">View all chapters <i class="fas fa-chevron-right"></i></a>
                 </div>
                 <div class="user-info">
                     <div class="progress-container">
                         <div class="progress"></div>
                     </div>
-                    <h3>Callbacks & Closures</h3>
-                    <button class="button">Continue</button>
+                    <p>
+                        <?php
+                        if ($user['Plan_name'] != null) {
+                            echo $user['Plan_name'];
+                        } else {
+                            echo "No inscription";
+                        }
+                        ?>
+                    </p>
+                    <button class="button">Progress</button>
                 </div>
             </div>
             <?php
