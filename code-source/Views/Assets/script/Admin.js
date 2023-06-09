@@ -12,10 +12,6 @@ $(document).on("click", ".page-link", function (e) {
       pageId: pageId,
     },
     success: function (response) {
-      // console.log(response);
-      // Handle the response
-      // let div = $(".result");
-      // console.log(div);
       $(".result").html(response);
     },
     error: function (xhr, status, error) {
@@ -33,9 +29,7 @@ $(document).on("keyup", "#search_plan", function () {
     url: "/Projet-fil-rouge/code-source/Controllers/Admin/Plans/index.php",
     type: "POST",
     data: { Query: value },
-    success: function (response, status) {
-      // console.log(response);
-      console.log(status);
+    success: function (response) {
       $(".result").html(response);
     },
     error: function (xhr, status, error) {
@@ -50,12 +44,10 @@ $(document).on("keyup", "#search_User", function () {
   _Query = value;
   console.log(_Query);
   $.ajax({
-    url: "/Projet-fil-rouge/code-source/Controllers/Admin/Users/index.php",
+    url: "index.php",
     type: "POST",
     data: { Query: value },
     success: function (response, status) {
-      console.log(response);
-      console.log(status);
       $(".result").html(response);
     },
     error: function (xhr, status, error) {

@@ -235,7 +235,7 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
         <?php
         include_once(__ROOT__ . "/Views/Layout/links.php");
         ?>
-        <script src="/Projet-fil-rouge/code-source/Views/Assets/script/client.js"></script>
+        <script src="/Projet-fil-rouge/code-source/Views/Assets/script/Admin.js"></script>
 </body>
 
 </html>

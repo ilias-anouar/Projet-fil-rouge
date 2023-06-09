@@ -167,11 +167,11 @@
 }
 
 .button {
-    background-color: #201e47;
-    border: 0;
+    background-color: transparent;
+    border: 2px orangered solid;
     border-radius: 50px;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
-    color: #fff;
+    color: black;
     font-size: 16px;
     padding: 6px 12px;
     position: absolute;
@@ -183,13 +183,22 @@
 .button:hover {
     color: white;
     background-color: orangered;
+    border: 1;
+}
+
+.disabled {
+    border: 0;
+    pointer-events: none;
+    background-color: #ddd;
+    color: rgb(122, 122, 122);
 }
 
 @media only screen and (max-width: 768px) {
+
     /* body {
         background-color: lightblue;
     } */
-    .user{
+    .user {
         min-width: 100%;
     }
 }

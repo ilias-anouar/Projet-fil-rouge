@@ -9,12 +9,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $IsAjaxRequest = true;
 }
 if (isset($_POST['pageId'])) {
+    // echo $_POST['pageId'];
     $currentPage = $_POST['pageId'];
 } else {
     $currentPage = 1;
 }
 
 if (isset($_POST['Query'])) {
+    // echo $_POST['Query'];
     $Query = $_POST['Query'];
 } else {
     $Query = "";
