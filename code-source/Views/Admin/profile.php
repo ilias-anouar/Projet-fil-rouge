@@ -103,16 +103,16 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                                 <div class="card">
                                     <div class="card-header p-2">
                                         <ul class="nav nav-pills">
-                                            <li class="nav-item"><a class="nav-link active" href="#timeline"
-                                                    data-toggle="tab">Timeline</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="#settings"
+                                            <!-- <li class="nav-item"><a class="nav-link active" href="#timeline"
+                                                    data-toggle="tab">Timeline</a></li> -->
+                                            <li class="nav-item"><a class="nav-link active" href="#settings"
                                                     data-toggle="tab">Settings</a></li>
                                         </ul>
                                     </div><!-- /.card-header -->
                                     <div class="card-body">
                                         <div class="tab-content">
                                             <!-- /.tab-pane -->
-                                            <div class="tab-pane active" id="timeline">
+                                            <div class="tab-pane" id="timeline">
                                                 <!-- The timeline -->
                                                 <div class="timeline timeline-inverse">
                                                     <!-- timeline time label -->
@@ -171,7 +171,7 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                                             </div>
                                             <!-- /.tab-pane -->
 
-                                            <div class="tab-pane" id="settings">
+                                            <div class="tab-pane active" id="settings">
                                                 <form class="form-horizontal">
                                                     <div class="form-group row">
                                                         <label for="inputName" class="col-sm-2 col-form-label">First

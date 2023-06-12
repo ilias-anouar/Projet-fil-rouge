@@ -98,6 +98,7 @@ class PlanManager
         $stmt = $this->getConnection()->prepare($sql);
         $stmt->bind_param("i", $id);
         $stmt->execute();
+        
         $result = $stmt->get_result();
         $data = mysqli_fetch_assoc($result);
         $plan = new Plan();

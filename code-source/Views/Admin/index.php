@@ -60,7 +60,7 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                                         <h3>
                                             <?php echo $plansNumber ?>
                                         </h3>
-                                        <p>Available plans</p>
+                                        <p>Plans</p>
                                     </div>
                                     <div class="icon">
                                         <i class="fas fa-list"></i>
@@ -91,7 +91,7 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                                         <h3>
                                             <?php echo $usersNumber ?>
                                         </h3>
-                                        <p>User Registrations</p>
+                                        <p>Users</p>
                                     </div>
                                     <div class="icon">
                                         <i class="ion ion-person-add"></i>
@@ -104,14 +104,14 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                             <div class="col-lg-6 col-6">
                                 <div class="small-box bg-danger">
                                     <div class="inner">
-                                        <h3>65</h3>
+                                        <h3>%</h3>
 
-                                        <p>Unique Visitors</p>
+                                        <p>States</p>
                                     </div>
                                     <div class="icon">
                                         <i class="ion ion-pie-graph"></i>
                                     </div>
-                                    <a href="#" class="small-box-footer">More info <i
+                                    <a href="States/" class="small-box-footer">More info <i
                                             class="fas fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
