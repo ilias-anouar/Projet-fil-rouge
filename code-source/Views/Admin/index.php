@@ -79,7 +79,7 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                                     <div class="icon">
                                         <i class="ion ion-stats-bars"></i>
                                     </div>
-                                    <a href="Users/" class="small-box-footer">More info <i
+                                    <a href="Inscription/" class="small-box-footer">More info <i
                                             class="fas fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>

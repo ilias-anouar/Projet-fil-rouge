@@ -61,7 +61,7 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                     </div>
                     <div class="result">
                         <?php
-                        include_once(__ROOT__ . "/Views/Admin/Users/Table.php");
+                        include_once(__ROOT__ . "/Views/Admin/Inscription/Card.php");
                         ?>
                     </div>
                 </div>

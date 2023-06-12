@@ -85,27 +85,22 @@ class UserManager
         return $pages;
     }
 
-    public function rechercherUserNom($name)
+    public function AllInscriptedUserByName($name)
     {
-        $users_data = $this->AllInsctiptedUserByName($name);
-        // echo "<pre>";
-        // var_dump($users_data);
-        // echo "</pre>";
-        // $users = array();
-        // foreach ($users_data as $user_data) {
-        //     $user = new User();
-        //     $user->Set_Id($user_data['Id_User']);
-        //     $user->setFirst_name($user_data['First_name']);
-        //     $user->setLast_name($user_data['Last_name']);
-        //     $user->setEmail($user_data['E_mail']);
-        //     array_push($users, $user);
-        // }
+        $sql = "SELECT * FROM users JOIN inscription ON users.Id_User = inscription.Id_User LEFT JOIN plans ON inscription.Id_Plans = plans.Id_Plans WHERE First_name LIKE ? and role !=1";
+
+        $stmt = $this->getConnection()->prepare($sql);
+        $search_name = "%$name%";
+        $stmt->bind_param("s", $search_name);
+        $stmt->execute();
+        $query = $stmt->get_result();
+        $users_data = mysqli_fetch_all($query, MYSQLI_ASSOC);
         return $users_data;
     }
-    private function AllInsctiptedUserByName($name)
-    {
-        $sql = "SELECT * FROM users LEFT JOIN inscription ON users.Id_User = inscription.Id_User LEFT JOIN plans ON inscription.Id_Plans = plans.Id_Plans WHERE First_name LIKE ? and role !=1";
 
+    private function AllUsers($name)
+    {
+        $sql = "SELECT * FROM users WHERE First_name LIKE ? and role !=1";
         $stmt = $this->getConnection()->prepare($sql);
         $search_name = "%$name%";
         $stmt->bind_param("s", $search_name);
@@ -114,10 +109,20 @@ class UserManager
         return mysqli_fetch_all($query, MYSQLI_ASSOC);
     }
 
-    // public function (Type $args): void
-    // {
-    //     # code...
-    // }
+    public function SearchAllUser($name)
+    {
+        $users_data = $this->AllUsers($name);
+        $Users_data = array();
+        foreach ($users_data as $user_data) {
+            $User = new User;
+            $User->Set_Id($user_data['Id_User']);
+            $User->setFirst_name($user_data['First_name']);
+            $User->setLast_name($user_data['Last_name']);
+            $User->setEmail($user_data['E_mail']);
+            array_push($Users_data, $User);
+        }
+        return $Users_data;
+    }
 }
 
 ?>

@@ -9,19 +9,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $IsAjaxRequest = true;
 }
 if (isset($_POST['pageId'])) {
-    // echo $_POST['pageId'];
     $currentPage = $_POST['pageId'];
 } else {
     $currentPage = 1;
 }
 
 if (isset($_POST['Query'])) {
-    // echo $_POST['Query'];
     $Query = $_POST['Query'];
 } else {
     $Query = "";
 }
-$results = $userManager->rechercherUserNom($Query);
+$results = $userManager->SearchAllUser($Query);
 
 $itemsPerPage = 6;
 $totalItems = count($results);
@@ -32,15 +30,11 @@ if ($totalItems % 6 == 0) {
 }
 
 $pages = $userManager->CreatPages($results, $pagesNum, $itemsPerPage);
-// echo "<pre>";
-// var_dump($pages);
-// echo "</pre>";
-// View
 
+// View
 if ($IsAjaxRequest) {
-    include_once(__ROOT__ . "/Views/Admin/Users/Card.php");
+    include_once(__ROOT__ . "/Views/Admin/Users/Table.php");
 } else {
     include_once(__ROOT__ . "/Views/Admin/Users/index.php");
-
 }
 ?>
