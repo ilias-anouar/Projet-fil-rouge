@@ -32,7 +32,7 @@ if ($totalItems % 6 == 0) {
     $pagesNum = ceil($totalItems / $itemsPerPage);
 }
 
-$pages = $PlanManager->pages($results, $pagesNum, $itemsPerPage);
+$pages = $PlanManager->CreatPages($results, $pagesNum, $itemsPerPage);
 // echo "<pre>";
 // var_dump($pages);
 // echo "</pre>";

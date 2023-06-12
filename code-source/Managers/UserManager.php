@@ -71,7 +71,7 @@ class UserManager
         }
     }
 
-    public function pages($items, $pagesNum, $itemsPerPage)
+    public function CreatPages($items, $pagesNum, $itemsPerPage)
     {
         $pages = array();
         $totalItems = count($items);
@@ -85,9 +85,9 @@ class UserManager
         return $pages;
     }
 
-    public function rechercherParNom($name)
+    public function rechercherUserNom($name)
     {
-        $users_data = $this->searchPlansByName($name);
+        $users_data = $this->AllInsctiptedUserByName($name);
         // echo "<pre>";
         // var_dump($users_data);
         // echo "</pre>";
@@ -102,7 +102,7 @@ class UserManager
         // }
         return $users_data;
     }
-    private function searchPlansByName($name)
+    private function AllInsctiptedUserByName($name)
     {
         $sql = "SELECT * FROM users LEFT JOIN inscription ON users.Id_User = inscription.Id_User LEFT JOIN plans ON inscription.Id_Plans = plans.Id_Plans WHERE First_name LIKE ? and role !=1";
 
@@ -113,6 +113,11 @@ class UserManager
         $query = $stmt->get_result();
         return mysqli_fetch_all($query, MYSQLI_ASSOC);
     }
+
+    // public function (Type $args): void
+    // {
+    //     # code...
+    // }
 }
 
 ?>

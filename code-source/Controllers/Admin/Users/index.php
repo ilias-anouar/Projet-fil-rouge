@@ -21,7 +21,7 @@ if (isset($_POST['Query'])) {
 } else {
     $Query = "";
 }
-$results = $userManager->rechercherParNom($Query);
+$results = $userManager->rechercherUserNom($Query);
 
 $itemsPerPage = 6;
 $totalItems = count($results);
@@ -31,7 +31,7 @@ if ($totalItems % 6 == 0) {
     $pagesNum = ceil($totalItems / $itemsPerPage);
 }
 
-$pages = $userManager->pages($results, $pagesNum, $itemsPerPage);
+$pages = $userManager->CreatPages($results, $pagesNum, $itemsPerPage);
 // echo "<pre>";
 // var_dump($pages);
 // echo "</pre>";
