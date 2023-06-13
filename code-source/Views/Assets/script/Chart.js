@@ -34,7 +34,7 @@ $.ajax({
       };
 
       var InscriptionChartOptions = {
-        maintainAspectRatio: true,
+        maintainAspectRatio: false,
         responsive: true,
         legend: {
           display: true,

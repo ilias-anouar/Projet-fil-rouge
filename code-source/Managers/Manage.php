@@ -83,7 +83,42 @@ class Manager
 
         return $response;
     }
-    
+
+
+    public function getPlanData()
+    {
+        $totalSql = "SELECT COUNT(*) AS total_inscriptions FROM inscription";
+        $totalResult = mysqli_query($this->getConnection(), $totalSql);
+        $totalRow = mysqli_fetch_assoc($totalResult);
+        $totalInscriptions = $totalRow['total_inscriptions'];
+
+        $sql = "SELECT plans.Plan_name, COUNT(inscription.Id_Inscription) AS num_inscriptions
+            FROM plans
+            LEFT JOIN inscription ON plans.Id_Plans = inscription.Id_Plans
+            GROUP BY plans.Id_Plans
+            ORDER BY num_inscriptions DESC";
+        $result = mysqli_query($this->getConnection(), $sql);
+
+        $data = [];
+
+        // Process the query result
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $percentage = ($row["num_inscriptions"] / $totalInscriptions) * 100;
+
+                $data[] = [
+                    'Plan_name' => $row['Plan_name'],
+                    'num_inscriptions' => (int) $row['num_inscriptions'],
+                    'percentage' => round($percentage, 2),
+                    'totalInscriptions' => $totalInscriptions
+                ];
+            }
+        }
+
+        return $data;
+    }
+
+
 }
 
 

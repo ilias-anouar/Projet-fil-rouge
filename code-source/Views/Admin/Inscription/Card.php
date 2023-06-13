@@ -44,7 +44,7 @@ if (empty($pages)) {
                     <?php
                     if ($user['Plan_name'] != null) {
                         ?>
-                        <a href="progress.php?id=<?php echo $user['Id_User'] ?>" class="button">Progress</a>
+                        <a href="progress.php?id=<?php echo $user['Id_Inscription'] ?>" class="button">Progress</a>
                         <?php
                     } else {
                         ?>

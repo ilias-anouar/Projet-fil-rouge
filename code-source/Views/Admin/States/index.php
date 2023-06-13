@@ -20,7 +20,7 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
 
         <!-- Main Sidebar Container -->
         <?php
-        include_once(__ROOT__ . "/Views/Layout/Admin.sidebare.php");
+        // include_once(__ROOT__ . "/Views/Layout/Admin.sidebare.php");
         ?>
         <!-- /.sidebar -->
         <!-- Content Wrapper. Contains page content -->
@@ -97,12 +97,12 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                                         <!-- /.col -->
                                         <div class="col-md-4">
                                             <p class="text-center">
-                                                <strong>Goal Completion</strong>
+                                                <strong>The must Chosen plan</strong>
                                             </p>
 
                                             <div class="progress-group">
                                                 user per plan
-                                                <span class="float-right"><b></b>/10</span>
+                                                <span class="float-right"><b>/10</b></span>
                                                 <div class="progress progress-sm">
                                                     <div class="progress-bar bg-primary" style="width: 80%"></div>
                                                 </div>
