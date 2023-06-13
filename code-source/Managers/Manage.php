@@ -55,6 +55,35 @@ class Manager
         $row = mysqli_fetch_assoc($result);
         return $row['nbMember'];
     }
+
+    public function getChartData()
+    {
+        $sql = "SELECT plans.Plan_name, COUNT(inscription.Id_Inscription) AS num_inscriptions
+        FROM plans
+        LEFT JOIN inscription ON plans.Id_Plans = inscription.Id_Plans
+        GROUP BY plans.Id_Plans";
+        $result = mysqli_query($this->getConnection(), $sql);
+
+        $data = [];
+        $labels = [];
+
+        // Process the query result
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $labels[] = $row["Plan_name"];
+                $data[] = (int) $row["num_inscriptions"];
+            }
+        }
+
+        // Prepare the response as JSON
+        $response = [
+            'labels' => $labels,
+            'data' => $data,
+        ];
+
+        return $response;
+    }
+    
 }
 
 

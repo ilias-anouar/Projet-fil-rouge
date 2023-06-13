@@ -51,7 +51,7 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h5 class="card-title">Monthly Recap Report</h5>
+                                    <h5 class="card-title">Inscription chart</h5>
 
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -77,7 +77,7 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                                     <div class="row">
                                         <div class="col-md-8">
                                             <p class="text-center">
-                                                <strong>Sales: 1 Jan, 2014 - 30 Jul, 2014</strong>
+                                                <strong>Inscription per plan</strong>
                                             </p>
                                             <div class="chart">
                                                 <div class="chartjs-size-monitor">
@@ -88,7 +88,7 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                                                         <div class=""></div>
                                                     </div>
                                                 </div>
-                                                <canvas id="salesChart" height="202"
+                                                <canvas id="inscriptionChart" height="202"
                                                     style="height: 180px; display: block; width: 904px;" width="1017"
                                                     class="chartjs-render-monitor"></canvas>
                                             </div>
@@ -101,8 +101,8 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                                             </p>
 
                                             <div class="progress-group">
-                                                Add Products to Cart
-                                                <span class="float-right"><b>160</b>/200</span>
+                                                user per plan
+                                                <span class="float-right"><b></b>/10</span>
                                                 <div class="progress progress-sm">
                                                     <div class="progress-bar bg-primary" style="width: 80%"></div>
                                                 </div>
@@ -189,9 +189,6 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                             </div>
                             <!-- /.card -->
                         </div>
-                        <?php
-                        // include_once(__ROOT__ . "/Views/Admin/Users/Table.php");
-                        ?>
                     </div>
                 </div>
             </section>

@@ -71,6 +71,17 @@ class UserManager
         }
     }
 
+    // update user
+    public function updateUser($user)
+    {
+        $id = $user->getId();
+        $First_Name = $user->getFirstName();
+        $Last_Name = $user->getLastName();
+        $sql = "UPDATE `users` SET `First_Name` = '$First_Name
+        ', `Last_Name` = '$Last_Name' WHERE `users`.`id` = $id";
+        mysqli_query($this->getConnection(), $sql);
+    }
+
     public function CreatPages($items, $pagesNum, $itemsPerPage)
     {
         $pages = array();

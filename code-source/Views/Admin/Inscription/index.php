@@ -51,11 +51,11 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
             <!-- content -->
             <section class="content">
                 <div class="container-fluid">
-                    <h2 class="text-center">Users</h2>
+                    <h2 class="text-center">Memebers</h2>
                     <div class="row p-3">
                         <div class="col-sm-12 col-md-6">
                             <div id="search" class="dataTables_filter"><input type="search" id="search_User"
-                                    class="form-control" placeholder="User name" aria-controls="search_User">
+                                    class="form-control" placeholder="Memeber name" aria-controls="search_User">
                             </div>
                         </div>
                     </div>

@@ -61,16 +61,18 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                                 <!-- Profile Image -->
                                 <div class="card card-danger card-outline">
                                     <div class="card-body box-profile">
-                                        <h3 class="profile-username text-center">Nina Mcintire</h3>
+                                        <h3 class="profile-username text-center">
+                                            <?= $_SESSION['user']['First_name'] ?>
+                                            <?= $_SESSION['user']['Last_name'] ?>
+                                        </h3>
 
                                         <!-- <p class="text-muted text-center"></p> -->
 
                                         <ul class="list-group list-group-unbordered mb-3">
                                             <li class="list-group-item">
-                                                <b>Weight</b> <a class="float-right">65 kg</a>
-                                            </li>
-                                            <li class="list-group-item">
-                                                <b>Height</b> <a class="float-right">180 cm</a>
+                                                <b>Role</b> <a class="float-right">
+                                                    <?= $_SESSION['user']['Role'] ?>
+                                                </a>
                                             </li>
                                         </ul>
                                     </div>
@@ -85,9 +87,9 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                                     </div>
                                     <!-- /.card-header -->
                                     <div class="card-body">
-                                        <strong><i class="fas fa-book mr-1"></i>Body Fat</strong>
+                                        <strong><i class="fas fa-book mr-1"></i>Website</strong>
                                         <p class="text-muted">
-                                            13 %
+                                            Admin
                                         </p>
                                         <hr>
                                         <strong><i class="far fa-file-alt mr-1"></i>Quote</strong>
@@ -103,82 +105,23 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                                 <div class="card">
                                     <div class="card-header p-2">
                                         <ul class="nav nav-pills">
-                                            <!-- <li class="nav-item"><a class="nav-link active" href="#timeline"
-                                                    data-toggle="tab">Timeline</a></li> -->
                                             <li class="nav-item"><a class="nav-link active" href="#settings"
                                                     data-toggle="tab">Settings</a></li>
                                         </ul>
                                     </div><!-- /.card-header -->
                                     <div class="card-body">
                                         <div class="tab-content">
-                                            <!-- /.tab-pane -->
-                                            <div class="tab-pane" id="timeline">
-                                                <!-- The timeline -->
-                                                <div class="timeline timeline-inverse">
-                                                    <!-- timeline time label -->
-                                                    <div class="time-label">
-                                                        <span class="bg-orange">
-                                                            10 Feb. 2014
-                                                        </span>
-                                                    </div>
-                                                    <!-- /.timeline-label -->
-                                                    <!-- timeline item -->
-                                                    <div>
-                                                        <!-- <i class="fas fa-envelope bg-primary"></i> -->
-                                                        <i class="fa fa-star bg-success"></i>
-                                                        <div class="timeline-item">
-                                                            <h3 class="timeline-header">Current Measures</h3>
-                                                            <div class="timeline-body">
-                                                                <ul>
-                                                                    <li>height: ?</li>
-                                                                    <li>weight: ?</li>
-                                                                    <li>neck: ?</li>
-                                                                    <li>waist: ?</li>
-                                                                    <li>hip: ?</li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- END timeline item -->
-                                                    <!-- timeline time label -->
-                                                    <div class="time-label">
-                                                        <span class="bg-danger">
-                                                            3 Jan. 2014
-                                                        </span>
-                                                    </div>
-                                                    <!-- /.timeline-label -->
-                                                    <!-- timeline item -->
-                                                    <div>
-                                                        <i class="fa fa-flag-checkered bg-danger"></i>
-                                                        <div class="timeline-item">
-                                                            <h3 class="timeline-header">Staring Measures</h3>
-                                                            <div class="timeline-body">
-                                                                <ul>
-                                                                    <li>height: ?</li>
-                                                                    <li>weight: ?</li>
-                                                                    <li>neck: ?</li>
-                                                                    <li>waist: ?</li>
-                                                                    <li>hip: ?</li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- END timeline item -->
-                                                    <div>
-                                                        <i class="far fa-clock bg-gray"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- /.tab-pane -->
-
                                             <div class="tab-pane active" id="settings">
-                                                <form class="form-horizontal">
+                                                <form method="post" class="form-horizontal">
+                                                    <input type="hidden" name="id"
+                                                        value="<?= $_SESSION['user']['Id_User'] ?>">
                                                     <div class="form-group row">
                                                         <label for="inputName" class="col-sm-2 col-form-label">First
                                                             Name</label>
                                                         <div class="col-sm-10">
-                                                            <input type="email" class="form-control" id="inputName"
-                                                                placeholder="First Name">
+                                                            <input type="text" class="form-control" id="inputName"
+                                                                placeholder="First Name" name="First_name"
+                                                                value="<?= $_SESSION['user']['First_name'] ?>">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
@@ -186,7 +129,8 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                                                             Name</label>
                                                         <div class="col-sm-10">
                                                             <input type="text" class="form-control" id="inputName2"
-                                                                placeholder="Last Name">
+                                                                placeholder="Last Name" name="Last_name"
+                                                                value="<?= $_SESSION['user']['Last_name'] ?>">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
@@ -194,14 +138,21 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                                                             class="col-sm-2 col-form-label">Email</label>
                                                         <div class="col-sm-10">
                                                             <input type="email" class="form-control" id="inputEmail"
-                                                                placeholder="Email">
+                                                                placeholder="Email" name="E_mail"
+                                                                value="<?= $_SESSION['user']['E_mail'] ?>">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
-                                                        <div class="col-lg-10">
-                                                            <button type="submit" class="btn bg-orange">Update</button>
+                                                        <div class="col-8">
+                                                            <button type="submit" class="btn bg-orange"
+                                                                name="Update_user">Update</button>
                                                         </div>
-                                                        <div class="col">
+                                                        <div class="col-2">
+                                                            <button type="button" class="btn btn-danger"
+                                                                data-toggle="modal" data-target="#modal-default">Update
+                                                                password</button>
+                                                        </div>
+                                                        <div class="col end">
                                                             <a href="Logout.php" class="btn btn-danger">Log
                                                                 out</a>
                                                         </div>
@@ -219,6 +170,35 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                         </div>
                     </div>
             </section>
+            <div class="modal fade" id="modal-default" style="display: none;" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form method="post">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Update Password</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group row">
+                                    <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+                                    <div class="col-sm-10">
+                                        <input type="email" class="form-control" id="inputEmail" placeholder="Email"
+                                            name="E_mail">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer justify-content-between">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn bg-orange">Save changes</button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
             <!--/.content -->
             <!-- Control Sidebar -->
             <aside class="control-sidebar control-sidebar-dark">
