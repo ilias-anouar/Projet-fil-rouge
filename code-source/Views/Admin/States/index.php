@@ -20,7 +20,7 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
 
         <!-- Main Sidebar Container -->
         <?php
-        // include_once(__ROOT__ . "/Views/Layout/Admin.sidebare.php");
+        include_once(__ROOT__ . "/Views/Layout/Admin.sidebare.php");
         ?>
         <!-- /.sidebar -->
         <!-- Content Wrapper. Contains page content -->
@@ -88,8 +88,8 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                                                         <div class=""></div>
                                                     </div>
                                                 </div>
-                                                <canvas id="inscriptionChart" height="202"
-                                                    style="height: 180px; display: block; width: 904px;" width="1017"
+                                                <canvas id="inscriptionChart" height="100%"
+                                                    style="height: 100%; width: 904px;" width="1017"
                                                     class="chartjs-render-monitor"></canvas>
                                             </div>
                                             <!-- /.chart-responsive -->
@@ -100,41 +100,22 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                                                 <strong>The must Chosen plan</strong>
                                             </p>
 
-                                            <div class="progress-group">
-                                                user per plan
-                                                <span class="float-right"><b>/10</b></span>
-                                                <div class="progress progress-sm">
-                                                    <div class="progress-bar bg-primary" style="width: 80%"></div>
+                                            <?php foreach ($response as $resp) {
+                                                ?>
+                                                <div class="progress-group">
+                                                    <?= $resp['Plan_name'] ?>
+                                                    <span class="float-right"><b>
+                                                            <?= $resp['num_inscriptions'] ?>
+                                                        </b>/
+                                                        <?= $resp['totalInscriptions'] ?>
+                                                    </span>
+                                                    <div class="progress progress-sm">
+                                                        <div class="progress-bar bg-primary"
+                                                            style="width:<?= $resp['percentage'] ?>%"></div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <!-- /.progress-group -->
-
-                                            <div class="progress-group">
-                                                Complete Purchase
-                                                <span class="float-right"><b>310</b>/400</span>
-                                                <div class="progress progress-sm">
-                                                    <div class="progress-bar bg-danger" style="width: 75%"></div>
-                                                </div>
-                                            </div>
-
-                                            <!-- /.progress-group -->
-                                            <div class="progress-group">
-                                                <span class="progress-text">Visit Premium Page</span>
-                                                <span class="float-right"><b>480</b>/800</span>
-                                                <div class="progress progress-sm">
-                                                    <div class="progress-bar bg-success" style="width: 60%"></div>
-                                                </div>
-                                            </div>
-
-                                            <!-- /.progress-group -->
-                                            <div class="progress-group">
-                                                Send Inquiries
-                                                <span class="float-right"><b>250</b>/500</span>
-                                                <div class="progress progress-sm">
-                                                    <div class="progress-bar bg-warning" style="width: 50%"></div>
-                                                </div>
-                                            </div>
-                                            <!-- /.progress-group -->
+                                                <?php
+                                            } ?>
                                         </div>
                                         <!-- /.col -->
                                     </div>
