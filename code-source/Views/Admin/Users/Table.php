@@ -9,19 +9,19 @@ if (empty($pages)) {
     <?php
 } else {
     ?>
-    <table class="table table-striped projects">
+    <table class="table table-bordered table-hover">
         <thead>
             <tr>
-                <th style="width: 2%">
+                <th style="width: 2%" class="text-center">
                     Id
                 </th>
-                <th style="width: 20%">
+                <th style="width: 5%">
                     Full name
                 </th>
-                <th class="text-center" style="width: 50%">
+                <th class="text-center" style="width: 12%">
                     Email
                 </th>
-                <th style="width: 20%">
+                <th style="width: 10%" class="text-center">
                     Actions
                 </th>
             </tr>
@@ -32,7 +32,7 @@ if (empty($pages)) {
             foreach ($users as $user) {
                 ?>
                 <tr>
-                    <td>
+                    <td class="text-center">
                         <?= $user->Get_Id() ?>
                     </td>
                     <td>
@@ -41,10 +41,10 @@ if (empty($pages)) {
                             <?= $user->getLast_Name() ?>
                         </a>
                     </td>
-                    <td>
+                    <td class="text-center">
                         <?= $user->getEmail() ?>
                     </td>
-                    <td class="project-actions">
+                    <td class="project-actions text-center">
                         <a class="btn btn-primary btn-sm"
                             href="mailto:<?= $user->getEmail() ?>?subject=Mail from our 'IA FITNESS TRACKER'&body=Some body text here">
                             Send Email <i class="fa fa-envelope"></i>

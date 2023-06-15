@@ -57,19 +57,6 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                             <i class="fas fa-minus"></i>
                                         </button>
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-tool dropdown-toggle"
-                                                data-toggle="dropdown" aria-expanded="false">
-                                                <i class="fas fa-wrench"></i>
-                                            </button>
-                                            <div class="dropdown-menu dropdown-menu-right" role="menu" style="">
-                                                <a href="#" class="dropdown-item">Action</a>
-                                                <a href="#" class="dropdown-item">Another action</a>
-                                                <a href="#" class="dropdown-item">Something else here</a>
-                                                <a class="dropdown-divider"></a>
-                                                <a href="#" class="dropdown-item">Separated link</a>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                                 <!-- /.card-header -->
@@ -88,7 +75,7 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                                                         <div class=""></div>
                                                     </div>
                                                 </div>
-                                                <canvas id="inscriptionChart" height="100%"
+                                                <canvas id="inscriptionChart" height="400"
                                                     style="height: 100%; width: 904px;" width="1017"
                                                     class="chartjs-render-monitor"></canvas>
                                             </div>

@@ -53,7 +53,7 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                 <div class="container-fluid">
                     <div class="result">
                         <div class="row">
-                            <div class="col-lg-6 col-6">
+                            <div class="col-lg-3 col-6">
                                 <!-- small box -->
                                 <div class="small-box bg-maroon">
                                     <div class="inner">
@@ -70,10 +70,12 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                                 </div>
                             </div>
                             <!-- ./col -->
-                            <div class="col-lg-6 col-6">
+                            <div class="col-lg-3 col-6">
                                 <div class="small-box bg-success">
                                     <div class="inner">
-                                        <h3><?php echo $Members ?></h3>
+                                        <h3>
+                                            <?php echo $Members ?>
+                                        </h3>
                                         <p>Members</p>
                                     </div>
                                     <div class="icon">
@@ -84,7 +86,7 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                                 </div>
                             </div>
                             <!-- ./col -->
-                            <div class="col-lg-6 col-6">
+                            <div class="col-lg-3 col-6">
                                 <!-- small box -->
                                 <div class="small-box bg-orange">
                                     <div class="inner">
@@ -101,8 +103,8 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                                 </div>
                             </div>
                             <!-- ./col -->
-                            <div class="col-lg-6 col-6">
-                                <div class="small-box bg-danger">
+                            <div class="col-lg-3 col-6">
+                                <div class="small-box bg-info">
                                     <div class="inner">
                                         <h3>%</h3>
 
