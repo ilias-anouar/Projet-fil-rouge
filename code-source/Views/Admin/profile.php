@@ -43,7 +43,7 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
             <section class="content-header">
                 <div class="container-fluid">
                     <div class="row mb-2">
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="index.php">Home</a></li>
                                 <li class="breadcrumb-item active">Profile</li>
@@ -54,6 +54,20 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
             </section>
             <!-- content -->
             <section class="content">
+                <!-- <div class="d-flex justify-content-center"> -->
+                <?php
+                if (isset($success)) {
+                    ?>
+                    <div class="alert alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <h5><i class="icon fas fa-check"></i> Alert!</h5>
+                        Profile updated successfuly.
+                    </div>
+                    <?php
+                }
+                ?>
+                <div id="responce"></div>
+                <!-- </div> -->
                 <div class="container-fluid">
                     <div class="result">
                         <div class="row">
@@ -181,17 +195,45 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <div class="form-group row">
-                                    <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
-                                    <div class="col-sm-10">
-                                        <input type="email" class="form-control" id="inputEmail" placeholder="Email"
-                                            name="E_mail">
+                                <div class="input-group mb-3">
+                                    <label for="Current_password" class="col-sm-4 col-form-label">Current
+                                        password</label>
+                                    <input type="password" class="form-control" id="Current_password"
+                                        placeholder="Current password" aria-label="Current password"
+                                        aria-describedby="button-addon2">
+                                    <div class="input-group-append">
+                                        <button class="btn show" type="button">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <label for="New_password" class="col-sm-4 col-form-label">New password</label>
+                                    <input type="password" class="form-control" id="New_password"
+                                        placeholder="New password" aria-label="New password"
+                                        aria-describedby="button-addon2">
+                                    <div class="input-group-append">
+                                        <button class="btn show" type="button">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <label for="Password_confirmation"
+                                        class="col-sm-4 col-form-label">Confirmation</label>
+                                    <input type="password" class="form-control" id="Password_confirmation"
+                                        placeholder="Password confirmation" aria-label="New password"
+                                        aria-describedby="button-addon2">
+                                    <div class="input-group-append">
+                                        <button class="btn show" type="button">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
                             <div class="modal-footer justify-content-between">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                <button type="submit" class="btn bg-orange">Save changes</button>
+                                <button type="submit" class="btn bg-orange update">Save changes</button>
                             </div>
                         </form>
                     </div>
@@ -216,6 +258,56 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
         include_once(__ROOT__ . "/Views/Layout/links.php");
         ?>
         <script src="/Projet-fil-rouge/code-source/Views/Assets/script/Admin.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('.show').on('click', function () {
+                    var input = $(this).closest('.input-group').find('input');
+
+                    if (input.attr('type') === 'password') {
+                        input.attr('type', 'text');
+                        $(this).find('i').removeClass('fa-eye').addClass('fa-eye-slash');
+                    } else {
+                        input.attr('type', 'password');
+                        $(this).find('i').removeClass('fa-eye-slash').addClass('fa-eye');
+                    }
+                });
+
+                $(".update").on('click', function () {
+                    event.preventDefault()
+                    console.log("the one");
+                    let Current_password = $('#Current_password').val()
+                    let New_password = $('#New_password').val()
+                    let Password_confirmation = $('#Password_confirmation').val()
+                    console.log(New_password);
+                    console.log(Password_confirmation);
+                    if (New_password == Password_confirmation) {
+                        console.log(Current_password);
+                        $.ajax({
+                            url: "profile.php",
+                            type: "POST",
+                            data: {
+                                action: 1,
+                                password: Current_password,
+                                newpass: New_password
+                            },
+                            success: function (response) {
+                                $('#modal-default').modal('hide')
+                                console.log(response);
+                                $("#responce").html(response);
+                            },
+                            error: function (xhr, status, error) {
+                                console.log("Error:", error);
+                                console.log("xhr:", xhr);
+                            },
+                        });
+                    } else {
+                        alert("please make sure the New password and the Password confirmation are the same");
+                    }
+                })
+            });
+
+
+        </script>
 </body>
 
 </html>

@@ -74,11 +74,11 @@ class UserManager
     // update user
     public function updateUser($user)
     {
-        $id = $user->getId();
-        $First_Name = $user->getFirstName();
-        $Last_Name = $user->getLastName();
+        $id = $user->Get_Id();
+        $First_Name = $user->getFirst_Name();
+        $Last_Name = $user->getLast_Name();
         $sql = "UPDATE `users` SET `First_Name` = '$First_Name
-        ', `Last_Name` = '$Last_Name' WHERE `users`.`id` = $id";
+        ', `Last_Name` = '$Last_Name' WHERE `users`.`Id_User` = $id";
         mysqli_query($this->getConnection(), $sql);
     }
 
@@ -94,6 +94,21 @@ class UserManager
             }
         }
         return $pages;
+    }
+
+    // update password
+    public function UpdatePassword($newPass, $oldPass, $email)
+    {
+        $sql = "SELECT Password from users where E_Mail='$email'";
+        $result = mysqli_query($this->getConnection(), $sql);
+        $row = mysqli_fetch_array($result);
+        $hashedOldPass = $row[0];
+        echo "<br>";
+        if (password_verify($oldPass, $hashedOldPass)) {
+            $hashNewPass = $this->generateHashedPassword($newPass);
+            $sql = "update users set Password='$hashNewPass' where E_mail='$email' ";
+            mysqli_query($this->getConnection(), $sql);
+        }
     }
 
     public function AllInscriptedUserByName($name)

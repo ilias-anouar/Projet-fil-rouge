@@ -100,5 +100,4 @@ class MeasureManager
 
         return $bmi;
     }
-
 }
