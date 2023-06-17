@@ -1,8 +1,8 @@
 <?php
 session_start();
 include "../../../Views/Layout/root.php";
-require_once(__ROOT__ . '/Managers/UserManager.php');
-$userManager = new UserManager;
+require_once(__ROOT__ . '/Managers/InscriptionManager.php');
+$InscriptionManager = new InscriptionManager;
 $IsAjaxRequest = false;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -19,7 +19,7 @@ if (isset($_POST['Query'])) {
 } else {
     $Query = "";
 }
-$results = $userManager->AllInscriptedUserByName($Query);
+$results = $InscriptionManager->AllInscriptedUserByName($Query);
 
 $itemsPerPage = 6;
 $totalItems = count($results);
@@ -29,7 +29,7 @@ if ($totalItems % 6 == 0) {
     $pagesNum = ceil($totalItems / $itemsPerPage);
 }
 
-$pages = $userManager->CreatPages($results, $pagesNum, $itemsPerPage);
+$pages = $InscriptionManager->CreatPages($results, $pagesNum, $itemsPerPage);
 
 // View
 if ($IsAjaxRequest) {

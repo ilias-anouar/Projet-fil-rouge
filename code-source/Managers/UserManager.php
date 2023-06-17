@@ -111,18 +111,6 @@ class UserManager
         }
     }
 
-    public function AllInscriptedUserByName($name)
-    {
-        $sql = "SELECT * FROM users JOIN inscription ON users.Id_User = inscription.Id_User LEFT JOIN plans ON inscription.Id_Plans = plans.Id_Plans WHERE First_name LIKE ? and role !=1";
-
-        $stmt = $this->getConnection()->prepare($sql);
-        $search_name = "%$name%";
-        $stmt->bind_param("s", $search_name);
-        $stmt->execute();
-        $query = $stmt->get_result();
-        $users_data = mysqli_fetch_all($query, MYSQLI_ASSOC);
-        return $users_data;
-    }
 
     private function AllUsers($name)
     {
