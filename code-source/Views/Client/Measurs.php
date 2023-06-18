@@ -7,7 +7,7 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
 ?>
 <style>
     <?php
-    include_once(__ROOT__ . "/Views/Assets/css/Admin.css");
+    include_once(__ROOT__ . "/Views/Assets/css/Client.css");
     ?>
 </style>
 
@@ -25,7 +25,7 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
 
         <!-- Main Sidebar Container -->
         <?php
-        include_once(__ROOT__ . "/Views/Layout/sidebare.php");
+        // include_once(__ROOT__ . "/Views/Layout/sidebare.php");
         ?>
         <!-- /.sidebar -->
         <!-- Content Wrapper. Contains page content -->

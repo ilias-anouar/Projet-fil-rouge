@@ -7,8 +7,9 @@ include "../../Views/Layout/root.php";
 require_once(__ROOT__ . '/Managers/MeasursManager.php');
 $MeasursManager = new MeasureManager;
 $id_user = $_SESSION['user']['Id_User'];
-include_once(__ROOT__ . "/Views/Client/Measurs.php");
-
+// echo "<pre>";
+// var_dump($_SESSION['user']);
+// echo "</pre>";
 if (!empty($_POST)) {
     $Id_Inscription = $_SESSION['user']['Id_Inscription'];
     $age = $_POST['Age'];
@@ -16,7 +17,7 @@ if (!empty($_POST)) {
     $measurs = new Measures($_POST['height'], $_POST['weight'], $_POST['neck'], $_POST['waist'], $_POST['hip']);
     $measurs->Set_Id($Id_Inscription);
     $MeasursManager->add($measurs, $gender, $id_user, $age);
-
     header("Location: index.php");
 }
+include_once(__ROOT__ . "/Views/Client/Measurs.php");
 ?>

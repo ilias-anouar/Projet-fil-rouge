@@ -38,15 +38,15 @@ class InscriptionManager
         echo "<per>";
         var_dump($stmt->execute());
         echo "</per>";
-        // $stmt->execute();
-        // $stmt->close();
-        // $id_sql = "SELECT Id_Inscription FROM inscription WHERE Id_User = ?";
-        // $stmt = $this->getConnection()->prepare($id_sql);
-        // $stmt->bind_param("i", $userId);
-        // $stmt->execute();
-        // $query = $stmt->get_result();
-        // $Id_Inscription = mysqli_fetch_assoc($query);
-        // return $Id_Inscription;
+        $stmt->execute();
+        $stmt->close();
+        $id_sql = "SELECT Id_Inscription FROM inscription WHERE Id_User = ?";
+        $stmt = $this->getConnection()->prepare($id_sql);
+        $stmt->bind_param("i", $userId);
+        $stmt->execute();
+        $query = $stmt->get_result();
+        $Id_Inscription = mysqli_fetch_assoc($query);
+        return $Id_Inscription;
     }
 
     public function AllInscriptedUserByName($name)

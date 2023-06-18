@@ -1,5 +1,6 @@
 <?php
 use MyNamespace\Entities\User\User;
+
 include "../../Views/Layout/root.php";
 include_once(__ROOT__ . "/Managers/UserManager.php");
 $userManager = new UserManager();
@@ -18,6 +19,9 @@ if (isset($_POST['Login'])) {
     $User->setEmail($_POST['log_mail']);
     $User->setPassword($_POST['log_pass']);
     $logging_in = $userManager->Login($User);
+    echo "<pre>";
+    var_dump($logging_in);
+    echo "</pre>";
     if ($logging_in) {
         session_start();
         $_SESSION['user'] = $logging_in;

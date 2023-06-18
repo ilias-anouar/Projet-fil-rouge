@@ -67,7 +67,10 @@ class UserManager
         var_dump($verify);
         if ($verify) {
             $Id_User = $user['Id_User'];
-            $sql = "SELECT * FROM `users` LEFT JOIN inscription ON users.Id_User = inscription.Id_User WHERE users.Id_User = '$Id_User'";
+            $sql = "SELECT users.Id_User, users.First_name, users.Last_name, users.age, users.E_mail, users.Password, users.Role, users.Gender, inscription.Id_Inscription, inscription.Inscription_Date, inscription.Id_Plans 
+        FROM users 
+        LEFT JOIN inscription ON users.Id_User = inscription.Id_User 
+        WHERE users.Id_User = '$Id_User'";
             $result = mysqli_query($this->getConnection(), $sql);
             $user = mysqli_fetch_assoc($result);
             return $user;
