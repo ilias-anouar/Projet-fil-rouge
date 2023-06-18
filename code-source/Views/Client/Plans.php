@@ -7,7 +7,7 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
 ?>
 <style>
     <?php
-    include_once(__ROOT__ . "/Views/Assets/css/Client.css");
+    include_once(__ROOT__ . "/Views/Assets/css/Admin.css");
     ?>
 </style>
 
@@ -51,30 +51,20 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
             <!-- content -->
             <section class="content">
                 <div class="container-fluid">
-                    <h2 class="text-center mb-4">Your States and progress</h2>
-                    <div class="row mb-4">
-                        <div class="state mx-auto" id="bmi-status">
-                            <div class="result text-center">
+                    <h2 class="text-center">Select you Plan or goal</h2>
+                    <p class="text-center">To build a custom fitness plan tailored to your needs, please select one of
+                        the following plans:
+                    </p>
+                    <div class="row justify-content-end">
+                        <div class="col-sm-12 col-md-6 flex-end">
+                            <div id="search" class="dataTables_filter"><input type="search" id="search_plan"
+                                    class="form-control" placeholder="Plan name" aria-controls="search_plan">
                             </div>
-                            <div class="bg"></div>
-                            <div class="blob"></div>
-                        </div>
-                        <div class="state mx-auto" id="bmr-status">
-                            <div class="result text-center" >
-                            </div>
-                            <div class="bg"></div>
-                            <div class="blob"></div>
-                        </div>
-                        <div class="state mx-auto" id="bw-status">
-                            <div class="result text-center">
-                            </div>
-                            <div class="bg"></div>
-                            <div class="blob"></div>
                         </div>
                     </div>
                     <div class="result">
                         <?php
-                        include_once(__ROOT__ . "/Views/Client/chart.php");
+                        include_once(__ROOT__ . "/Views/Client/Cards.php");
                         // include_once(__ROOT__ . "/Views/Client/form.php");
                         ?>
                     </div>

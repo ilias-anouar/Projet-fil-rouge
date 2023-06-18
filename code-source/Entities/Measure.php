@@ -1,6 +1,12 @@
 <?php
-include "Base.php";
-class Measures extends Base
+
+namespace MyNamespace\Entities\Inscription;
+
+include "Inscription.php";
+
+use MyNamespace\Entities\Inscription\Inscription;
+
+class Measures extends Inscription
 {
     private $height;
     private $weight;

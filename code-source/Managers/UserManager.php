@@ -1,6 +1,7 @@
 <?php
 // include "../../Views/Layout/root.php";
 include_once(__ROOT__ . "/Entities/User.php");
+// include_once(__ROOT__ . "/Entities/Measure.php");
 class UserManager
 {
     private $Connection = Null;
@@ -65,6 +66,10 @@ class UserManager
         $verify = password_verify($password, $user['Password']);
         var_dump($verify);
         if ($verify) {
+            $Id_User = $user['Id_User'];
+            $sql = "SELECT * FROM `users` LEFT JOIN inscription ON users.Id_User = inscription.Id_User WHERE users.Id_User = '$Id_User'";
+            $result = mysqli_query($this->getConnection(), $sql);
+            $user = mysqli_fetch_assoc($result);
             return $user;
         } else {
             return false;
@@ -128,7 +133,7 @@ class UserManager
         $users_data = $this->AllUsers($name);
         $Users_data = array();
         foreach ($users_data as $user_data) {
-            $User = new User;
+            $User = new \MyNamespace\Entities\User\User;
             $User->Set_Id($user_data['Id_User']);
             $User->setFirst_name($user_data['First_name']);
             $User->setLast_name($user_data['Last_name']);

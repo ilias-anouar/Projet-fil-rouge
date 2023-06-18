@@ -1,5 +1,9 @@
 <?php
-require "Plan.php";
+namespace MyNamespace\Entities\Inscription;
+
+include_once "Plan.php";
+
+use MyNamespace\Entities\Plan\Plan;
 
 // incription class
 class Inscription extends Plan

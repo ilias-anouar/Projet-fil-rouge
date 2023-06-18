@@ -9,7 +9,6 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
     <?php
     include_once(__ROOT__ . "/Views/Assets/css/Client.css");
     ?>
-
     .nav-pills .nav-link.active,
     .nav-pills .show>.nav-link {
         color: #fff;
@@ -71,10 +70,14 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
 
                                         <ul class="list-group list-group-unbordered mb-3">
                                             <li class="list-group-item">
-                                                <b>Weight</b> <a class="float-right">65 kg</a>
+                                                <b>Weight</b> <a class="float-right">
+                                                    <?= $measurs_data->getWeight() ?> kg
+                                                </a>
                                             </li>
                                             <li class="list-group-item">
-                                                <b>Height</b> <a class="float-right">180 cm</a>
+                                                <b>Height</b> <a class="float-right">
+                                                    <?= $measurs_data->getHeight() ?> cm
+                                                </a>
                                             </li>
                                         </ul>
                                     </div>
@@ -91,12 +94,12 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                                     <div class="card-body">
                                         <strong><i class="fas fa-book mr-1"></i>Body Fat</strong>
                                         <p class="text-muted">
-                                            13 %
+                                            <?= $measurs_data->getBody_Fat() ?> %
                                         </p>
                                         <hr>
-                                        <strong><i class="far fa-file-alt mr-1"></i>Quote</strong>
-                                        <p class="text-muted">"Fitness is not just about building a strong body, but
-                                            also nurturing a resilient mind and fostering an unbreakable spirit."</p>
+                                        <strong><i class="far fa-file-alt mr-1"></i>Quote By :<p class="Quote-author">
+                                            </p></strong>
+                                        <p class="text-muted Quote-text"></p>
                                     </div>
                                     <!-- /.card-body -->
                                 </div>
@@ -121,8 +124,7 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                                                 <div class="timeline timeline-inverse">
                                                     <!-- timeline time label -->
                                                     <div class="time-label">
-                                                        <span class="bg-orange">
-                                                            10 Feb. 2014
+                                                        <span class="bg-orange now">
                                                         </span>
                                                     </div>
                                                     <!-- /.timeline-label -->
@@ -134,11 +136,21 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                                                             <h3 class="timeline-header">Current Measures</h3>
                                                             <div class="timeline-body">
                                                                 <ul>
-                                                                    <li>height: ?</li>
-                                                                    <li>weight: ?</li>
-                                                                    <li>neck: ?</li>
-                                                                    <li>waist: ?</li>
-                                                                    <li>hip: ?</li>
+                                                                    <li>height:
+                                                                        <?= $measurs_data->getHeight() ?> cm
+                                                                    </li>
+                                                                    <li>weight:
+                                                                        <?= $measurs_data->getWeight() ?> kg
+                                                                    </li>
+                                                                    <li>neck:
+                                                                        <?= $measurs_data->getNeck() ?> cm
+                                                                    </li>
+                                                                    <li>waist:
+                                                                        <?= $measurs_data->getWaist() ?> cm
+                                                                    </li>
+                                                                    <li>hip:
+                                                                        <?= $measurs_data->getHip() ?> cm
+                                                                    </li>
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -146,8 +158,7 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                                                     <!-- END timeline item -->
                                                     <!-- timeline time label -->
                                                     <div class="time-label">
-                                                        <span class="bg-danger">
-                                                            3 Jan. 2014
+                                                        <span class="bg-danger date">
                                                         </span>
                                                     </div>
                                                     <!-- /.timeline-label -->
@@ -158,11 +169,7 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                                                             <h3 class="timeline-header">Staring Measures</h3>
                                                             <div class="timeline-body">
                                                                 <ul>
-                                                                    <li>height: ?</li>
-                                                                    <li>weight: ?</li>
-                                                                    <li>neck: ?</li>
-                                                                    <li>waist: ?</li>
-                                                                    <li>hip: ?</li>
+
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -176,13 +183,16 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                                             <!-- /.tab-pane -->
 
                                             <div class="tab-pane" id="settings">
-                                                <form class="form-horizontal">
+                                                <form method="post" class="form-horizontal">
+                                                    <input type="hidden" name="id"
+                                                        value="<?= $_SESSION['user']['Id_User'] ?>">
                                                     <div class="form-group row">
                                                         <label for="inputName" class="col-sm-2 col-form-label">First
                                                             Name</label>
                                                         <div class="col-sm-10">
-                                                            <input type="email" class="form-control" id="inputName"
-                                                                placeholder="First Name">
+                                                            <input type="text" class="form-control" id="inputName"
+                                                                placeholder="First Name" name="First_name"
+                                                                value="<?= $_SESSION['user']['First_name'] ?>">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
@@ -190,7 +200,8 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                                                             Name</label>
                                                         <div class="col-sm-10">
                                                             <input type="text" class="form-control" id="inputName2"
-                                                                placeholder="Last Name">
+                                                                placeholder="Last Name" name="Last_name"
+                                                                value="<?= $_SESSION['user']['Last_name'] ?>">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
@@ -198,14 +209,21 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                                                             class="col-sm-2 col-form-label">Email</label>
                                                         <div class="col-sm-10">
                                                             <input type="email" class="form-control" id="inputEmail"
-                                                                placeholder="Email">
+                                                                placeholder="Email" name="E_mail"
+                                                                value="<?= $_SESSION['user']['E_mail'] ?>">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
-                                                        <div class="col-lg-10">
-                                                            <button type="submit" class="btn bg-orange">Update</button>
+                                                        <div class="col-8">
+                                                            <button type="submit" class="btn bg-orange"
+                                                                name="Update_user">Update</button>
                                                         </div>
-                                                        <div class="col">
+                                                        <div class="col-2">
+                                                            <button type="button" class="btn btn-danger"
+                                                                data-toggle="modal" data-target="#modal-default">Update
+                                                                password</button>
+                                                        </div>
+                                                        <div class="col end">
                                                             <a href="Logout.php" class="btn btn-danger">Log
                                                                 out</a>
                                                         </div>
@@ -239,7 +257,87 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
         <?php
         include_once(__ROOT__ . "/Views/Layout/links.php");
         ?>
-        <script src="/Projet-fil-rouge/code-source/Views/Assets/script/client.js"></script>
+        <div class="modal fade" id="modal-default" style="display: none;" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form method="post">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Update Password</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="input-group mb-3">
+                                <label for="Current_password" class="col-sm-4 col-form-label">Current
+                                    password</label>
+                                <input type="password" class="form-control" id="Current_password"
+                                    placeholder="Current password" aria-label="Current password"
+                                    aria-describedby="button-addon2">
+                                <div class="input-group-append">
+                                    <button class="btn show" type="button">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="input-group mb-3">
+                                <label for="New_password" class="col-sm-4 col-form-label">New password</label>
+                                <input type="password" class="form-control" id="New_password" placeholder="New password"
+                                    aria-label="New password" aria-describedby="button-addon2">
+                                <div class="input-group-append">
+                                    <button class="btn show" type="button">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <label for="Password_confirmation" class="col-sm-4 col-form-label">Confirmation</label>
+                                <input type="password" class="form-control" id="Password_confirmation"
+                                    placeholder="Password confirmation" aria-label="New password"
+                                    aria-describedby="button-addon2">
+                                <div class="input-group-append">
+                                    <button class="btn show" type="button">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn bg-orange update">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+            <script src="/Projet-fil-rouge/code-source/Views/Assets/script/client.js"></script>
+            <script>
+                $(document).ready(function () {
+                    // Check if the measurements are already stored in local storage
+                    if (!localStorage.getItem('measuresEntered')) {
+                        // Retrieve the values from the server or any other source
+                        var height = <?= $measurs_data->getHeight() ?>;
+                        var weight = <?= $measurs_data->getWeight() ?>;
+                        var neck = <?= $measurs_data->getNeck() ?>;
+                        var waist = <?= $measurs_data->getWaist() ?>;
+                        var hip = <?= $measurs_data->getHip() ?>;
+                        var starting_date = "<?= $Inscription_data->getDateInscription() ?>"
+
+                        console.log(starting_date);
+                        // Store the values in local storage
+                        localStorage.setItem('height', height);
+                        localStorage.setItem('weight', weight);
+                        localStorage.setItem('neck', neck);
+                        localStorage.setItem('waist', waist);
+                        localStorage.setItem('hip', hip);
+                        localStorage.setItem('starting_date', starting_date);
+
+                        // Set a flag to indicate that the measurements have been entered
+                        localStorage.setItem('measuresEntered', 'true');
+                    }
+                });
+            </script>
 </body>
 
 </html>

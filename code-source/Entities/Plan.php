@@ -1,5 +1,10 @@
 <?php
-include "Base.php";
+namespace MyNamespace\Entities\Plan;
+
+include_once "Base.php";
+
+use MyNamespace\Entities\Base\Base;
+
 class Plan extends Base
 {
     private $Name;

@@ -7,7 +7,7 @@
     </div> -->
     <!-- /.card-header -->
     <!-- form start -->
-    <form>
+    <form method="post">
         <div class="card-body">
             <div class="form-group">
                 <label for="height">Height (in cm):</label>
@@ -30,8 +30,12 @@
                 <input class="form-control" type="number" id="hip" name="hip" required>
             </div>
             <div class="form-group">
+                <label for="Age">Age:</label>
+                <input class="form-control" type="number" id="Age" name="Age" required>
+            </div>
+            <div class="form-group">
                 <label for="gender">Gender:</label>
-                <select id="gender" class="form-control">
+                <select id="gender" name="gender" class="form-control">
                     <option selected>__Please select a gender__</option>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>

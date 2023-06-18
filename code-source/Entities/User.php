@@ -1,5 +1,9 @@
 <?php
-include "Base.php";
+namespace MyNamespace\Entities\User;
+
+include_once "Base.php";
+
+use MyNamespace\Entities\Base\Base;
 class User extends Base
 {
     private $first_name;

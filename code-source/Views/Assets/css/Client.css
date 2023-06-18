@@ -2,97 +2,165 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800");
 
 .gr-1 {
-    background: linear-gradient(170deg, rgb(238, 50, 82) 0%, orange 100%);
+  background: linear-gradient(170deg, rgb(238, 50, 82) 0%, orange 100%);
 }
 
-
 * {
-    transition: 0.5s;
+  transition: 0.5s;
 }
 
 .align-middle {
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .column {
-    margin-top: 3rem;
-    padding-left: 3rem;
+  margin-top: 3rem;
+  padding-left: 3rem;
 }
 
 .column:hover {
-    padding-left: 0;
+  padding-left: 0;
 }
 
 .column:hover .style .txt {
-    margin-left: 1rem;
+  margin-left: 1rem;
 }
 
 .column:hover .style .txt h1,
 .column:hover .style .txt p {
-    color: white;
-    opacity: 1;
+  color: white;
+  opacity: 1;
 }
 
 .column:hover a {
-    color: white;
+  color: white;
 }
 
 .column:hover a:after {
-    width: 10%;
+  width: 10%;
 }
 
 .style {
-    min-height: 170px;
-    margin: 0;
-    padding: 1.7rem 1.2rem;
-    border: none;
-    border-radius: 0;
-    color: rgb(255, 255, 255);
-    text-shadow: 1px 1px rgb(238, 50, 82);
-    letter-spacing: 0.05rem;
-    font-family: "Oswald", sans-serif;
-    box-shadow: 0 0 21px rgba(0, 0, 0, 0.27);
+  min-height: 170px;
+  margin: 0;
+  padding: 1.7rem 1.2rem;
+  border: none;
+  border-radius: 0;
+  color: rgb(255, 255, 255);
+  text-shadow: 1px 1px rgb(238, 50, 82);
+  letter-spacing: 0.05rem;
+  font-family: "Oswald", sans-serif;
+  box-shadow: 0 0 21px rgba(0, 0, 0, 0.27);
 }
 
 .style .txt {
-    margin-left: -3rem;
-    z-index: 1;
+  margin-left: -3rem;
+  z-index: 1;
 }
 
 .style .txt h1 {
-    font-size: 1.5rem;
-    font-weight: 300;
-    text-transform: uppercase;
+  font-size: 1.5rem;
+  font-weight: 300;
+  text-transform: uppercase;
 }
 
 .style .txt p {
-    font-size: 0.7rem;
-    font-family: "Open Sans", sans-serif;
-    letter-spacing: 0rem;
-    margin-top: 33px;
-    opacity: 0;
-    color: white;
+  font-size: 0.7rem;
+  font-family: "Open Sans", sans-serif;
+  letter-spacing: 0rem;
+  margin-top: 33px;
+  opacity: 0;
+  color: white;
 }
 
 .style a {
-    z-index: 3;
-    font-size: 0.7rem;
-    color: rgb(226, 176, 214);
-    margin-left: 1rem;
-    position: relative;
-    bottom: -0.5rem;
-    text-transform: uppercase;
+  z-index: 3;
+  font-size: 0.7rem;
+  color: rgb(226, 176, 214);
+  margin-left: 1rem;
+  position: relative;
+  bottom: -0.5rem;
+  text-transform: uppercase;
 }
 
 .style a:after {
-    content: "";
-    display: inline-block;
-    height: 0.5em;
-    width: 0;
-    margin-right: -100%;
-    margin-left: 10px;
-    border-top: 1px solid white;
-    transition: 0.5s;
+  content: "";
+  display: inline-block;
+  height: 0.5em;
+  width: 0;
+  margin-right: -100%;
+  margin-left: 10px;
+  border-top: 1px solid white;
+  transition: 0.5s;
+}
+
+.state {
+  position: relative;
+  width: 200px;
+  height: 100px;
+  border-radius: 14px;
+  z-index: 1111;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 5px 5px 10px #bebebe, -20px -20px 60px #ffffff;
+}
+
+.bg {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 190px;
+  height: 240px;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(24px);
+  border-radius: 10px;
+  overflow: hidden;
+  outline: 2px solid white;
+}
+
+.blob {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: #ff0000;
+  opacity: 1;
+  /* color: lightgreen; */
+  filter: blur(12px);
+  animation: blob-bounce 5s infinite ease;
+}
+
+@keyframes blob-bounce {
+  0% {
+    transform: translate(-100%, -100%) translate3d(0, 0, 0);
+  }
+
+  25% {
+    transform: translate(-100%, -100%) translate3d(100%, 0, 0);
+  }
+
+  50% {
+    transform: translate(-100%, -100%) translate3d(100%, 100%, 0);
+  }
+
+  75% {
+    transform: translate(-100%, -100%) translate3d(0, 100%, 0);
+  }
+
+  100% {
+    transform: translate(-100%, -100%) translate3d(0, 0, 0);
+  }
+}
+
+.result {
+  z-index: 4;
 }

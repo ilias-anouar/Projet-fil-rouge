@@ -1,4 +1,5 @@
 <?php
+use MyNamespace\Entities\Plan\Plan;
 include_once(__ROOT__ . "/Entities/Plan.php");
 
 class PlanManager

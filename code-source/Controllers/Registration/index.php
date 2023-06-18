@@ -1,4 +1,5 @@
 <?php
+use MyNamespace\Entities\User\User;
 include "../../Views/Layout/root.php";
 include_once(__ROOT__ . "/Managers/UserManager.php");
 $userManager = new UserManager();

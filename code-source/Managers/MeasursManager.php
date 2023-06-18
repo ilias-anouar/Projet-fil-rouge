@@ -1,6 +1,13 @@
 <?php
-// include "../../Views/Layout/root.php";
+namespace MyNamespace\Entities\Measures;
+
+use MyNamespace\Entities\Inscription\Inscription;
+
 include_once(__ROOT__ . "/Entities/Measure.php");
+include_once(__ROOT__ . "/Entities/Inscription.php");
+
+// use MyNamespace\Entities\Measures\Measures;
+
 class MeasureManager
 {
     private $Connection = Null;
@@ -12,18 +19,95 @@ class MeasureManager
             // Vérifier l'ouverture de la connexion avec la base de données
             if (!$this->Connection) {
                 $message = 'Erreur de connexion: ' . mysqli_connect_error();
-                throw new Exception($message);
+                throw new \FFI\Exception($message);
             }
         }
         return $this->Connection;
     }
 
-    public function add($Measures)
+    public function add($Measures, $gender, $id_user, $age)
     {
-        // requête SQL
-        $sql = "";
-        mysqli_query($this->getConnection(), $sql);
+        $connection = $this->getConnection();
+
+        // Extract the measure data
+        $weight = $Measures->getWeight();
+        $height = $Measures->getHeight();
+        $neck = $Measures->getNeck();
+        $waist = $Measures->getWaist();
+        $hip = $Measures->getHip();
+        $Id_Inscription = $Measures->Get_Id();
+
+        // Calculate missing measures
+        $bodyFat = $this->calculateBodyFat($waist, $neck, $height, $gender, $weight);
+        $bmr = $this->calculateBMR($weight, $height, $age, $gender);
+        $bmi = $this->calculateBMI($weight, $height);
+        $idealWeight = $this->calculateIdealWeight($height, $gender);
+
+        // Prepare the SQL statements for inserting measures and updating gender
+        $measureSql = "INSERT INTO Measures (Weight, Height, Neck, Waist, Hip, Body_Fat, BMR, BMI, Ideal_Weight, Id_Inscription) 
+                   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        $userSql = "UPDATE users SET `age` = ?, gender = ? WHERE Id_User = ?";
+
+        // Prepare the statements and bind the parameters
+        $measureStmt = $connection->prepare($measureSql);
+        $measureStmt->bind_param("dddddddddi", $weight, $height, $neck, $waist, $hip, $bodyFat, $bmr, $bmi, $idealWeight, $Id_Inscription);
+
+        $userStmt = $connection->prepare($userSql);
+        $userStmt->bind_param("isi", $age, $gender, $id_user);
+
+        // Execute the statements
+        $measureStmt->execute();
+        $userStmt->execute();
+
+        // Close the statements
+        $measureStmt->close();
+        $userStmt->close();
     }
+
+
+    public function getMeasureData($inscriptionId)
+    {
+        $connection = $this->getConnection();
+
+        $sql = "SELECT * FROM Measures
+                JOIN Inscription ON Measures.Id_Inscription = Inscription.Id_Inscription
+                WHERE Measures.Id_Inscription = ?";
+        $stmt = $connection->prepare($sql);
+        $stmt->bind_param("i", $inscriptionId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $measureData = $result->fetch_assoc();
+
+        $stmt->close();
+
+        if ($measureData) {
+            // Create Inscription object
+            $inscription = new Inscription;
+            // Set Inscription properties
+            $inscription->Set_Id($measureData['Id_Inscription']);
+            $inscription->setDateInscription($measureData['Inscription_Date']);
+            // ...
+
+            // Create Measures object and set the properties
+            $measures = new \MyNamespace\Entities\Inscription\Measures(
+                $measureData['Height'],
+                $measureData['Weight'],
+                $measureData['Neck'],
+                $measureData['Waist'],
+                $measureData['Hip']
+            );
+            $measures->setBody_Fat($measureData['Body_Fat']);
+            $measures->setBMRt($measureData['BMR']);
+            $measures->setBMI($measureData['BMI']);
+            $measures->setIdeal_Weigth($measureData['Ideal_Weight']);
+
+            return [$inscription, $measures]; // Return both objects as an array
+        } else {
+            return null; // Return null if no measure data found
+        }
+    }
+
 
     public function calculateIdealWeight($height, $gender)
     {

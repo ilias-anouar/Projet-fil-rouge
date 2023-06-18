@@ -38,14 +38,28 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                 with font-awesome or any other icon font library -->
-                <li class="nav-item">
-                    <a href="index.php" class="nav-link active">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>
-                            Dashboard
-                        </p>
-                    </a>
-                </li>
+                <?php
+                if ($_SERVER['PHP_SELF'] == "/Projet-fil-rouge/code-source/Controllers/Client/index.php" || $_SERVER['PHP_SELF'] == "/Projet-fil-rouge/code-source/Controllers/Client/profile.php") {
+                    ?>
+                    <li class="nav-item">
+                        <?php
+                        $indexpath = "../index.php";
+                        if (file_exists($indexpath)) {
+                            $link = $indexpath;
+                        } else {
+                            $link = "index.php";
+                        }
+
+                        ?>
+                        <a href="<?= $link ?>"
+                            class="nav-link <?= ($_SERVER['PHP_SELF'] == "/Projet-fil-rouge/code-source/Controllers/Client/index.php") ? 'active' : ''; ?>">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>Dashboard</p>
+                        </a>
+                    </li>
+                    <?php
+                } ?>
+
             </ul>
 
     </div>

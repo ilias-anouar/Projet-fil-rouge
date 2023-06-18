@@ -84,6 +84,43 @@ class Manager
         return $response;
     }
 
+    public function getMeasureData($userId)
+    {
+        $sql = "SELECT inscription.Id_Inscription, Measures.*
+            FROM inscription
+            INNER JOIN Measures ON inscription.Id_Inscription = Measures.Id_Inscription
+            WHERE inscription.Id_User = ?";
+
+        $stmt = $this->getConnection()->prepare($sql);
+        $stmt->bind_param("i", $userId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        $data = [];
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $measure = [
+                    'Id_Inscription' => $row['Id_Inscription'],
+                    'Height' => (float) $row['Height'],
+                    'Weight' => (float) $row['Weight'],
+                    'Neck' => (float) $row['Neck'],
+                    'Waist' => (float) $row['Waist'],
+                    'Hip' => (float) $row['Hip'],
+                    'Ideal_Weight' => (float) $row['Ideal_Weight'],
+                    'BMR' => (float) $row['BMR'],
+                    'BMI' => (float) $row['BMI'],
+                    'Body_Fat' => (float) $row['Body_Fat']
+                ];
+                $data[] = $measure;
+            }
+        }
+
+        $stmt->close();
+
+        return $data;
+    }
+
 
     public function getPlanData()
     {

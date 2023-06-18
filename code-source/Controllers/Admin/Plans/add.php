@@ -1,4 +1,5 @@
 <?php
+use MyNamespace\Entities\Plan\Plan;
 session_start();
 include "../../../Views/Layout/root.php";
 require_once(__ROOT__ . '/Managers/PlanManager.php');

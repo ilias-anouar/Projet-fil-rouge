@@ -9,7 +9,8 @@
         href="/Projet-fil-rouge/code-source/Views/Assets/images/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16"
         href="/Projet-fil-rouge/code-source/Views/Assets/images/favicon_io/favicon-16x16.png">
-    <link rel="icon" type="image/x-icon" href="/Projet-fil-rouge/code-source/Views/Assets/images/favicon_io/favicon.ico">
+    <link rel="icon" type="image/x-icon"
+        href="/Projet-fil-rouge/code-source/Views/Assets/images/favicon_io/favicon.ico">
     <link rel="manifest"
         href="http://localhost/Projet-fil-rouge/code-source/Views/Assets/images/favicon_io/site.webmanifest">
     <!-- Google Font: Source Sans Pro -->

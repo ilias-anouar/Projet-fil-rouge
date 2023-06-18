@@ -1,4 +1,6 @@
 <?php
+namespace MyNamespace\Entities\Base;
+
 class Base
 {
     private $id;
