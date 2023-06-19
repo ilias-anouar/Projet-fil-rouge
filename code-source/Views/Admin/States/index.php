@@ -84,7 +84,7 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
                                         <!-- /.col -->
                                         <div class="col-md-4">
                                             <p class="text-center">
-                                                <strong>The must Chosen plan</strong>
+                                                <strong>The most Chosen plan</strong>
                                             </p>
 
                                             <?php foreach ($response as $resp) {

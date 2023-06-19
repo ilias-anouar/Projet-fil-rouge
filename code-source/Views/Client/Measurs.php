@@ -25,7 +25,7 @@ include_once(__ROOT__ . "/Views/Layout/head.php");
 
         <!-- Main Sidebar Container -->
         <?php
-        // include_once(__ROOT__ . "/Views/Layout/sidebare.php");
+        include_once(__ROOT__ . "/Views/Layout/sidebare.php");
         ?>
         <!-- /.sidebar -->
         <!-- Content Wrapper. Contains page content -->

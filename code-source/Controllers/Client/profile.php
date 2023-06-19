@@ -18,6 +18,8 @@ if (isset($_POST['Update_user'])) {
     $User->Set_Id($_POST['id']);
     $User->setFirst_name($_POST['First_name']);
     $User->setLast_name($_POST['Last_name']);
+    $_SESSION['user']['First_name'] = $User->getFirst_name();
+    $_SESSION['user']['Last_name'] = $User->getLast_name();
     $userManager->updateUser($User);
     $success = true;
 }

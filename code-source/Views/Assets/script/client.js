@@ -256,7 +256,7 @@ $(document).ready(function () {
     let hip = localStorage.getItem('hip');
     let starting_date = localStorage.getItem('starting_date');
     let currentDate = new Date().toISOString().split('T')[0];
-
+console.log("done local storage come");
     // Render the measurement values with specific classes or selectors
     $('.time-label .date').text(starting_date)
     $('.time-label .now').text(currentDate)

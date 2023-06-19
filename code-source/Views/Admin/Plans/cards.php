@@ -25,7 +25,7 @@ if (empty($pages)) {
                         </p>
                     </div>
                     <div class="d-flex justify-content-evenly">
-                        <a href="#" class="btn btn-outline-info">more</a>
+                        <!-- <a href="#" class="btn btn-outline-info">more</a> -->
                         <a href="delete.php?id=<?= $Plan->Get_Id() ?>" class="btn btn-outline-danger">delete</a>
                         <a href="update.php?id=<?= $Plan->Get_Id() ?>" class="btn btn-outline-dark">edite</a>
                     </div>
